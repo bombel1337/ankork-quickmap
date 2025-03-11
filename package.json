@@ -1,0 +1,21 @@
+{
+  "name": "ankork-quickmap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "got-scraping": "^4.1.1",
+    "log4js": "^6.9.1",
+    "mysql2": "^3.13.0",
+    "tough-cookie": "^5.1.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.7"
+  }
+}

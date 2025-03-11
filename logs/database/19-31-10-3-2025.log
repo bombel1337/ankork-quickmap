@@ -1,0 +1,4 @@
+[2025-03-10T19:31:03.979] [INFO] database - Logger initialized for database
+[2025-03-10T19:31:04.009] [INFO] proxyManager - Loaded 0 proxies from C:\Users\przyg\Desktop\GitHub\ankork-quickmap\proxies.txt
+[2025-03-10T19:31:04.009] [WARN] proxyManager - []
+[2025-03-10T19:31:04.010] [WARN] proxyManager - No valid proxies found in the proxy file
