@@ -5,7 +5,7 @@ class Constants {
 
 class Sites {	
     static orzeczenia_uzp_gov = 'uzp';
-    static test = 'test';
+    static sad_najwyzszy = 'sn';
 }
 
 module.exports = { Constants, Sites };

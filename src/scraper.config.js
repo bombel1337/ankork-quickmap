@@ -20,25 +20,23 @@ const config = {
 
     proxyManager: null,
 
-    // New structure using models object
     models: {
         uzp: {
             enabled: false,
             database: new Database(Sites.orzeczenia_uzp_gov),
-            useDataParser: true,
+            useDataParser: false,
             dataParser: createDataParser(Sites.orzeczenia_uzp_gov),
             delay: 111,
             scrapLength: 125,
         },
-        // You can add more models here
-        // example: {
-        //     enabled: false,
-        //     database: new Database('example'),
-        //     useDataParser: true,
-        //     dataParser: createDataParser('example'),
-        //     delay: 5000,
-        //     scrapLength: 100,
-        // }
+        sn: {
+            enabled: true,
+            database: new Database(Sites.sad_najwyzszy),
+            useDataParser: true,
+            dataParser: createDataParser(Sites.sad_najwyzszy),
+            delay: 111,
+            sinceDate: "2024-12-29",
+        },
     }
 };
 

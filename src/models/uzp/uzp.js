@@ -2,6 +2,8 @@ const { Constants } = require('../../utils/constants');
 const { sleep } = require('../../utils/helpers');
 const getLogger = require('../../utils/logger');
 
+const { Sites } = require('../../utils/constants');
+
 
 
 const Helper = require('./helper');
@@ -167,8 +169,8 @@ async function scraper(config) {
         tasks.push(config.dataParser.parse(config.database));
     }
     
-    if (config.models['uzp'] && config.models['uzp'].enabled) {
-        logger.info('Running model: uzp');
+    if (config.models[Sites.orzeczenia_uzp_gov] && config.models[Sites.orzeczenia_uzp_gov].enabled) {
+        logger.info('Running model:', Sites.orzeczenia_uzp_gov);
         tasks.push(scrape(config));
     }
 
