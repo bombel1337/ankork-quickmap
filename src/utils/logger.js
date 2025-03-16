@@ -17,8 +17,6 @@ function getLogger(scriptName) {
     const formattedDate = `${date.getHours()}-${date.getMinutes()}-${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
     const logFileName = path.join(scriptLogDir, `${formattedDate}.log`);
 
-    console.log(`Logging to: ${logFileName}`);
-
     log4js.configure({
         appenders: {
             console: { type: 'console' },

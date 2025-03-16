@@ -1,0 +1,6 @@
+[2025-03-14T18:12:26.499] [INFO] uzp - Logger initialized for uzp
+[2025-03-14T18:12:26.501] [INFO] database - Database: uzp connection pool initialized
+[2025-03-14T18:12:26.502] [INFO] uzp - Running model: uzp
+[2025-03-14T18:12:26.739] [INFO] uzp - Found largest id: 0, starting with 1
+[2025-03-14T18:12:50.006] [INFO] database - Database: uzp data inserted successfully into scraped_data, index: 1
+[2025-03-14T18:13:14.041] [INFO] database - Database: uzp data inserted successfully into scraped_data, index: 2
