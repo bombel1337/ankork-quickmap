@@ -1,0 +1,16 @@
+[2025-03-20T12:55:37.762] [INFO] ms - Logger initialized for ms
+[2025-03-20T12:55:37.763] [INFO] database - Database: ms connection pool initialized
+[2025-03-20T12:55:37.765] [INFO] ms - Running model: ms
+[2025-03-20T12:55:37.981] [DEBUG] proxyManager - Using proxy: 86.107.113.22:60099:l81L76JNRK:bjdAAF0sYf
+[2025-03-20T12:55:37.982] [INFO] proxyManager - Using proxy: http://l81L76JNRK:bjdAAF0sYf@86.107.113.22:60099
+[2025-03-20T12:55:39.027] [INFO] ms - Starting at page: 1, out of: 7 for date since: 2025-02-18 to 2025-03-20. All results length 64
+[2025-03-20T12:55:39.044] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-20T12:55:40.205] [INFO] database - Database: ms data inserted successfully into scraped_data, index: 1
+[2025-03-20T12:55:42.307] [INFO] ms - Logger initialized for ms
+[2025-03-20T12:55:42.308] [INFO] database - Database: ms connection pool initialized
+[2025-03-20T12:55:42.309] [INFO] ms - Running model: ms
+[2025-03-20T12:55:42.530] [DEBUG] proxyManager - Using proxy: 86.107.113.22:60099:l81L76JNRK:bjdAAF0sYf
+[2025-03-20T12:55:42.531] [INFO] proxyManager - Using proxy: http://l81L76JNRK:bjdAAF0sYf@86.107.113.22:60099
+[2025-03-20T12:55:43.435] [INFO] ms - Starting at page: 1, out of: 7 for date since: 2025-02-18 to 2025-03-20. All results length 64
+[2025-03-20T12:55:43.453] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-20T12:55:43.471] [INFO] ms - Skipping duplicate case: III Ka 38/25

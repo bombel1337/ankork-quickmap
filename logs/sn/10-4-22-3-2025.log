@@ -1,0 +1,34 @@
+[2025-03-22T10:04:32.891] [INFO] sn - Logger initialized for sn
+[2025-03-22T10:04:32.892] [INFO] database - Database: sn connection pool initialized
+[2025-03-22T10:04:32.893] [INFO] data-parser - snParser init
+[2025-03-22T10:04:32.994] [INFO] data-parser - Found 160 rows to process
+[2025-03-22T10:04:33.047] [INFO] data-parser - Processed row ID: null
+[2025-03-22T10:04:33.085] [INFO] data-parser - Processed row ID: null
+[2025-03-22T10:04:33.109] [INFO] data-parser - Processed row ID: null
+[2025-03-22T10:04:33.129] [INFO] data-parser - Processed row ID: 1
+[2025-03-22T10:04:33.149] [INFO] data-parser - Processed row ID: 2
+[2025-03-22T10:04:33.170] [INFO] data-parser - Processed row ID: 3
+[2025-03-22T10:04:33.198] [INFO] data-parser - Processed row ID: 4
+[2025-03-22T10:04:33.218] [INFO] data-parser - Processed row ID: 5
+[2025-03-22T10:04:33.242] [INFO] data-parser - Processed row ID: 6
+[2025-03-22T10:04:33.262] [INFO] data-parser - Processed row ID: 7
+[2025-03-22T10:04:33.281] [INFO] data-parser - Processed row ID: 8
+[2025-03-22T10:04:33.298] [INFO] data-parser - Processed row ID: 9
+[2025-03-22T10:04:33.316] [INFO] data-parser - Processed row ID: 10
+[2025-03-22T10:04:33.337] [INFO] data-parser - Processed row ID: 11
+[2025-03-22T10:04:33.355] [INFO] data-parser - Processed row ID: 12
+[2025-03-22T10:04:33.377] [INFO] data-parser - Processed row ID: 13
+[2025-03-22T10:04:33.393] [INFO] data-parser - Processed row ID: 14
+[2025-03-22T10:04:33.410] [INFO] data-parser - Processed row ID: 15
+[2025-03-22T10:04:33.431] [INFO] data-parser - Processed row ID: 16
+[2025-03-22T10:04:33.447] [INFO] data-parser - Processed row ID: 17
+[2025-03-22T10:04:33.462] [INFO] data-parser - Processed row ID: 18
+[2025-03-22T10:04:33.482] [INFO] data-parser - Processed row ID: 19
+[2025-03-22T10:04:33.498] [INFO] data-parser - Processed row ID: 20
+[2025-03-22T10:04:33.514] [INFO] data-parser - Processed row ID: 21
+[2025-03-22T10:04:33.535] [INFO] data-parser - Processed row ID: 22
+[2025-03-22T10:04:33.553] [INFO] data-parser - Processed row ID: 23
+[2025-03-22T10:04:33.570] [INFO] data-parser - Processed row ID: 24
+[2025-03-22T10:04:33.592] [INFO] data-parser - Processed row ID: 25
+[2025-03-22T10:04:33.608] [INFO] data-parser - Processed row ID: 26
+[2025-03-22T10:04:33.624] [INFO] data-parser - Processed row ID: 27

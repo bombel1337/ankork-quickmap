@@ -1,0 +1,13 @@
+[2025-03-20T12:24:45.990] [INFO] ms - Logger initialized for ms
+[2025-03-20T12:24:45.991] [INFO] database - Database: ms connection pool initialized
+[2025-03-20T12:24:45.992] [INFO] ms - Running model: ms
+[2025-03-20T12:24:47.001] [INFO] ms - Starting at page: 1, out of: 7 for date since: 2025-02-18 to 2025-03-20. All results length 64
+[2025-03-20T12:24:47.016] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-20T12:24:47.739] [INFO] database - Database: ms Added column judgment_html (LONGTEXT) to table scraped_data
+[2025-03-20T12:24:47.900] [INFO] database - Database: ms Added column status_code (INT) to table scraped_data
+[2025-03-20T12:24:47.936] [INFO] database - Database: ms Added column page (INT) to table scraped_data
+[2025-03-20T12:24:47.969] [INFO] database - Database: ms Added column page_html (LONGTEXT) to table scraped_data
+[2025-03-20T12:24:47.997] [INFO] database - Database: ms data inserted successfully into scraped_data, index: 1
+[2025-03-20T12:24:48.741] [INFO] database - Database: ms data inserted successfully into scraped_data, index: 2
+[2025-03-20T12:24:49.561] [INFO] database - Database: ms data inserted successfully into scraped_data, index: 3
+[2025-03-20T12:24:50.264] [INFO] database - Database: ms data inserted successfully into scraped_data, index: 4

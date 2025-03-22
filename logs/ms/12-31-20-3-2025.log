@@ -1,0 +1,21 @@
+[2025-03-20T12:31:19.785] [INFO] ms - Logger initialized for ms
+[2025-03-20T12:31:19.786] [INFO] database - Database: ms connection pool initialized
+[2025-03-20T12:31:19.788] [INFO] ms - Running model: ms
+[2025-03-20T12:31:20.109] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:31:21.240] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:31:22.376] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:31:22.376] [WARN] ms - Max retries reached for page: 1 and date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:31:22.386] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:31:23.517] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:31:24.650] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:31:24.651] [WARN] ms - Max retries reached for page: 1 and date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:31:24.660] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:31:25.790] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:31:35.862] [INFO] ms - Logger initialized for ms
+[2025-03-20T12:31:35.863] [INFO] database - Database: ms connection pool initialized
+[2025-03-20T12:31:35.864] [INFO] ms - Running model: ms
+[2025-03-20T12:31:36.180] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:31:42.388] [INFO] ms - Logger initialized for ms
+[2025-03-20T12:31:42.390] [INFO] database - Database: ms connection pool initialized
+[2025-03-20T12:31:42.391] [INFO] ms - Running model: ms
+[2025-03-20T12:31:42.751] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20

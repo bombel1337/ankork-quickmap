@@ -1,0 +1,27 @@
+[2025-03-21T09:06:52.822] [INFO] ms - Logger initialized for ms
+[2025-03-21T09:06:52.823] [INFO] database - Database: ms connection pool initialized
+[2025-03-21T09:06:52.831] [INFO] ms - Running model: ms
+[2025-03-21T09:06:52.864] [ERROR] data-parser - msParser error: Error: getRowsNeededParsing: Table 'ms.parsed_data' doesn't exist
+    at getRowsNeededParsing (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dPUtils.js:13:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async msParser (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\parsers\msParser.js:8:30)
+    at async DataParser.ms [as parsingStrategy] (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:30:16)
+    at async DataParser.parse (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:15:16)
+    at async Promise.all (index 0)
+    at async Object.scraper (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\models\ms\ms.js:204:5)
+[2025-03-21T09:06:53.082] [DEBUG] proxyManager - Randomly selected proxy: 86.107.113.24:60099:R3ogSHTxZ0:Q97cHZP5Cx
+[2025-03-21T09:06:54.053] [INFO] ms - Running page: 1, pages left: -1 and 0 results. Link: https://orzeczenia.ms.gov.pl/search/advanced/$N/$N/$N/$N/$N/$N/$N/2025-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/1
+[2025-03-21T09:06:54.129] [INFO] ms - Starting at page: 1, out of: 7 for date since: 2025-02-18 to 2025-03-21. All results length 69
+[2025-03-21T09:06:54.157] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T09:06:54.160] [INFO] ms - Skipping duplicate case: VII P 747/24
+[2025-03-21T09:06:54.161] [INFO] ms - Skipping duplicate case: II Ka 590/24
+[2025-03-21T09:06:54.161] [INFO] ms - Skipping duplicate case: V Ka 577/24
+[2025-03-21T09:06:54.162] [INFO] ms - Skipping duplicate case: VI U 475/24
+[2025-03-21T09:06:54.163] [INFO] ms - Skipping duplicate case: III AUa 634/24
+[2025-03-21T09:06:54.163] [INFO] ms - Skipping duplicate case: III Ka 38/25
+[2025-03-21T09:06:54.164] [INFO] ms - Skipping duplicate case: III Ka 7/24
+[2025-03-21T09:06:54.164] [INFO] ms - Skipping duplicate case: II AKa 251/21
+[2025-03-21T09:06:54.171] [INFO] ms - Skipping duplicate case: II AKa 47/21
+[2025-03-21T09:06:54.172] [INFO] ms - Skipping duplicate case: IV P 406/24
+[2025-03-21T09:07:05.830] [INFO] ms - Running page: 2, pages left: 5 and 59 results. Link: https://orzeczenia.ms.gov.pl/search/advanced/$N/$N/$N/$N/$N/$N/$N/2025-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/2
+[2025-03-21T09:07:05.835] [DEBUG] ms-helper - Extracted 0 court cases

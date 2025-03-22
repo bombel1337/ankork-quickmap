@@ -1,0 +1,29 @@
+[2025-03-20T12:30:18.820] [INFO] ms - Logger initialized for ms
+[2025-03-20T12:30:18.822] [INFO] database - Database: ms connection pool initialized
+[2025-03-20T12:30:18.823] [INFO] ms - Running model: ms
+[2025-03-20T12:30:19.155] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:20.292] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:21.415] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:21.416] [WARN] ms - Max retries reached for page: 1 and date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:21.426] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:22.554] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:23.686] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:23.686] [WARN] ms - Max retries reached for page: 1 and date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:23.696] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:24.825] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:25.954] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:25.955] [WARN] ms - Max retries reached for page: 1 and date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:25.965] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:27.098] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:28.220] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:28.220] [WARN] ms - Max retries reached for page: 1 and date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:28.230] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:29.364] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:30.499] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:30.499] [WARN] ms - Max retries reached for page: 1 and date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:30.509] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:31.643] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:32.765] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:32.765] [WARN] ms - Max retries reached for page: 1 and date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:32.776] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T12:30:33.908] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-20

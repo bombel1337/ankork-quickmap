@@ -1,0 +1,15 @@
+[2025-03-20T12:49:00.136] [INFO] sn - Logger initialized for sn
+[2025-03-20T12:49:00.137] [INFO] database - Database: sn connection pool initialized
+[2025-03-20T12:49:00.139] [INFO] data-parser - snParser init
+[2025-03-20T12:49:00.139] [INFO] data-parser - Setting up database tables
+[2025-03-20T12:49:00.176] [INFO] data-parser - Database setup completed
+[2025-03-20T12:49:00.181] [INFO] data-parser - Found 0 rows to process
+[2025-03-20T12:49:00.181] [INFO] data-parser - snParser completed successfully
+[2025-03-20T12:49:00.182] [INFO] database - Closing database: sn connection pool
+[2025-03-20T12:49:21.746] [INFO] sn - Logger initialized for sn
+[2025-03-20T12:49:21.747] [INFO] database - Database: sn connection pool initialized
+[2025-03-20T12:49:21.748] [INFO] sn - Running model: sn
+[2025-03-20T12:49:21.992] [INFO] sn - Running date: 2025-02-18
+[2025-03-20T12:49:22.913] [ERROR] sn - Found error scraping sn: getDetails: Expected property string `proxyUrl` to be a URL, got `undefined` in object, date: 2025-02-18
+[2025-03-20T12:49:24.027] [INFO] sn - Running date: 2025-02-18
+[2025-03-20T12:49:24.485] [ERROR] sn - Found error scraping sn: getDetails: Expected property string `proxyUrl` to be a URL, got `undefined` in object, date: 2025-02-18

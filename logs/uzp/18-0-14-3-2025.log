@@ -1,9 +1,0 @@
-[2025-03-14T18:00:03.281] [INFO] uzp - Logger initialized for uzp
-[2025-03-14T18:00:03.283] [INFO] database - Database: uzp connection pool initialized
-[2025-03-14T18:00:03.284] [INFO] uzp - Running model: uzp
-[2025-03-14T18:00:03.539] [INFO] uzp - Found largest id: 160, starting with 161
-[2025-03-14T18:00:30.204] [INFO] database - Database: uzp data inserted successfully into scraped_data, index: 161
-[2025-03-14T18:00:44.083] [INFO] uzp - Logger initialized for uzp
-[2025-03-14T18:00:44.084] [INFO] database - Database: uzp connection pool initialized
-[2025-03-14T18:00:44.085] [INFO] uzp - Running model: uzp
-[2025-03-14T18:00:44.315] [INFO] uzp - Found largest id: 161, starting with 162

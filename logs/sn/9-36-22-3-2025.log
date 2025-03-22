@@ -1,0 +1,6 @@
+[2025-03-22T09:36:13.822] [INFO] sn - Logger initialized for sn
+[2025-03-22T09:36:13.824] [INFO] database - Database: sn connection pool initialized
+[2025-03-22T09:36:13.825] [INFO] sn - Running model: sn
+[2025-03-22T09:36:14.038] [INFO] sn - Running date: 2025-02-18
+[2025-03-22T09:36:15.233] [ERROR] database - Database: sn Error inserting data into scraped_data: Column 'item_sid' cannot be null
+[2025-03-22T09:36:15.233] [ERROR] sn - Found error scraping sn: Database: sn insertData error: Column 'item_sid' cannot be null, date: 2025-02-18

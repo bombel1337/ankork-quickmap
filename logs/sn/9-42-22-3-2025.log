@@ -1,0 +1,7 @@
+[2025-03-22T09:42:47.054] [INFO] sn - Logger initialized for sn
+[2025-03-22T09:42:47.055] [INFO] database - Database: sn connection pool initialized
+[2025-03-22T09:42:47.056] [INFO] sn - Running model: sn
+[2025-03-22T09:42:47.280] [INFO] sn - Running date: 2025-02-18
+[2025-03-22T09:42:48.550] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 1
+[2025-03-22T09:42:49.208] [ERROR] database - Database: sn Error inserting data into scraped_data: Data truncated for column 'itemSID' at row 1
+[2025-03-22T09:42:49.208] [ERROR] sn - Found error scraping sn: Database: sn insertData error: Data truncated for column 'itemSID' at row 1, date: 2025-02-18

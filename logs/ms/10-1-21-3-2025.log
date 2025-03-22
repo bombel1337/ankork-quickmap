@@ -1,0 +1,31 @@
+[2025-03-21T10:01:30.358] [INFO] ms - Logger initialized for ms
+[2025-03-21T10:01:30.359] [INFO] database - Database: ms connection pool initialized
+[2025-03-21T10:01:30.366] [INFO] ms - Running model: ms
+[2025-03-21T10:01:30.401] [ERROR] data-parser - msParser error: Error: getRowsNeededParsing: Table 'ms.parsed_data' doesn't exist
+    at getRowsNeededParsing (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dPUtils.js:13:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async msParser (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\parsers\msParser.js:8:30)
+    at async DataParser.ms [as parsingStrategy] (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:30:16)
+    at async DataParser.parse (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:15:16)
+    at async Promise.all (index 0)
+    at async Object.scraper (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\models\ms\ms.js:210:5)
+[2025-03-21T10:01:30.605] [DEBUG] proxyManager - Randomly selected proxy: 86.107.115.107:60099:B1XxnoIRoQ:kTnW21To1k
+[2025-03-21T10:01:31.948] [INFO] ms - Running page: 3, pages left: -3 and 0 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/3?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2025-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/3
+[2025-03-21T10:01:32.015] [INFO] ms - Starting at page: 3, out of: 7 for date since: 2025-02-18 to 2025-03-21. All results length 69
+[2025-03-21T10:01:32.033] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:01:32.036] [INFO] ms - Skipping duplicate case: III RC 227/24
+[2025-03-21T10:01:48.926] [INFO] ms - Logger initialized for ms
+[2025-03-21T10:01:48.927] [INFO] database - Database: ms connection pool initialized
+[2025-03-21T10:01:48.936] [INFO] ms - Running model: ms
+[2025-03-21T10:01:48.968] [ERROR] data-parser - msParser error: Error: getRowsNeededParsing: Table 'ms.parsed_data' doesn't exist
+    at getRowsNeededParsing (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dPUtils.js:13:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async msParser (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\parsers\msParser.js:8:30)
+    at async DataParser.ms [as parsingStrategy] (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:30:16)
+    at async DataParser.parse (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:15:16)
+    at async Promise.all (index 0)
+    at async Object.scraper (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\models\ms\ms.js:210:5)
+[2025-03-21T10:01:49.162] [DEBUG] proxyManager - Randomly selected proxy: 86.107.114.87:60099:8EYlFcsP2J:31KVW0t7Vr
+[2025-03-21T10:01:50.413] [INFO] ms - Running page: 3, pages left: -3 and 0 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/3?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2025-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/3
+[2025-03-21T10:01:50.477] [INFO] ms - Starting at page: 3, out of: 7 for date since: 2025-02-18 to 2025-03-21. All results length 69
+[2025-03-21T10:01:50.499] [DEBUG] ms-helper - Extracted 10 court cases

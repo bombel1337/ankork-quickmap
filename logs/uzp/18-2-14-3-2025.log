@@ -1,4 +1,0 @@
-[2025-03-14T18:02:40.256] [INFO] uzp - Logger initialized for uzp
-[2025-03-14T18:02:40.257] [INFO] database - Database: uzp connection pool initialized
-[2025-03-14T18:02:40.259] [INFO] uzp - Running model: uzp
-[2025-03-14T18:02:40.493] [INFO] uzp - Found largest id: 191, starting with 192

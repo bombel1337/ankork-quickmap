@@ -1,0 +1,15 @@
+[2025-03-21T09:08:20.848] [INFO] ms - Logger initialized for ms
+[2025-03-21T09:08:20.849] [INFO] database - Database: ms connection pool initialized
+[2025-03-21T09:08:20.856] [INFO] ms - Running model: ms
+[2025-03-21T09:08:20.891] [ERROR] data-parser - msParser error: Error: getRowsNeededParsing: Table 'ms.parsed_data' doesn't exist
+    at getRowsNeededParsing (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dPUtils.js:13:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async msParser (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\parsers\msParser.js:8:30)
+    at async DataParser.ms [as parsingStrategy] (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:30:16)
+    at async DataParser.parse (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:15:16)
+    at async Promise.all (index 0)
+    at async Object.scraper (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\models\ms\ms.js:205:5)
+[2025-03-21T09:08:21.088] [DEBUG] proxyManager - Randomly selected proxy: 86.107.115.112:60099:UJkjKGQho5:Wd9KnYTjR7
+[2025-03-21T09:08:21.386] [INFO] ms - Running page: 1, pages left: -1 and 0 results. Link: https://orzeczenia.ms.gov.pl/search/advanced/$N/$N/$N/$N/$N/$N/$N/2025-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/1
+[2025-03-21T09:08:21.402] [ERROR] ms - Found error scraping ms: MsHelper checkForErrorMessage: MsHelper getResultsLength: found error not locating span.big_number for date: undefined, date since: 2025-02-18 to 2025-03-21, page 1
+[2025-03-21T09:08:22.521] [INFO] database - Closing database: ms connection pool

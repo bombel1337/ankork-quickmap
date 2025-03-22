@@ -1,0 +1,19 @@
+[2025-03-20T12:54:00.288] [INFO] sn - Logger initialized for sn
+[2025-03-20T12:54:00.290] [INFO] database - Database: sn connection pool initialized
+[2025-03-20T12:54:00.291] [INFO] sn - Running model: sn
+[2025-03-20T12:54:00.511] [INFO] sn - Running date: 2025-02-18
+[2025-03-20T12:54:01.812] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 1
+[2025-03-20T12:54:02.799] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 2
+[2025-03-20T12:54:03.497] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 3
+[2025-03-20T12:54:04.365] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 4
+[2025-03-20T12:54:05.073] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 5
+[2025-03-20T12:54:14.607] [INFO] sn - Logger initialized for sn
+[2025-03-20T12:54:14.608] [INFO] database - Database: sn connection pool initialized
+[2025-03-20T12:54:14.609] [INFO] sn - Running model: sn
+[2025-03-20T12:54:14.837] [INFO] sn - Running date: 2025-02-18
+[2025-03-20T12:54:15.329] [INFO] sn - Skipping duplicate case link: https://www.sn.pl/wyszukiwanie/SitePages/orzeczenia.aspx?ItemSID=146808-6e9ffc09-7b83-4b3d-8c04-f640e774865f&ListName=Orzeczenia3&DataWDniu=2025-02-18
+[2025-03-20T12:54:15.330] [INFO] sn - Skipping duplicate case link: https://www.sn.pl/wyszukiwanie/SitePages/orzeczenia.aspx?ItemSID=146822-6e9ffc09-7b83-4b3d-8c04-f640e774865f&ListName=Orzeczenia3&DataWDniu=2025-02-18
+[2025-03-20T12:54:15.330] [INFO] sn - Skipping duplicate case link: https://www.sn.pl/wyszukiwanie/SitePages/orzeczenia.aspx?ItemSID=146823-6e9ffc09-7b83-4b3d-8c04-f640e774865f&ListName=Orzeczenia3&DataWDniu=2025-02-18
+[2025-03-20T12:54:15.331] [INFO] sn - Skipping duplicate case link: https://www.sn.pl/wyszukiwanie/SitePages/orzeczenia.aspx?ItemSID=146824-6e9ffc09-7b83-4b3d-8c04-f640e774865f&ListName=Orzeczenia3&DataWDniu=2025-02-18
+[2025-03-20T12:54:15.331] [INFO] sn - Skipping duplicate case link: https://www.sn.pl/wyszukiwanie/SitePages/orzeczenia.aspx?ItemSID=146825-6e9ffc09-7b83-4b3d-8c04-f640e774865f&ListName=Orzeczenia3&DataWDniu=2025-02-18
+[2025-03-20T12:54:15.920] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 6

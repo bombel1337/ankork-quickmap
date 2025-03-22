@@ -1,11 +1,10 @@
 const fs = require('fs');
-const path = require('path');
 const log4js = require('log4js');
 const logger = log4js.getLogger('proxyManager');
-require('dotenv').config();
+
 
 class ProxyManager {
-    constructor(proxyFilePath = path.join(process.cwd(), process.env.DB_HOST || 'proxies.txt')) {
+    constructor(proxyFilePath = 'proxies.txt') {
         this.proxyFilePath = proxyFilePath;
         this.proxies = [];
         this.currentProxyIndex = 0;
@@ -15,7 +14,15 @@ class ProxyManager {
     isProxyless() {
         return this.isProxyless;
     }
-
+    getProxyBasedOnConfig(config) {
+        if (config?.proxies?.enabled && config?.proxyManager) {
+            const proxy =  config.proxies.rotate === 'random'
+                ? this.getRandomProxy()
+                : this.getNextProxy();
+            return proxy;
+        }
+        return undefined;
+    }
     loadProxies() {
         try {
             const fileContent = fs.readFileSync(this.proxyFilePath, 'utf8');
@@ -47,7 +54,7 @@ class ProxyManager {
         }
 
         const proxy = this.proxies[this.currentProxyIndex];
-        logger.debug(`Using proxy: ${this.maskProxy(proxy)}`);
+        logger.debug(`Using proxy: ${(proxy)}`);
     
         this.currentProxyIndex = (this.currentProxyIndex + 1) % this.proxies.length; // (9 + 1) % 10 = 0
     
@@ -72,7 +79,7 @@ class ProxyManager {
     
         this.usedProxies.add(proxy);
     
-        logger.debug(`Randomly selected proxy: ${this.maskProxy(proxy)}`);
+        logger.debug(`Randomly selected proxy: ${(proxy)}`);
     
         return this.formatProxy(proxy);
     }

@@ -1,0 +1,15 @@
+[2025-03-20T11:23:55.767] [INFO] ms - Logger initialized for ms
+[2025-03-20T11:23:55.768] [INFO] database - Database: ms connection pool initialized
+[2025-03-20T11:23:55.775] [INFO] ms - Running model: ms
+[2025-03-20T11:23:55.805] [ERROR] data-parser - uzpParser error: Error: getRowsNeededParsing: Unknown database 'ms'
+    at getRowsNeededParsing (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dPUtils.js:13:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async msParser (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\parsers\msParser.js:6:30)
+    at async DataParser.ms [as parsingStrategy] (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:30:16)
+    at async DataParser.parse (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:15:16)
+    at async Promise.all (index 0)
+    at async Object.scraper (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\models\ms\ms.js:183:5)
+[2025-03-20T11:23:56.838] [INFO] ms - Starting at page: 2, out of: 7 for date since: 2025-02-18 to 2025-03-20. All results length 64
+[2025-03-20T11:23:56.855] [ERROR] ms - Found error scraping ms: MsHelper extractCourtCases: MsHelper extractCourtCases: unable to extract title from element 0, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T11:23:58.738] [INFO] ms - Running page: 3, pages left: 4 and 54 results.
+[2025-03-20T11:23:58.750] [ERROR] ms - Found error scraping ms: MsHelper extractCourtCases: MsHelper extractCourtCases: unable to extract title from element 0, date since: 2025-02-18 to 2025-03-20

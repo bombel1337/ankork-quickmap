@@ -1,0 +1,26 @@
+[2025-03-21T09:03:54.810] [INFO] ms - Logger initialized for ms
+[2025-03-21T09:03:54.811] [INFO] database - Database: ms connection pool initialized
+[2025-03-21T09:03:54.818] [INFO] ms - Running model: ms
+[2025-03-21T09:03:54.850] [ERROR] data-parser - msParser error: Error: getRowsNeededParsing: Table 'ms.parsed_data' doesn't exist
+    at getRowsNeededParsing (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dPUtils.js:13:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async msParser (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\parsers\msParser.js:8:30)
+    at async DataParser.ms [as parsingStrategy] (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:30:16)
+    at async DataParser.parse (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:15:16)
+    at async Promise.all (index 0)
+    at async Object.scraper (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\models\ms\ms.js:205:5)
+[2025-03-21T09:03:55.046] [DEBUG] proxyManager - Randomly selected proxy: 86.107.114.86:60099:L4u222HKD2:26W6CXaJJs
+[2025-03-21T09:03:56.002] [INFO] ms - Starting at page: 1, out of: 7 for date since: 2025-02-18 to 2025-03-21. All results length 69
+[2025-03-21T09:03:56.024] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T09:03:56.026] [INFO] ms - Skipping duplicate case: III AUa 634/24
+[2025-03-21T09:03:56.027] [INFO] ms - Skipping duplicate case: VI U 475/24
+[2025-03-21T09:03:56.028] [INFO] ms - Skipping duplicate case: VII P 747/24
+[2025-03-21T09:03:56.028] [INFO] ms - Skipping duplicate case: V Ka 577/24
+[2025-03-21T09:03:56.029] [INFO] ms - Skipping duplicate case: II AKa 195/24
+[2025-03-21T09:03:56.030] [INFO] ms - Skipping duplicate case: IV P 406/24
+[2025-03-21T09:03:56.030] [INFO] ms - Skipping duplicate case: I C 306/24
+[2025-03-21T09:03:56.035] [INFO] ms - Skipping duplicate case: II Ka 590/24
+[2025-03-21T09:03:56.036] [INFO] ms - Skipping duplicate case: IX U 245/22
+[2025-03-21T09:03:56.036] [INFO] ms - Skipping duplicate case: IX U 635/23
+[2025-03-21T09:04:07.709] [INFO] ms - Running page: 2, pages left: 5 and 59 results.
+[2025-03-21T09:04:07.713] [DEBUG] ms-helper - Extracted 0 court cases

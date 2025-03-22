@@ -1,4 +1,5 @@
 const cheerio = require('cheerio');
+const { getRowsNeededParsing } = require('../dPUtils');
 
 
 async function getOrCreateArticle(database, articleReference) {
@@ -65,8 +66,8 @@ async function insertParsedData(database, parsedData) {
         // First insert/update the main parsed data
         const insertParsedQuery = `
   INSERT INTO parsed_data 
-    (id, organ_wydajacy, rodzaj_dokumentu, data_wydania_rozstrzygniecia, przewodniczacy, zamawiajacy, miejscowosc, sygnatura, sygnatura_decyzja, tryb_postepowania, wyrok, uzasadnienie, data_wyroku, rok_wyroku,  rodzaj_zamowienia)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    (id, organ_wydajacy, rodzaj_dokumentu, data_wydania_rozstrzygniecia, przewodniczacy, zamawiajacy, miejscowosc, sygnatura, sygnatura_decyzja, tryb_postepowania, wyrok, uzasadnienie, data_wyroku, rok_wyroku,  rodzaj_zamowienia, page_link)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   ON DUPLICATE KEY UPDATE
     organ_wydajacy = VALUES(organ_wydajacy),
     rodzaj_dokumentu = VALUES(rodzaj_dokumentu),
@@ -81,7 +82,8 @@ async function insertParsedData(database, parsedData) {
     uzasadnienie = VALUES(uzasadnienie),
     data_wyroku = VALUES(data_wyroku),
     rok_wyroku = VALUES(rok_wyroku),
-    rodzaj_zamowienia = VALUES(rodzaj_zamowienia)
+    rodzaj_zamowienia = VALUES(rodzaj_zamowienia),
+    page_link = VALUES(page_link)
 `;
         
         await database.pool.query(insertParsedQuery, [
@@ -100,6 +102,7 @@ async function insertParsedData(database, parsedData) {
             parsedData['fullDate'] || null,
             parsedData['year'] || null,
             parsedData['Rodzaj zamówienia'] || null,
+            parsedData['page_link'] || null,
         ]);
         
         // Get the parsed_data id we just inserted
@@ -174,32 +177,32 @@ function formatDate(dateString) {
     
     return dateString; // Return as is if not in expected format
 }
-// Function to get all articles for a specific parsed_data entry
-async function getArticlesForParsedData(database, parsedDataId) {
-    const query = `
-        SELECT a.article_reference, a.description
-        FROM key_provisions k
-        JOIN articles a ON k.article_id = a.id
-        WHERE k.parsed_data_id = ?
-        ORDER BY a.article_reference
-    `;
-    
-    const [rows] = await database.pool.query(query, [parsedDataId]);
-    return rows;
-}
 
-async function getTopicsForParsedData(database, parsedDataId) {
-    const query = `
-        SELECT t.topic_name, t.description
-        FROM case_topics z
-        JOIN topics t ON z.topic_id = t.id
-        WHERE z.parsed_data_id = ?
-        ORDER BY t.topic_name
-    `;
+// async function getArticlesForParsedData(database, parsedDataId) {
+//     const query = `
+//         SELECT a.article_reference, a.description
+//         FROM key_provisions k
+//         JOIN articles a ON k.article_id = a.id
+//         WHERE k.parsed_data_id = ?
+//         ORDER BY a.article_reference
+//     `;
     
-    const [rows] = await database.pool.query(query, [parsedDataId]);
-    return rows;
-}
+//     const [rows] = await database.pool.query(query, [parsedDataId]);
+//     return rows;
+// }
+
+// async function getTopicsForParsedData(database, parsedDataId) {
+//     const query = `
+//         SELECT t.topic_name, t.description
+//         FROM case_topics z
+//         JOIN topics t ON z.topic_id = t.id
+//         WHERE z.parsed_data_id = ?
+//         ORDER BY t.topic_name
+//     `;
+    
+//     const [rows] = await database.pool.query(query, [parsedDataId]);
+//     return rows;
+// }
 
 function parseDetailsMetrics(html) {
     const $ = cheerio.load(html);
@@ -347,6 +350,7 @@ const uzpParser = async (database, logger) => {
                 parsedData.year = iFrameDAta?.year ?? null;
                 parsedData.decisionCleared = iFrameDAta?.decisionCleared ?? null;
                 parsedData.judgementCleared = iFrameDAta?.judgementCleared ?? null;
+                parsedData.page_link = row.page_link;
 
                 await insertParsedData(database, {id: row.id, ...parsedData});
 
@@ -361,21 +365,7 @@ const uzpParser = async (database, logger) => {
 };
 
 
-const getRowsNeededParsing = async (database) => {
-    try {
-        const query = `
-        SELECT * FROM scraped_data 
-        WHERE status_code = 200 
-        AND id NOT IN (SELECT id FROM parsed_data) ORDER BY id ASC
-      `;    
-    
-        const [rows] = await database.pool.query(query);
-        return rows;        
-    } catch (error) {
-        throw new Error(`getRowsNeededParsing: ${error.message}`);
-    }
 
-};
 
 module.exports = {
     uzpParser,

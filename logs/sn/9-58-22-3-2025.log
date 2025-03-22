@@ -1,0 +1,45 @@
+[2025-03-22T09:58:07.564] [INFO] sn - Logger initialized for sn
+[2025-03-22T09:58:07.565] [INFO] database - Database: sn connection pool initialized
+[2025-03-22T09:58:07.567] [INFO] sn - Running model: sn
+[2025-03-22T09:58:07.905] [INFO] sn - Running date: 2025-02-18
+[2025-03-22T09:58:09.128] [ERROR] database - Database: sn Error getting largest ID: Unknown column 'idx' in 'field list'
+[2025-03-22T09:58:09.209] [INFO] database - Database: sn Added column idx (INT) to table scraped_data
+[2025-03-22T09:58:09.222] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 1
+[2025-03-22T09:58:10.017] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 2
+[2025-03-22T09:58:10.555] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 3
+[2025-03-22T09:58:30.360] [INFO] sn - Logger initialized for sn
+[2025-03-22T09:58:30.361] [INFO] database - Database: sn connection pool initialized
+[2025-03-22T09:58:30.362] [INFO] sn - Running model: sn
+[2025-03-22T09:58:30.582] [INFO] sn - Running date: 2025-02-18
+[2025-03-22T09:58:31.290] [INFO] sn - Skipping duplicate case with ItemSID: 146808-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T09:58:31.291] [INFO] sn - Skipping duplicate case with ItemSID: 146822-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T09:58:31.291] [INFO] sn - Skipping duplicate case with ItemSID: 146823-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T09:58:31.984] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 1
+[2025-03-22T09:58:32.645] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 2
+[2025-03-22T09:58:33.559] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 3
+[2025-03-22T09:58:34.227] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 4
+[2025-03-22T09:58:34.979] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 5
+[2025-03-22T09:58:35.574] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 6
+[2025-03-22T09:58:36.128] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 7
+[2025-03-22T09:58:36.704] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 8
+[2025-03-22T09:58:37.264] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 9
+[2025-03-22T09:58:37.771] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 10
+[2025-03-22T09:58:38.322] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 11
+[2025-03-22T09:58:39.013] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 12
+[2025-03-22T09:58:39.613] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 13
+[2025-03-22T09:58:40.198] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 14
+[2025-03-22T09:58:40.865] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 15
+[2025-03-22T09:58:41.411] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 16
+[2025-03-22T09:58:42.022] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 17
+[2025-03-22T09:58:42.624] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 18
+[2025-03-22T09:58:47.757] [INFO] sn - Logger initialized for sn
+[2025-03-22T09:58:47.758] [INFO] database - Database: sn connection pool initialized
+[2025-03-22T09:58:47.759] [INFO] sn - Running model: sn
+[2025-03-22T09:58:47.977] [INFO] sn - Running date: 2025-02-18
+[2025-03-22T09:58:47.992] [ERROR] sn - Found error scraping sn: getaddrinfo ENOTFOUND www.sn.pl, date: 2025-02-18
+[2025-03-22T09:58:49.104] [INFO] sn - Running date: 2025-02-18
+[2025-03-22T09:58:51.469] [INFO] sn - Logger initialized for sn
+[2025-03-22T09:58:51.470] [INFO] database - Database: sn connection pool initialized
+[2025-03-22T09:58:51.471] [INFO] sn - Running model: sn
+[2025-03-22T09:58:51.684] [INFO] sn - Running date: 2025-02-18
+[2025-03-22T09:58:51.698] [ERROR] sn - Found error scraping sn: getaddrinfo ENOTFOUND www.sn.pl, date: 2025-02-18

@@ -32,30 +32,31 @@ class DatabaseService {
 
     async insertData(table, data) {
         try {
-            // Manually compute the next id.
-            const largestId = await this.getLargestId(table);
+            // Now get the largest ID from the idx column instead of item_sid
+            const largestId = await this.getLargestId(table, 'id'); 
             const nextId = largestId + 1;
-            data.id = nextId;  // Provide the id value explicitly.
-
-            // For each key (except 'id'), ensure a corresponding column exists.
+            
+            data.id = nextId;
+            
+            
             for (const key in data) {
-                if (key === 'id') continue; // Skip 'id'
+                if (key === 'item_sid') continue;
                 const [columns] = await this.pool.query(
                     'SHOW COLUMNS FROM ?? LIKE ?', 
                     [table, key]
                 );
                 if (columns.length === 0) {
                     const columnType = typeof data[key] === 'string' ? 'LONGTEXT' : 'INT';
-
+    
                     await this.pool.query(
                         `ALTER TABLE ?? ADD COLUMN ?? ${columnType}`,
                         [table, key]
                     );
-
+    
                     logger.info(`Database: ${this.database} Added column ${key} (${columnType}) to table ${table}`);
                 }
             }
-
+    
             await this.pool.query('INSERT INTO ?? SET ?', [table, data]);
             logger.info(`Database: ${this.database} data inserted successfully into ${table}, index: ${nextId}`);
         } catch (error) {
@@ -63,20 +64,17 @@ class DatabaseService {
             throw new Error(`Database: ${this.database} insertData error: ${error.message}`);
         }
     }
-  
-    async getLargestId(table) {
+    
+    async getLargestId(table, column = 'id') {
         try {
-            let query = `
-        SELECT MAX(id) AS largest_id FROM ${table}
-      `;
-
-            const [rows] = await this.pool.query(query);
-
-            const largest_id = rows[0].largest_id ?? 0;
-
-            return largest_id;      
+            const [results] = await this.pool.query(
+                'SELECT MAX(??) as maxId FROM ??',
+                [column, table]
+            );
+            return results[0].maxId || 0;
         } catch (error) {
-            throw new Error(`Database: ${this.database} getLargestId: ${error.message}`);
+            logger.error(`Database: ${this.database} Error getting largest ID: ${error.message}`);
+            return 0;
         }
     }
   

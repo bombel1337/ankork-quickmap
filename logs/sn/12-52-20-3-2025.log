@@ -1,0 +1,6 @@
+[2025-03-20T12:52:11.124] [INFO] sn - Logger initialized for sn
+[2025-03-20T12:52:11.125] [INFO] database - Database: sn connection pool initialized
+[2025-03-20T12:52:11.126] [INFO] sn - Running model: sn
+[2025-03-20T12:52:11.350] [INFO] sn - Running date: 2025-02-18
+[2025-03-20T12:52:11.354] [ERROR] sn - Found error scraping sn: Expected property `proxyUrl` to be of type `string` but received type `null`
+Expected string `proxyUrl` to be a URL, got `null` in object, date: 2025-02-18

@@ -1,0 +1,28 @@
+[2025-03-21T08:56:28.626] [INFO] ms - Logger initialized for ms
+[2025-03-21T08:56:28.627] [INFO] database - Database: ms connection pool initialized
+[2025-03-21T08:56:28.634] [INFO] ms - Running model: ms
+[2025-03-21T08:56:28.678] [ERROR] data-parser - msParser error: Error: getRowsNeededParsing: Table 'ms.parsed_data' doesn't exist
+    at getRowsNeededParsing (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dPUtils.js:13:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async msParser (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\parsers\msParser.js:8:30)
+    at async DataParser.ms [as parsingStrategy] (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:30:16)
+    at async DataParser.parse (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:15:16)
+    at async Promise.all (index 0)
+    at async Object.scraper (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\models\ms\ms.js:205:5)
+[2025-03-21T08:56:28.881] [DEBUG] proxyManager - Using proxy: 86.107.113.22:60099:l81L76JNRK:bjdAAF0sYf
+[2025-03-21T08:56:28.882] [INFO] proxyManager - Using proxy: http://l81L76JNRK:bjdAAF0sYf@86.107.113.22:60099
+[2025-03-21T08:56:29.910] [INFO] ms - Starting at page: 1, out of: 7 for date since: 2025-02-18 to 2025-03-21. All results length 69
+[2025-03-21T08:56:29.933] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T08:56:31.131] [INFO] database - Database: ms data inserted successfully into scraped_data, index: 2
+[2025-03-21T08:56:32.090] [INFO] database - Database: ms data inserted successfully into scraped_data, index: 3
+[2025-03-21T08:56:33.095] [INFO] database - Database: ms data inserted successfully into scraped_data, index: 4
+[2025-03-21T08:56:34.180] [INFO] database - Database: ms data inserted successfully into scraped_data, index: 5
+[2025-03-21T08:56:35.214] [INFO] database - Database: ms data inserted successfully into scraped_data, index: 6
+[2025-03-21T08:56:36.029] [DEBUG] proxyManager - Using proxy: 86.107.113.230:60099:L4u222HKD2:26W6CXaJJs
+[2025-03-21T08:56:36.029] [INFO] proxyManager - Using proxy: http://L4u222HKD2:26W6CXaJJs@86.107.113.230:60099
+[2025-03-21T08:56:36.029] [ERROR] ms - Found error scraping ms getDetails: connection refused by server, page: https://orzeczenia.ms.gov.pl/regulations/$N/155515300004521_IX_U_000245_2022_Uz_2025-02-24_001
+[2025-03-21T08:56:36.030] [WARN] ms - Max retries reached for page: https://orzeczenia.ms.gov.pl/regulations/$N/155515300004521_IX_U_000245_2022_Uz_2025-02-24_001
+[2025-03-21T08:56:36.030] [ERROR] ms - Found error scraping ms: getDetails: connection refused by server, date since: 2025-02-18 to 2025-03-21
+[2025-03-21T08:56:37.243] [DEBUG] proxyManager - Using proxy: 86.107.113.231:60099:L4u222HKD2:26W6CXaJJs
+[2025-03-21T08:56:37.243] [INFO] proxyManager - Using proxy: http://L4u222HKD2:26W6CXaJJs@86.107.113.231:60099
+[2025-03-21T08:56:37.243] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-21

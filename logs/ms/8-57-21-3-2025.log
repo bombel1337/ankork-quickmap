@@ -1,0 +1,83 @@
+[2025-03-21T08:57:10.691] [INFO] ms - Logger initialized for ms
+[2025-03-21T08:57:10.692] [INFO] database - Database: ms connection pool initialized
+[2025-03-21T08:57:10.700] [INFO] ms - Running model: ms
+[2025-03-21T08:57:10.724] [ERROR] data-parser - msParser error: Error: getRowsNeededParsing: Table 'ms.parsed_data' doesn't exist
+    at getRowsNeededParsing (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dPUtils.js:13:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async msParser (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\parsers\msParser.js:8:30)
+    at async DataParser.ms [as parsingStrategy] (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:30:16)
+    at async DataParser.parse (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:15:16)
+    at async Promise.all (index 0)
+    at async Object.scraper (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\models\ms\ms.js:205:5)
+[2025-03-21T08:57:10.932] [DEBUG] proxyManager - Using proxy: 86.107.113.22:60099:l81L76JNRK:bjdAAF0sYf
+[2025-03-21T08:57:10.932] [INFO] proxyManager - Using proxy: http://l81L76JNRK:bjdAAF0sYf@86.107.113.22:60099
+[2025-03-21T08:57:11.129] [DEBUG] proxyManager - Using proxy: 86.107.113.230:60099:L4u222HKD2:26W6CXaJJs
+[2025-03-21T08:57:11.129] [INFO] proxyManager - Using proxy: http://L4u222HKD2:26W6CXaJJs@86.107.113.230:60099
+[2025-03-21T08:57:11.129] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-21
+[2025-03-21T08:57:13.205] [INFO] ms - Starting at page: 1, out of: 7 for date since: 2025-02-18 to 2025-03-21. All results length 69
+[2025-03-21T08:57:13.222] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T08:57:14.290] [INFO] database - Database: ms data inserted successfully into scraped_data, index: 7
+[2025-03-21T08:57:14.291] [INFO] ms - Skipping duplicate case: II Ka 590/24
+[2025-03-21T08:57:14.292] [INFO] ms - Skipping duplicate case: V Ka 577/24
+[2025-03-21T08:57:15.202] [INFO] database - Database: ms data inserted successfully into scraped_data, index: 8
+[2025-03-21T08:57:16.171] [INFO] database - Database: ms data inserted successfully into scraped_data, index: 9
+[2025-03-21T08:57:16.172] [INFO] ms - Skipping duplicate case: III Ka 38/25
+[2025-03-21T08:57:17.197] [INFO] database - Database: ms data inserted successfully into scraped_data, index: 10
+[2025-03-21T08:57:17.198] [INFO] ms - Skipping duplicate case: II AKa 251/21
+[2025-03-21T08:57:18.255] [INFO] database - Database: ms data inserted successfully into scraped_data, index: 11
+[2025-03-21T08:57:18.256] [INFO] ms - Skipping duplicate case: IV P 406/24
+[2025-03-21T08:57:29.918] [DEBUG] proxyManager - Using proxy: 86.107.113.231:60099:L4u222HKD2:26W6CXaJJs
+[2025-03-21T08:57:29.919] [INFO] proxyManager - Using proxy: http://L4u222HKD2:26W6CXaJJs@86.107.113.231:60099
+[2025-03-21T08:57:29.919] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-21
+[2025-03-21T08:57:29.919] [WARN] ms - Max retries reached for page: 2 and date since: 2025-02-18 to 2025-03-21
+[2025-03-21T08:57:30.797] [INFO] ms - Running page: 2, pages left: 5 and 59 results.
+[2025-03-21T08:57:30.847] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T08:57:30.948] [DEBUG] proxyManager - Using proxy: 86.107.113.232:60099:x3ElEkPsJ4:PdvKjfEczA
+[2025-03-21T08:57:30.949] [INFO] proxyManager - Using proxy: http://x3ElEkPsJ4:PdvKjfEczA@86.107.113.232:60099
+[2025-03-21T08:57:30.949] [ERROR] ms - Found error scraping ms getDetails: connection refused by server, page: https://orzeczenia.ms.gov.pl/details/$N/155515300004521_IX_U_000635_2023_Uz_2025-03-07_001
+[2025-03-21T08:57:30.949] [WARN] ms - Max retries reached for page: https://orzeczenia.ms.gov.pl/details/$N/155515300004521_IX_U_000635_2023_Uz_2025-03-07_001
+[2025-03-21T08:57:30.950] [ERROR] ms - Found error scraping ms: getDetails: connection refused by server, date since: 2025-02-18 to 2025-03-21
+[2025-03-21T08:57:32.864] [INFO] ms - Running page: 2, pages left: 5 and 59 results.
+[2025-03-21T08:57:32.879] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T08:57:32.983] [DEBUG] proxyManager - Using proxy: 86.107.113.233:60099:x0sAyiMwWh:9v1ArZ0gNa
+[2025-03-21T08:57:32.984] [INFO] proxyManager - Using proxy: http://x0sAyiMwWh:9v1ArZ0gNa@86.107.113.233:60099
+[2025-03-21T08:57:32.984] [ERROR] ms - Found error scraping ms getDetails: connection refused by server, page: https://orzeczenia.ms.gov.pl/details/$N/155515300004521_IX_U_000635_2023_Uz_2025-03-07_001
+[2025-03-21T08:57:32.984] [WARN] ms - Max retries reached for page: https://orzeczenia.ms.gov.pl/details/$N/155515300004521_IX_U_000635_2023_Uz_2025-03-07_001
+[2025-03-21T08:57:32.984] [ERROR] ms - Found error scraping ms: getDetails: connection refused by server, date since: 2025-02-18 to 2025-03-21
+[2025-03-21T08:57:34.841] [INFO] ms - Running page: 2, pages left: 5 and 59 results.
+[2025-03-21T08:57:34.856] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T08:57:34.961] [DEBUG] proxyManager - Using proxy: 86.107.113.249:60099:jOXFs3BSbU:bdikFpKqoQ
+[2025-03-21T08:57:34.962] [INFO] proxyManager - Using proxy: http://jOXFs3BSbU:bdikFpKqoQ@86.107.113.249:60099
+[2025-03-21T08:57:34.962] [ERROR] ms - Found error scraping ms getDetails: connection refused by server, page: https://orzeczenia.ms.gov.pl/details/$N/155515300004521_IX_U_000506_2024_Uz_2025-02-25_001
+[2025-03-21T08:57:34.964] [WARN] ms - Max retries reached for page: https://orzeczenia.ms.gov.pl/details/$N/155515300004521_IX_U_000506_2024_Uz_2025-02-25_001
+[2025-03-21T08:57:34.964] [ERROR] ms - Found error scraping ms: getDetails: connection refused by server, date since: 2025-02-18 to 2025-03-21
+[2025-03-21T08:57:34.964] [WARN] ms - Max retries reached for page: 2 and date since: 2025-02-18 to 2025-03-21
+[2025-03-21T08:57:35.699] [INFO] ms - Running page: 2, pages left: 5 and 59 results.
+[2025-03-21T08:57:35.709] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T08:57:35.811] [DEBUG] proxyManager - Using proxy: 86.107.113.24:60099:R3ogSHTxZ0:Q97cHZP5Cx
+[2025-03-21T08:57:35.811] [INFO] proxyManager - Using proxy: http://R3ogSHTxZ0:Q97cHZP5Cx@86.107.113.24:60099
+[2025-03-21T08:57:35.811] [ERROR] ms - Found error scraping ms getDetails: connection refused by server, page: https://orzeczenia.ms.gov.pl/details/$N/155515300004521_IX_U_000506_2024_Uz_2025-02-25_001
+[2025-03-21T08:57:35.812] [WARN] ms - Max retries reached for page: https://orzeczenia.ms.gov.pl/details/$N/155515300004521_IX_U_000506_2024_Uz_2025-02-25_001
+[2025-03-21T08:57:35.812] [ERROR] ms - Found error scraping ms: getDetails: connection refused by server, date since: 2025-02-18 to 2025-03-21
+[2025-03-21T08:57:37.710] [INFO] ms - Running page: 2, pages left: 5 and 59 results.
+[2025-03-21T08:57:37.721] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T08:57:37.878] [DEBUG] proxyManager - Using proxy: 86.107.113.250:60099:aVnGqUYQsq:lVUgr2dNYb
+[2025-03-21T08:57:37.879] [INFO] proxyManager - Using proxy: http://aVnGqUYQsq:lVUgr2dNYb@86.107.113.250:60099
+[2025-03-21T08:57:37.879] [ERROR] ms - Found error scraping ms getDetails: connection refused by server, page: https://orzeczenia.ms.gov.pl/details/$N/155515300004521_IX_U_000635_2023_Uz_2025-03-07_001
+[2025-03-21T08:57:37.879] [WARN] ms - Max retries reached for page: https://orzeczenia.ms.gov.pl/details/$N/155515300004521_IX_U_000635_2023_Uz_2025-03-07_001
+[2025-03-21T08:57:37.879] [ERROR] ms - Found error scraping ms: getDetails: connection refused by server, date since: 2025-02-18 to 2025-03-21
+[2025-03-21T08:57:39.708] [INFO] ms - Running page: 2, pages left: 5 and 59 results.
+[2025-03-21T08:57:39.716] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T08:57:39.869] [DEBUG] proxyManager - Using proxy: 86.107.113.251:60099:qFYGlmlG29:VHdyGZGzwk
+[2025-03-21T08:57:39.869] [INFO] proxyManager - Using proxy: http://qFYGlmlG29:VHdyGZGzwk@86.107.113.251:60099
+[2025-03-21T08:57:39.870] [ERROR] ms - Found error scraping ms getDetails: connection refused by server, page: https://orzeczenia.ms.gov.pl/details/$N/155515300004521_IX_U_000506_2024_Uz_2025-02-25_001
+[2025-03-21T08:57:39.870] [WARN] ms - Max retries reached for page: https://orzeczenia.ms.gov.pl/details/$N/155515300004521_IX_U_000506_2024_Uz_2025-02-25_001
+[2025-03-21T08:57:39.870] [ERROR] ms - Found error scraping ms: getDetails: connection refused by server, date since: 2025-02-18 to 2025-03-21
+[2025-03-21T08:57:39.870] [WARN] ms - Max retries reached for page: 2 and date since: 2025-02-18 to 2025-03-21
+[2025-03-21T08:57:40.571] [INFO] ms - Running page: 2, pages left: 5 and 59 results.
+[2025-03-21T08:57:40.580] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T08:57:40.685] [DEBUG] proxyManager - Using proxy: 86.107.113.252:60099:QmFPHD9Zo3:E01muPsLsY
+[2025-03-21T08:57:40.686] [INFO] proxyManager - Using proxy: http://QmFPHD9Zo3:E01muPsLsY@86.107.113.252:60099
+[2025-03-21T08:57:40.686] [ERROR] ms - Found error scraping ms getDetails: connection refused by server, page: https://orzeczenia.ms.gov.pl/details/$N/153505000001006_II_K_000037_2024_Uz_2025-02-19_001
+[2025-03-21T08:57:40.686] [WARN] ms - Max retries reached for page: https://orzeczenia.ms.gov.pl/details/$N/153505000001006_II_K_000037_2024_Uz_2025-02-19_001
+[2025-03-21T08:57:40.686] [ERROR] ms - Found error scraping ms: getDetails: connection refused by server, date since: 2025-02-18 to 2025-03-21

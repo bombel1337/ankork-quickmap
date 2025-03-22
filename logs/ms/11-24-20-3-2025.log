@@ -1,0 +1,33 @@
+[2025-03-20T11:24:21.512] [INFO] ms - Logger initialized for ms
+[2025-03-20T11:24:21.513] [INFO] database - Database: ms connection pool initialized
+[2025-03-20T11:24:21.521] [INFO] ms - Running model: ms
+[2025-03-20T11:24:21.543] [ERROR] data-parser - uzpParser error: Error: getRowsNeededParsing: Unknown database 'ms'
+    at getRowsNeededParsing (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dPUtils.js:13:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async msParser (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\parsers\msParser.js:6:30)
+    at async DataParser.ms [as parsingStrategy] (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:30:16)
+    at async DataParser.parse (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:15:16)
+    at async Promise.all (index 0)
+    at async Object.scraper (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\models\ms\ms.js:183:5)
+[2025-03-20T11:24:22.484] [INFO] ms - Starting at page: 2, out of: 7 for date since: 2025-02-18 to 2025-03-20. All results length 64
+[2025-03-20T11:24:22.501] [ERROR] ms - Found error scraping ms: MsHelper extractCourtCases: MsHelper extractCourtCases: unable to extract title from element 0, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T11:24:24.306] [INFO] ms - Running page: 3, pages left: 4 and 54 results.
+[2025-03-20T11:24:24.318] [ERROR] ms - Found error scraping ms: MsHelper extractCourtCases: MsHelper extractCourtCases: unable to extract title from element 0, date since: 2025-02-18 to 2025-03-20
+[2025-03-20T11:24:33.602] [INFO] ms - Logger initialized for ms
+[2025-03-20T11:24:33.603] [INFO] database - Database: ms connection pool initialized
+[2025-03-20T11:24:33.610] [INFO] ms - Running model: ms
+[2025-03-20T11:24:33.634] [ERROR] data-parser - uzpParser error: Error: getRowsNeededParsing: Unknown database 'ms'
+    at getRowsNeededParsing (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dPUtils.js:13:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async msParser (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\parsers\msParser.js:6:30)
+    at async DataParser.ms [as parsingStrategy] (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:30:16)
+    at async DataParser.parse (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:15:16)
+    at async Promise.all (index 0)
+    at async Object.scraper (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\models\ms\ms.js:183:5)
+[2025-03-20T11:24:34.589] [INFO] ms - Starting at page: 2, out of: 7 for date since: 2025-02-18 to 2025-03-20. All results length 64
+[2025-03-20T11:24:34.606] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-20T11:24:34.618] [ERROR] ms - Found error scraping ms getDetails: getaddrinfo ENOTFOUND orzeczenia.ms.gov.plundefined, page: https://orzeczenia.ms.gov.plundefined
+[2025-03-20T11:24:35.738] [ERROR] ms - Found error scraping ms getDetails: getaddrinfo ENOTFOUND orzeczenia.ms.gov.plundefined, page: https://orzeczenia.ms.gov.plundefined
+[2025-03-20T11:24:36.860] [ERROR] ms - Found error scraping ms getDetails: getaddrinfo ENOTFOUND orzeczenia.ms.gov.plundefined, page: https://orzeczenia.ms.gov.plundefined
+[2025-03-20T11:24:36.860] [WARN] ms - Max retries reached for page: https://orzeczenia.ms.gov.plundefined
+[2025-03-20T11:24:36.861] [ERROR] ms - Found error scraping ms: getDetails: getaddrinfo ENOTFOUND orzeczenia.ms.gov.plundefined, date since: 2025-02-18 to 2025-03-20

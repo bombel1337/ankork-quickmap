@@ -120,7 +120,7 @@ const scrape = async (config) => {
                             title,
                             status_code: statusCode,
                             index: nextIndex,
-                            url: `https://orzeczenia.uzp.gov.pl/Home/Details/${nextIndex}`,
+                            page_link: `https://orzeczenia.uzp.gov.pl/Home/Details/${nextIndex}`,
                         };
             
                         await config.database.insertData('scraped_data', data);

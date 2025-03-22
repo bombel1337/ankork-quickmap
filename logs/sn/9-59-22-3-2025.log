@@ -1,0 +1,31 @@
+[2025-03-22T09:59:19.548] [INFO] sn - Logger initialized for sn
+[2025-03-22T09:59:19.549] [INFO] database - Database: sn connection pool initialized
+[2025-03-22T09:59:19.550] [INFO] sn - Running model: sn
+[2025-03-22T09:59:19.779] [INFO] sn - Running date: 2025-02-18
+[2025-03-22T09:59:19.794] [ERROR] sn - Found error scraping sn: getaddrinfo ENOTFOUND www.sn.pl, date: 2025-02-18
+[2025-03-22T09:59:31.963] [INFO] sn - Logger initialized for sn
+[2025-03-22T09:59:31.964] [INFO] database - Database: sn connection pool initialized
+[2025-03-22T09:59:31.965] [INFO] sn - Running model: sn
+[2025-03-22T09:59:32.237] [INFO] sn - Running date: 2025-02-18
+[2025-03-22T09:59:42.266] [ERROR] sn - Found error scraping sn: getaddrinfo ENOTFOUND www.sn.pl, date: 2025-02-18
+[2025-03-22T09:59:43.390] [INFO] sn - Running date: 2025-02-18
+[2025-03-22T09:59:43.394] [ERROR] sn - Found error scraping sn: getaddrinfo ENOTFOUND www.sn.pl, date: 2025-02-18
+[2025-03-22T09:59:44.506] [INFO] sn - Running date: 2025-02-18
+[2025-03-22T09:59:44.510] [ERROR] sn - Found error scraping sn: getaddrinfo ENOTFOUND www.sn.pl, date: 2025-02-18
+[2025-03-22T09:59:44.513] [WARN] sn - Max retries reached for date: 2025-02-18
+[2025-03-22T09:59:44.513] [INFO] sn - Running date: 2025-02-19
+[2025-03-22T09:59:44.517] [ERROR] sn - Found error scraping sn: getaddrinfo ENOTFOUND www.sn.pl, date: 2025-02-19
+[2025-03-22T09:59:45.633] [INFO] sn - Running date: 2025-02-19
+[2025-03-22T09:59:45.638] [ERROR] sn - Found error scraping sn: getaddrinfo ENOTFOUND www.sn.pl, date: 2025-02-19
+[2025-03-22T09:59:46.762] [INFO] sn - Running date: 2025-02-19
+[2025-03-22T09:59:46.765] [ERROR] sn - Found error scraping sn: getaddrinfo ENOTFOUND www.sn.pl, date: 2025-02-19
+[2025-03-22T09:59:46.766] [WARN] sn - Max retries reached for date: 2025-02-19
+[2025-03-22T09:59:46.766] [INFO] sn - Running date: 2025-02-20
+[2025-03-22T09:59:46.770] [ERROR] sn - Found error scraping sn: getaddrinfo ENOTFOUND www.sn.pl, date: 2025-02-20
+[2025-03-22T09:59:47.883] [INFO] sn - Running date: 2025-02-20
+[2025-03-22T09:59:47.931] [ERROR] sn - Found error scraping sn: Parse Error: Expected HTTP/, date: 2025-02-20
+[2025-03-22T09:59:49.048] [INFO] sn - Running date: 2025-02-20
+[2025-03-22T09:59:49.065] [ERROR] sn - Found error scraping sn: Parse Error: Expected HTTP/, date: 2025-02-20
+[2025-03-22T09:59:49.065] [WARN] sn - Max retries reached for date: 2025-02-20
+[2025-03-22T09:59:49.065] [INFO] sn - Running date: 2025-02-21
+[2025-03-22T09:59:49.079] [ERROR] sn - Found error scraping sn: Parse Error: Expected HTTP/, date: 2025-02-21

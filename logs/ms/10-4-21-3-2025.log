@@ -1,0 +1,281 @@
+[2025-03-21T10:04:06.699] [INFO] ms - Logger initialized for ms
+[2025-03-21T10:04:06.700] [INFO] database - Database: ms connection pool initialized
+[2025-03-21T10:04:06.707] [INFO] ms - Running model: ms
+[2025-03-21T10:04:06.741] [ERROR] data-parser - msParser error: Error: getRowsNeededParsing: Table 'ms.parsed_data' doesn't exist
+    at getRowsNeededParsing (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dPUtils.js:13:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async msParser (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\parsers\msParser.js:8:30)
+    at async DataParser.ms [as parsingStrategy] (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:30:16)
+    at async DataParser.parse (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:15:16)
+    at async Promise.all (index 0)
+    at async Object.scraper (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\models\ms\ms.js:209:5)
+[2025-03-21T10:04:06.934] [DEBUG] proxyManager - Randomly selected proxy: 86.107.114.86:60099:L4u222HKD2:26W6CXaJJs
+[2025-03-21T10:04:08.253] [INFO] ms - Running page: 3, pages left: -3 and 0 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/3?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/3
+[2025-03-21T10:04:08.319] [INFO] ms - Starting at page: 3, out of: 1145 for date since: 2024-02-18 to 2025-03-21. All results length 11441
+[2025-03-21T10:04:08.337] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:04:10.423] [INFO] ms - Running page: 4, pages left: 1141 and 11431 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/4?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/4
+[2025-03-21T10:04:10.431] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:04:12.608] [INFO] ms - Running page: 5, pages left: 1140 and 11421 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/5?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/5
+[2025-03-21T10:04:12.620] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:04:14.721] [INFO] ms - Running page: 6, pages left: 1139 and 11411 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/6?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/6
+[2025-03-21T10:04:14.734] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:04:16.834] [INFO] ms - Running page: 7, pages left: 1138 and 11401 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/7?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/7
+[2025-03-21T10:04:16.841] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:04:19.011] [INFO] ms - Running page: 8, pages left: 1137 and 11391 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/8?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/8
+[2025-03-21T10:04:19.020] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:04:21.129] [INFO] ms - Running page: 9, pages left: 1136 and 11381 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/9?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/9
+[2025-03-21T10:04:21.137] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:04:22.346] [INFO] ms - Running page: 10, pages left: 1135 and 11371 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/10?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/10
+[2025-03-21T10:04:22.347] [DEBUG] proxyManager - Randomly selected proxy: 86.107.114.76:60099:8EYlFcsP2J:31KVW0t7Vr
+[2025-03-21T10:04:22.347] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2024-02-18 to 2025-03-21, page 10
+[2025-03-21T10:04:22.347] [WARN] ms - Max retries reached for page: 10 and date since: 2024-02-18 to 2025-03-21
+[2025-03-21T10:04:22.502] [INFO] ms - Running page: 10, pages left: 1135 and 11371 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/10?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/10
+[2025-03-21T10:04:22.503] [DEBUG] proxyManager - Randomly selected proxy: 86.107.114.8:60099:GI2G9KwMfV:SdaiHdC0AO
+[2025-03-21T10:04:22.503] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2024-02-18 to 2025-03-21, page 10
+[2025-03-21T10:04:23.771] [INFO] ms - Running page: 10, pages left: 1135 and 11371 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/10?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/10
+[2025-03-21T10:04:23.772] [DEBUG] proxyManager - Randomly selected proxy: 86.107.114.84:60099:iVSaoY97TS:djIFwVKIka
+[2025-03-21T10:04:23.772] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2024-02-18 to 2025-03-21, page 10
+[2025-03-21T10:04:25.050] [INFO] ms - Running page: 10, pages left: 1135 and 11371 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/10?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/10
+[2025-03-21T10:04:25.051] [DEBUG] proxyManager - Randomly selected proxy: 86.107.115.110:60099:sOvzFheBsz:gl9x2aiSOw
+[2025-03-21T10:04:25.051] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2024-02-18 to 2025-03-21, page 10
+[2025-03-21T10:04:25.051] [WARN] ms - Max retries reached for page: 10 and date since: 2024-02-18 to 2025-03-21
+[2025-03-21T10:04:25.206] [INFO] ms - Running page: 10, pages left: 1135 and 11371 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/10?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/10
+[2025-03-21T10:04:25.206] [DEBUG] proxyManager - Randomly selected proxy: 86.107.113.232:60099:x3ElEkPsJ4:PdvKjfEczA
+[2025-03-21T10:04:25.206] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2024-02-18 to 2025-03-21, page 10
+[2025-03-21T10:04:26.425] [INFO] ms - Running page: 10, pages left: 1135 and 11371 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/10?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/10
+[2025-03-21T10:04:26.425] [DEBUG] proxyManager - Randomly selected proxy: 86.107.114.90:60099:M4tl5eibrg:QVAhAFkslE
+[2025-03-21T10:04:26.425] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2024-02-18 to 2025-03-21, page 10
+[2025-03-21T10:04:27.750] [INFO] ms - Running page: 10, pages left: 1135 and 11371 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/10?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/10
+[2025-03-21T10:04:27.751] [DEBUG] proxyManager - Randomly selected proxy: 86.107.114.96:60099:R3ogSHTxZ0:Q97cHZP5Cx
+[2025-03-21T10:04:27.751] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2024-02-18 to 2025-03-21, page 10
+[2025-03-21T10:04:27.751] [WARN] ms - Max retries reached for page: 10 and date since: 2024-02-18 to 2025-03-21
+[2025-03-21T10:04:27.954] [INFO] ms - Running page: 10, pages left: 1135 and 11371 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/10?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/10
+[2025-03-21T10:04:27.955] [DEBUG] proxyManager - Randomly selected proxy: 86.107.114.85:60099:sOvzFheBsz:gl9x2aiSOw
+[2025-03-21T10:04:27.955] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2024-02-18 to 2025-03-21, page 10
+[2025-03-21T10:04:29.225] [INFO] ms - Running page: 10, pages left: 1135 and 11371 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/10?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/10
+[2025-03-21T10:04:29.226] [DEBUG] proxyManager - Randomly selected proxy: 86.107.115.113:60099:NaNpVgPHQF:WWIZpjL55C
+[2025-03-21T10:04:29.226] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2024-02-18 to 2025-03-21, page 10
+[2025-03-21T10:04:30.505] [INFO] ms - Running page: 10, pages left: 1135 and 11371 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/10?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/10
+[2025-03-21T10:04:30.505] [DEBUG] proxyManager - Randomly selected proxy: 86.107.114.79:60099:PqK8IItjI7:2WBt4E7MB9
+[2025-03-21T10:04:30.505] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2024-02-18 to 2025-03-21, page 10
+[2025-03-21T10:04:30.505] [WARN] ms - Max retries reached for page: 10 and date since: 2024-02-18 to 2025-03-21
+[2025-03-21T10:04:30.659] [INFO] ms - Running page: 10, pages left: 1135 and 11371 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/10?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/10
+[2025-03-21T10:04:30.659] [DEBUG] proxyManager - Randomly selected proxy: 86.107.114.80:60099:GEFH95JNaM:Tv0kzkpmGl
+[2025-03-21T10:04:30.659] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2024-02-18 to 2025-03-21, page 10
+[2025-03-21T10:04:47.305] [INFO] ms - Logger initialized for ms
+[2025-03-21T10:04:47.306] [INFO] database - Database: ms connection pool initialized
+[2025-03-21T10:04:47.314] [INFO] ms - Running model: ms
+[2025-03-21T10:04:47.338] [ERROR] data-parser - msParser error: Error: getRowsNeededParsing: Table 'ms.parsed_data' doesn't exist
+    at getRowsNeededParsing (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dPUtils.js:13:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async msParser (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\parsers\msParser.js:8:30)
+    at async DataParser.ms [as parsingStrategy] (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:30:16)
+    at async DataParser.parse (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:15:16)
+    at async Promise.all (index 0)
+    at async Object.scraper (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\models\ms\ms.js:209:5)
+[2025-03-21T10:04:47.555] [DEBUG] proxyManager - Randomly selected proxy: 86.107.114.85:60099:sOvzFheBsz:gl9x2aiSOw
+[2025-03-21T10:04:48.698] [INFO] ms - Running page: 3, pages left: -3 and 0 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/3?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/3
+[2025-03-21T10:04:48.763] [INFO] ms - Starting at page: 3, out of: 1145 for date since: 2024-02-18 to 2025-03-21. All results length 11441
+[2025-03-21T10:04:48.779] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:04:50.888] [INFO] ms - Running page: 4, pages left: 1141 and 11431 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/4?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/4
+[2025-03-21T10:04:50.902] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:04:53.034] [INFO] ms - Running page: 5, pages left: 1140 and 11421 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/5?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/5
+[2025-03-21T10:04:53.046] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:04:55.109] [INFO] ms - Running page: 6, pages left: 1139 and 11411 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/6?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/6
+[2025-03-21T10:04:55.116] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:04:57.288] [INFO] ms - Running page: 7, pages left: 1138 and 11401 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/7?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/7
+[2025-03-21T10:04:57.300] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:04:59.443] [INFO] ms - Running page: 8, pages left: 1137 and 11391 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/8?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/8
+[2025-03-21T10:04:59.451] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:01.522] [INFO] ms - Running page: 9, pages left: 1136 and 11381 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/9?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/9
+[2025-03-21T10:05:01.530] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:03.602] [INFO] ms - Running page: 10, pages left: 1135 and 11371 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/10?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/10
+[2025-03-21T10:05:03.610] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:05.730] [INFO] ms - Running page: 11, pages left: 1134 and 11361 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/11?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/11
+[2025-03-21T10:05:05.738] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:07.842] [INFO] ms - Running page: 12, pages left: 1133 and 11351 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/12?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/12
+[2025-03-21T10:05:07.850] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:09.934] [INFO] ms - Running page: 13, pages left: 1132 and 11341 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/13?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/13
+[2025-03-21T10:05:09.943] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:12.122] [INFO] ms - Running page: 14, pages left: 1131 and 11331 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/14?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/14
+[2025-03-21T10:05:12.130] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:14.305] [INFO] ms - Running page: 15, pages left: 1130 and 11321 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/15?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/15
+[2025-03-21T10:05:14.312] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:16.440] [INFO] ms - Running page: 16, pages left: 1129 and 11311 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/16?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/16
+[2025-03-21T10:05:16.448] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:18.565] [INFO] ms - Running page: 17, pages left: 1128 and 11301 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/17?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/17
+[2025-03-21T10:05:18.572] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:20.681] [INFO] ms - Running page: 18, pages left: 1127 and 11291 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/18?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/18
+[2025-03-21T10:05:20.688] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:22.886] [INFO] ms - Running page: 19, pages left: 1126 and 11281 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/19?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/19
+[2025-03-21T10:05:22.893] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:24.993] [INFO] ms - Running page: 20, pages left: 1125 and 11271 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/20?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/20
+[2025-03-21T10:05:25.001] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:27.060] [INFO] ms - Running page: 21, pages left: 1124 and 11261 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/21?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/21
+[2025-03-21T10:05:27.068] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:29.291] [INFO] ms - Running page: 22, pages left: 1123 and 11251 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/22?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/22
+[2025-03-21T10:05:29.299] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:31.509] [INFO] ms - Running page: 23, pages left: 1122 and 11241 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/23?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/23
+[2025-03-21T10:05:31.517] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:33.608] [INFO] ms - Running page: 24, pages left: 1121 and 11231 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/24?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/24
+[2025-03-21T10:05:33.619] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:35.764] [INFO] ms - Running page: 25, pages left: 1120 and 11221 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/25?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/25
+[2025-03-21T10:05:35.773] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:37.922] [INFO] ms - Running page: 26, pages left: 1119 and 11211 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/26?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/26
+[2025-03-21T10:05:37.929] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:40.087] [INFO] ms - Running page: 27, pages left: 1118 and 11201 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/27?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/27
+[2025-03-21T10:05:40.095] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:42.341] [INFO] ms - Running page: 28, pages left: 1117 and 11191 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/28?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/28
+[2025-03-21T10:05:42.349] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:43.566] [INFO] ms - Running page: 29, pages left: 1116 and 11181 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/29?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/29
+[2025-03-21T10:05:43.567] [DEBUG] proxyManager - Randomly selected proxy: 86.107.114.79:60099:PqK8IItjI7:2WBt4E7MB9
+[2025-03-21T10:05:43.567] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2024-02-18 to 2025-03-21, page 29
+[2025-03-21T10:05:43.567] [WARN] ms - Max retries reached for page: 29 and date since: 2024-02-18 to 2025-03-21
+[2025-03-21T10:05:44.614] [INFO] ms - Running page: 29, pages left: 1116 and 11181 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/29?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/29
+[2025-03-21T10:05:44.622] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:46.827] [INFO] ms - Running page: 30, pages left: 1115 and 11171 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/30?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/30
+[2025-03-21T10:05:46.836] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:48.891] [INFO] ms - Running page: 31, pages left: 1114 and 11161 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/31?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/31
+[2025-03-21T10:05:48.901] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:51.100] [INFO] ms - Running page: 32, pages left: 1113 and 11151 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/32?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/32
+[2025-03-21T10:05:51.108] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:53.311] [INFO] ms - Running page: 33, pages left: 1112 and 11141 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/33?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/33
+[2025-03-21T10:05:53.320] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:55.561] [INFO] ms - Running page: 34, pages left: 1111 and 11131 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/34?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/34
+[2025-03-21T10:05:55.572] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:57.761] [INFO] ms - Running page: 35, pages left: 1110 and 11121 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/35?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/35
+[2025-03-21T10:05:57.772] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:05:59.910] [INFO] ms - Running page: 36, pages left: 1109 and 11111 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/36?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/36
+[2025-03-21T10:05:59.920] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:02.080] [INFO] ms - Running page: 37, pages left: 1108 and 11101 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/37?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/37
+[2025-03-21T10:06:02.088] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:04.360] [INFO] ms - Running page: 38, pages left: 1107 and 11091 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/38?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/38
+[2025-03-21T10:06:04.367] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:06.429] [INFO] ms - Running page: 39, pages left: 1106 and 11081 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/39?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/39
+[2025-03-21T10:06:06.437] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:08.626] [INFO] ms - Running page: 40, pages left: 1105 and 11071 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/40?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/40
+[2025-03-21T10:06:08.633] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:10.848] [INFO] ms - Running page: 41, pages left: 1104 and 11061 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/41?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/41
+[2025-03-21T10:06:10.855] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:13.021] [INFO] ms - Running page: 42, pages left: 1103 and 11051 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/42?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/42
+[2025-03-21T10:06:13.028] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:15.202] [INFO] ms - Running page: 43, pages left: 1102 and 11041 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/43?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/43
+[2025-03-21T10:06:15.209] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:17.388] [INFO] ms - Running page: 44, pages left: 1101 and 11031 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/44?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/44
+[2025-03-21T10:06:17.397] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:19.570] [INFO] ms - Running page: 45, pages left: 1100 and 11021 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/45?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/45
+[2025-03-21T10:06:19.577] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:21.761] [INFO] ms - Running page: 46, pages left: 1099 and 11011 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/46?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/46
+[2025-03-21T10:06:21.769] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:23.840] [INFO] ms - Running page: 47, pages left: 1098 and 11001 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/47?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/47
+[2025-03-21T10:06:23.848] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:26.022] [INFO] ms - Running page: 48, pages left: 1097 and 10991 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/48?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/48
+[2025-03-21T10:06:26.029] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:28.231] [INFO] ms - Running page: 49, pages left: 1096 and 10981 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/49?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/49
+[2025-03-21T10:06:28.241] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:30.421] [INFO] ms - Running page: 50, pages left: 1095 and 10971 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/50?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/50
+[2025-03-21T10:06:30.428] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:32.658] [INFO] ms - Running page: 51, pages left: 1094 and 10961 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/51?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/51
+[2025-03-21T10:06:32.666] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:34.820] [INFO] ms - Running page: 52, pages left: 1093 and 10951 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/52?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/52
+[2025-03-21T10:06:34.828] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:37.049] [INFO] ms - Running page: 53, pages left: 1092 and 10941 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/53?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/53
+[2025-03-21T10:06:37.056] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:39.311] [INFO] ms - Running page: 54, pages left: 1091 and 10931 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/54?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/54
+[2025-03-21T10:06:39.318] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:40.544] [INFO] ms - Running page: 55, pages left: 1090 and 10921 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/55?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/55
+[2025-03-21T10:06:40.545] [DEBUG] proxyManager - Randomly selected proxy: 86.107.114.92:60099:LBunXj9Tch:UZn7OY5G6f
+[2025-03-21T10:06:40.545] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2024-02-18 to 2025-03-21, page 55
+[2025-03-21T10:06:40.545] [WARN] ms - Max retries reached for page: 55 and date since: 2024-02-18 to 2025-03-21
+[2025-03-21T10:06:41.831] [INFO] ms - Running page: 55, pages left: 1090 and 10921 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/55?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/55
+[2025-03-21T10:06:41.839] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:44.096] [INFO] ms - Running page: 56, pages left: 1089 and 10911 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/56?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/56
+[2025-03-21T10:06:44.104] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:46.318] [INFO] ms - Running page: 57, pages left: 1088 and 10901 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/57?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/57
+[2025-03-21T10:06:46.327] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:48.505] [INFO] ms - Running page: 58, pages left: 1087 and 10891 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/58?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/58
+[2025-03-21T10:06:48.513] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:50.832] [INFO] ms - Running page: 59, pages left: 1086 and 10881 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/59?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/59
+[2025-03-21T10:06:50.839] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:53.065] [INFO] ms - Running page: 60, pages left: 1085 and 10871 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/60?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/60
+[2025-03-21T10:06:53.073] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:55.368] [INFO] ms - Running page: 61, pages left: 1084 and 10861 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/61?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/61
+[2025-03-21T10:06:55.375] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:57.646] [INFO] ms - Running page: 62, pages left: 1083 and 10851 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/62?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/62
+[2025-03-21T10:06:57.654] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:06:59.863] [INFO] ms - Running page: 63, pages left: 1082 and 10841 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/63?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/63
+[2025-03-21T10:06:59.871] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:02.180] [INFO] ms - Running page: 64, pages left: 1081 and 10831 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/64?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/64
+[2025-03-21T10:07:02.188] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:04.422] [INFO] ms - Running page: 65, pages left: 1080 and 10821 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/65?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/65
+[2025-03-21T10:07:04.431] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:06.638] [INFO] ms - Running page: 66, pages left: 1079 and 10811 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/66?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/66
+[2025-03-21T10:07:06.646] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:08.939] [INFO] ms - Running page: 67, pages left: 1078 and 10801 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/67?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/67
+[2025-03-21T10:07:08.947] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:11.150] [INFO] ms - Running page: 68, pages left: 1077 and 10791 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/68?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/68
+[2025-03-21T10:07:11.158] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:13.505] [INFO] ms - Running page: 69, pages left: 1076 and 10781 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/69?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/69
+[2025-03-21T10:07:13.512] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:15.738] [INFO] ms - Running page: 70, pages left: 1075 and 10771 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/70?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/70
+[2025-03-21T10:07:15.748] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:18.035] [INFO] ms - Running page: 71, pages left: 1074 and 10761 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/71?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/71
+[2025-03-21T10:07:18.044] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:20.316] [INFO] ms - Running page: 72, pages left: 1073 and 10751 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/72?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/72
+[2025-03-21T10:07:20.324] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:22.573] [INFO] ms - Running page: 73, pages left: 1072 and 10741 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/73?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/73
+[2025-03-21T10:07:22.580] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:24.963] [INFO] ms - Running page: 74, pages left: 1071 and 10731 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/74?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/74
+[2025-03-21T10:07:24.973] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:27.278] [INFO] ms - Running page: 75, pages left: 1070 and 10721 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/75?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/75
+[2025-03-21T10:07:27.286] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:29.515] [INFO] ms - Running page: 76, pages left: 1069 and 10711 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/76?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/76
+[2025-03-21T10:07:29.529] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:31.768] [INFO] ms - Running page: 77, pages left: 1068 and 10701 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/77?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/77
+[2025-03-21T10:07:31.778] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:34.057] [INFO] ms - Running page: 78, pages left: 1067 and 10691 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/78?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/78
+[2025-03-21T10:07:34.064] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:36.368] [INFO] ms - Running page: 79, pages left: 1066 and 10681 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/79?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/79
+[2025-03-21T10:07:36.375] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:38.620] [INFO] ms - Running page: 80, pages left: 1065 and 10671 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/80?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/80
+[2025-03-21T10:07:38.627] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:39.843] [INFO] ms - Running page: 81, pages left: 1064 and 10661 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/81?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/81
+[2025-03-21T10:07:39.844] [DEBUG] proxyManager - Randomly selected proxy: 86.107.115.114:60099:jOXFs3BSbU:bdikFpKqoQ
+[2025-03-21T10:07:39.844] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2024-02-18 to 2025-03-21, page 81
+[2025-03-21T10:07:39.844] [WARN] ms - Max retries reached for page: 81 and date since: 2024-02-18 to 2025-03-21
+[2025-03-21T10:07:41.143] [INFO] ms - Running page: 81, pages left: 1064 and 10661 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/81?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/81
+[2025-03-21T10:07:41.150] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:43.493] [INFO] ms - Running page: 82, pages left: 1063 and 10651 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/82?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/82
+[2025-03-21T10:07:43.501] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:45.843] [INFO] ms - Running page: 83, pages left: 1062 and 10641 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/83?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/83
+[2025-03-21T10:07:45.850] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:48.108] [INFO] ms - Running page: 84, pages left: 1061 and 10631 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/84?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/84
+[2025-03-21T10:07:48.115] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:50.376] [INFO] ms - Running page: 85, pages left: 1060 and 10621 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/85?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/85
+[2025-03-21T10:07:50.384] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:53.676] [INFO] ms - Running page: 86, pages left: 1059 and 10611 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/86?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/86
+[2025-03-21T10:07:53.683] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:56.103] [INFO] ms - Running page: 87, pages left: 1058 and 10601 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/87?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/87
+[2025-03-21T10:07:56.111] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:07:58.296] [INFO] ms - Running page: 88, pages left: 1057 and 10591 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/88?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/88
+[2025-03-21T10:07:58.303] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:08:00.613] [INFO] ms - Running page: 89, pages left: 1056 and 10581 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/89?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/89
+[2025-03-21T10:08:00.621] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:08:02.891] [INFO] ms - Running page: 90, pages left: 1055 and 10571 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/90?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/90
+[2025-03-21T10:08:02.900] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:08:05.271] [INFO] ms - Running page: 91, pages left: 1054 and 10561 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/91?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/91
+[2025-03-21T10:08:05.280] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:08:07.564] [INFO] ms - Running page: 92, pages left: 1053 and 10551 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/92?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/92
+[2025-03-21T10:08:07.571] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:08:09.940] [INFO] ms - Running page: 93, pages left: 1052 and 10541 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/93?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/93
+[2025-03-21T10:08:09.948] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:08:12.234] [INFO] ms - Running page: 94, pages left: 1051 and 10531 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/94?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/94
+[2025-03-21T10:08:12.241] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:08:14.576] [INFO] ms - Running page: 95, pages left: 1050 and 10521 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/95?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/95
+[2025-03-21T10:08:14.583] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:08:16.849] [INFO] ms - Running page: 96, pages left: 1049 and 10511 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/96?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/96
+[2025-03-21T10:08:16.856] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:08:19.164] [INFO] ms - Running page: 97, pages left: 1048 and 10501 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/97?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/97
+[2025-03-21T10:08:19.171] [DEBUG] ms-helper - Extracted 10 court cases
+[2025-03-21T10:08:21.463] [INFO] ms - Running page: 98, pages left: 1047 and 10491 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/98?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2024-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/98
+[2025-03-21T10:08:21.470] [DEBUG] ms-helper - Extracted 10 court cases

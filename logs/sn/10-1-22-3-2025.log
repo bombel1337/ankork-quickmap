@@ -1,0 +1,164 @@
+[2025-03-22T10:01:14.770] [INFO] sn - Logger initialized for sn
+[2025-03-22T10:01:14.771] [INFO] database - Database: sn connection pool initialized
+[2025-03-22T10:01:14.772] [INFO] sn - Running model: sn
+[2025-03-22T10:01:14.992] [INFO] sn - Running date: 2025-02-18
+[2025-03-22T10:01:15.567] [INFO] sn - Skipping duplicate case with ItemSID: 146808-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.567] [INFO] sn - Skipping duplicate case with ItemSID: 146822-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.568] [INFO] sn - Skipping duplicate case with ItemSID: 146823-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.568] [INFO] sn - Skipping duplicate case with ItemSID: 146824-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.569] [INFO] sn - Skipping duplicate case with ItemSID: 146825-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.570] [INFO] sn - Skipping duplicate case with ItemSID: 146826-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.570] [INFO] sn - Skipping duplicate case with ItemSID: 146828-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.571] [INFO] sn - Skipping duplicate case with ItemSID: 146846-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.572] [INFO] sn - Skipping duplicate case with ItemSID: 146847-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.572] [INFO] sn - Skipping duplicate case with ItemSID: 146852-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.573] [INFO] sn - Skipping duplicate case with ItemSID: 146854-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.574] [INFO] sn - Skipping duplicate case with ItemSID: 146945-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.574] [INFO] sn - Skipping duplicate case with ItemSID: 146949-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.575] [INFO] sn - Skipping duplicate case with ItemSID: 146950-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.575] [INFO] sn - Skipping duplicate case with ItemSID: 146979-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.576] [INFO] sn - Skipping duplicate case with ItemSID: 146987-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.576] [INFO] sn - Skipping duplicate case with ItemSID: 146988-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.576] [INFO] sn - Skipping duplicate case with ItemSID: 146990-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.577] [INFO] sn - Skipping duplicate case with ItemSID: 147013-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.577] [INFO] sn - Skipping duplicate case with ItemSID: 147018-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:15.578] [INFO] sn - Skipping duplicate case with ItemSID: 147019-6e9ffc09-7b83-4b3d-8c04-f640e774865f
+[2025-03-22T10:01:16.291] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 19
+[2025-03-22T10:01:17.057] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 20
+[2025-03-22T10:01:17.759] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 21
+[2025-03-22T10:01:19.012] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 22
+[2025-03-22T10:01:19.684] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 23
+[2025-03-22T10:01:20.539] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 24
+[2025-03-22T10:01:21.465] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 25
+[2025-03-22T10:01:22.155] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 26
+[2025-03-22T10:01:22.709] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 27
+[2025-03-22T10:01:23.415] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 28
+[2025-03-22T10:01:24.353] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 29
+[2025-03-22T10:01:25.104] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 30
+[2025-03-22T10:01:25.668] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 31
+[2025-03-22T10:01:26.285] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 32
+[2025-03-22T10:01:26.906] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 33
+[2025-03-22T10:01:27.841] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 34
+[2025-03-22T10:01:28.654] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 35
+[2025-03-22T10:01:29.336] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 36
+[2025-03-22T10:01:30.038] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 37
+[2025-03-22T10:01:30.657] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 38
+[2025-03-22T10:01:31.368] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 39
+[2025-03-22T10:01:32.087] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 40
+[2025-03-22T10:01:32.608] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 41
+[2025-03-22T10:01:37.887] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 42
+[2025-03-22T10:01:38.422] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 43
+[2025-03-22T10:01:38.981] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 44
+[2025-03-22T10:01:39.521] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 45
+[2025-03-22T10:01:40.070] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 46
+[2025-03-22T10:01:40.662] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 47
+[2025-03-22T10:01:41.245] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 48
+[2025-03-22T10:01:41.850] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 49
+[2025-03-22T10:01:42.390] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 50
+[2025-03-22T10:01:42.905] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 51
+[2025-03-22T10:01:43.546] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 52
+[2025-03-22T10:01:44.086] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 53
+[2025-03-22T10:01:44.621] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 54
+[2025-03-22T10:01:45.341] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 55
+[2025-03-22T10:01:46.270] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 56
+[2025-03-22T10:01:47.328] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 57
+[2025-03-22T10:01:47.952] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 58
+[2025-03-22T10:01:48.526] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 59
+[2025-03-22T10:01:49.148] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 60
+[2025-03-22T10:01:49.765] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 61
+[2025-03-22T10:01:50.307] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 62
+[2025-03-22T10:01:50.890] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 63
+[2025-03-22T10:01:51.481] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 64
+[2025-03-22T10:01:52.103] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 65
+[2025-03-22T10:01:52.800] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 66
+[2025-03-22T10:01:53.380] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 67
+[2025-03-22T10:01:54.000] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 68
+[2025-03-22T10:01:54.561] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 69
+[2025-03-22T10:01:55.168] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 70
+[2025-03-22T10:01:55.656] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 71
+[2025-03-22T10:01:56.229] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 72
+[2025-03-22T10:01:56.826] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 73
+[2025-03-22T10:01:57.409] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 74
+[2025-03-22T10:01:58.126] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 75
+[2025-03-22T10:01:58.677] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 76
+[2025-03-22T10:01:59.361] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 77
+[2025-03-22T10:02:00.226] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 78
+[2025-03-22T10:02:00.789] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 79
+[2025-03-22T10:02:01.443] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 80
+[2025-03-22T10:02:05.405] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 81
+[2025-03-22T10:02:06.014] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 82
+[2025-03-22T10:02:17.580] [INFO] sn - Running date: 2025-02-19
+[2025-03-22T10:02:18.760] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 83
+[2025-03-22T10:02:19.311] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 84
+[2025-03-22T10:02:19.824] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 85
+[2025-03-22T10:02:20.347] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 86
+[2025-03-22T10:02:20.902] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 87
+[2025-03-22T10:02:21.394] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 88
+[2025-03-22T10:02:21.912] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 89
+[2025-03-22T10:02:22.491] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 90
+[2025-03-22T10:02:23.130] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 91
+[2025-03-22T10:02:23.759] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 92
+[2025-03-22T10:02:24.673] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 93
+[2025-03-22T10:02:25.366] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 94
+[2025-03-22T10:02:25.918] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 95
+[2025-03-22T10:02:26.441] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 96
+[2025-03-22T10:02:27.078] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 97
+[2025-03-22T10:02:27.613] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 98
+[2025-03-22T10:02:28.208] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 99
+[2025-03-22T10:02:28.872] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 100
+[2025-03-22T10:02:29.963] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 101
+[2025-03-22T10:02:30.625] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 102
+[2025-03-22T10:02:31.317] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 103
+[2025-03-22T10:02:32.042] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 104
+[2025-03-22T10:02:32.808] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 105
+[2025-03-22T10:02:33.736] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 106
+[2025-03-22T10:02:34.472] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 107
+[2025-03-22T10:02:35.098] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 108
+[2025-03-22T10:02:35.741] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 109
+[2025-03-22T10:02:36.467] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 110
+[2025-03-22T10:02:37.368] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 111
+[2025-03-22T10:02:38.014] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 112
+[2025-03-22T10:02:38.973] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 113
+[2025-03-22T10:02:39.906] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 114
+[2025-03-22T10:02:40.863] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 115
+[2025-03-22T10:02:41.485] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 116
+[2025-03-22T10:02:42.145] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 117
+[2025-03-22T10:02:42.769] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 118
+[2025-03-22T10:02:43.293] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 119
+[2025-03-22T10:02:43.843] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 120
+[2025-03-22T10:02:44.440] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 121
+[2025-03-22T10:02:44.994] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 122
+[2025-03-22T10:02:45.654] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 123
+[2025-03-22T10:02:46.355] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 124
+[2025-03-22T10:02:47.334] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 125
+[2025-03-22T10:02:47.945] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 126
+[2025-03-22T10:02:48.650] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 127
+[2025-03-22T10:02:49.232] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 128
+[2025-03-22T10:02:49.837] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 129
+[2025-03-22T10:02:50.427] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 130
+[2025-03-22T10:02:50.973] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 131
+[2025-03-22T10:02:51.572] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 132
+[2025-03-22T10:02:52.130] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 133
+[2025-03-22T10:02:52.704] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 134
+[2025-03-22T10:02:53.207] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 135
+[2025-03-22T10:02:53.798] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 136
+[2025-03-22T10:02:54.454] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 137
+[2025-03-22T10:02:55.080] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 138
+[2025-03-22T10:02:55.681] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 139
+[2025-03-22T10:02:56.243] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 140
+[2025-03-22T10:02:56.792] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 141
+[2025-03-22T10:02:57.322] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 142
+[2025-03-22T10:02:57.869] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 143
+[2025-03-22T10:02:58.438] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 144
+[2025-03-22T10:02:58.935] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 145
+[2025-03-22T10:02:59.534] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 146
+[2025-03-22T10:03:00.145] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 147
+[2025-03-22T10:03:00.878] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 148
+[2025-03-22T10:03:01.643] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 149
+[2025-03-22T10:03:02.471] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 150
+[2025-03-22T10:03:03.134] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 151
+[2025-03-22T10:03:03.698] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 152
+[2025-03-22T10:03:04.284] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 153
+[2025-03-22T10:03:04.970] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 154
+[2025-03-22T10:03:05.555] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 155
+[2025-03-22T10:03:06.075] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 156

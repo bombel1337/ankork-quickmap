@@ -1,0 +1,42 @@
+[2025-03-21T09:16:21.827] [INFO] ms - Logger initialized for ms
+[2025-03-21T09:16:21.828] [INFO] database - Database: ms connection pool initialized
+[2025-03-21T09:16:21.835] [INFO] ms - Running model: ms
+[2025-03-21T09:16:21.869] [ERROR] data-parser - msParser error: Error: getRowsNeededParsing: Table 'ms.parsed_data' doesn't exist
+    at getRowsNeededParsing (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dPUtils.js:13:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async msParser (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\parsers\msParser.js:8:30)
+    at async DataParser.ms [as parsingStrategy] (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:30:16)
+    at async DataParser.parse (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:15:16)
+    at async Promise.all (index 0)
+    at async Object.scraper (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\models\ms\ms.js:208:5)
+[2025-03-21T09:16:22.344] [INFO] ms - Running page: 3, pages left: -3 and 0 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/3?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2025-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/3
+[2025-03-21T09:16:22.344] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-21, page 3
+[2025-03-21T09:16:23.479] [INFO] ms - Running page: 3, pages left: -3 and 0 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/3?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2025-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/3
+[2025-03-21T09:16:23.480] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-21, page 3
+[2025-03-21T09:16:24.606] [INFO] ms - Running page: 3, pages left: -3 and 0 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/3?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2025-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/3
+[2025-03-21T09:16:24.606] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-21, page 3
+[2025-03-21T09:16:24.606] [WARN] ms - Max retries reached for page: 3 and date since: 2025-02-18 to 2025-03-21
+[2025-03-21T09:16:24.617] [INFO] ms - Running page: 3, pages left: -3 and 0 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/3?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2025-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/3
+[2025-03-21T09:16:24.618] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-21, page 3
+[2025-03-21T09:16:25.746] [INFO] ms - Running page: 3, pages left: -3 and 0 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/3?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2025-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/3
+[2025-03-21T09:16:25.746] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-21, page 3
+[2025-03-21T09:16:33.252] [INFO] ms - Logger initialized for ms
+[2025-03-21T09:16:33.253] [INFO] database - Database: ms connection pool initialized
+[2025-03-21T09:16:33.262] [INFO] ms - Running model: ms
+[2025-03-21T09:16:33.293] [ERROR] data-parser - msParser error: Error: getRowsNeededParsing: Table 'ms.parsed_data' doesn't exist
+    at getRowsNeededParsing (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dPUtils.js:13:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async msParser (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\parsers\msParser.js:8:30)
+    at async DataParser.ms [as parsingStrategy] (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:30:16)
+    at async DataParser.parse (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\services\dataParser.js:15:16)
+    at async Promise.all (index 0)
+    at async Object.scraper (C:\Users\przyg\Desktop\GitHub\ankork-quickmap\src\models\ms\ms.js:207:5)
+[2025-03-21T09:16:33.579] [INFO] ms - Running page: 3, pages left: -3 and 0 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/3?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2025-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/3
+[2025-03-21T09:16:33.580] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-21, page 3
+[2025-03-21T09:16:34.714] [INFO] ms - Running page: 3, pages left: -3 and 0 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/3?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2025-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/3
+[2025-03-21T09:16:34.715] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-21, page 3
+[2025-03-21T09:16:35.845] [INFO] ms - Running page: 3, pages left: -3 and 0 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/3?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2025-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/3
+[2025-03-21T09:16:35.846] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-21, page 3
+[2025-03-21T09:16:35.846] [WARN] ms - Max retries reached for page: 3 and date since: 2025-02-18 to 2025-03-21
+[2025-03-21T09:16:35.856] [INFO] ms - Running page: 3, pages left: -3 and 0 results. Link: https://orzeczenia.ms.gov.pl/search.gridpager/3?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/2025-02-18/2025-03-21/$N/$N/$N/$N/$N/$N/score/descending/3
+[2025-03-21T09:16:35.857] [ERROR] ms - Found error scraping ms: connection refused by server, date since: 2025-02-18 to 2025-03-21, page 3
