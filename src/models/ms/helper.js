@@ -12,13 +12,11 @@ class MsHelper {
         try {
             const $ = cheerio.load(html);
             
-            // Check if pagination exists
             const pagination = $('.pagination');
             if (pagination.length === 0) {
-                return 1; // If no pagination exists, assume we're on the only page
+                return 1; 
             }
             
-            // Get all page links
             const pageLinks = $('.t-data-grid-pager a');
             let lastPage = 1;
             
@@ -39,26 +37,21 @@ class MsHelper {
         try {
             const $ = cheerio.load(html);
             
-            // Check if pagination exists
             const pagination = $('.pagination');
             if (pagination.length === 0) {
-                // If no pagination exists, it's effectively the last page
                 return true;
             }
             
-            // Get current page number
             const currentPageElement = $('.t-data-grid-pager .current');
             const currentPage = currentPageElement.length > 0 ? parseInt(currentPageElement.text(), 10) : null;
             console.log(currentPageElement > 0, currentPageElement.text(), currentPage);
             if (currentPage === null) {
-                return false; // Can't determine current page
+                return false;
             }
             
-            // Get all page links
             const pageLinks = $('.t-data-grid-pager a');
             let maxPage = currentPage;
             
-            // Find the highest page number
             pageLinks.each((_, link) => {
                 const pageNum = parseInt($(link).text(), 10);
                 if (!isNaN(pageNum) && pageNum > maxPage) {

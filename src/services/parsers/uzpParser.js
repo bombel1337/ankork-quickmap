@@ -58,10 +58,7 @@ async function insertParsedData(database, parsedData) {
                 // If no clear separator, just use the whole string as sygnatura
                 sygnatura = signatureText.trim();
             }
-            console.log(parsedData['Sygnatura akt / Sposób rozstrzygnięcia']);
-            
-            console.log('sygnatura', sygnatura);
-            console.log('sygnatura_decyzja', sygnatura_decyzja);
+
         }
         // First insert/update the main parsed data
         const insertParsedQuery = `
@@ -296,7 +293,6 @@ async function parseIFrame(row) {
     try {
 
         if (!row.iframe_html || !row.judgment_div || !row.decision_div) {
-            console.log(`No content found for id ${row.id}`);
             return null;
         }
         
@@ -314,9 +310,7 @@ async function parseIFrame(row) {
                 const dateMatch = text.match(/z dnia\s+([^]+?(\d{1,2}\s+\w+\s+\d{4}))/);
                 if (dateMatch) {
                     fullDate = dateMatch[1].trim(); // Extracts the matched date part
-                    console.log('jazda');
-                    console.log(fullDate);
-                    // Extract year from the date
+
                     const yearMatch = fullDate.match(/(\d{4})/);
                     if (yearMatch) {
                         year = yearMatch[1];

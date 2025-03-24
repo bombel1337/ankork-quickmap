@@ -1,0 +1,3 @@
+[2025-03-24T09:59:13.994] [INFO] uzp - Logger initialized for uzp
+[2025-03-24T09:59:13.995] [INFO] database - Database: uzp connection pool initialized
+[2025-03-24T09:59:27.629] [INFO] database - Closing database: uzp connection pool

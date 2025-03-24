@@ -123,41 +123,40 @@ const scrape = async (config) => {
                         console.log(body);
                         break;
                     }
-                    // for (const result of results) {
-                    //     const [existingRecords] = await config.database.pool.query(
-                    //         'SELECT id FROM scraped_data WHERE title = ?',
-                    //         [result.title]
-                    //     );
+                    for (const result of results) {
+                        const [existingRecords] = await config.database.pool.query(
+                            'SELECT id FROM scraped_data WHERE title = ?',
+                            [result.title]
+                        );
                 
-                    //     if (existingRecords && existingRecords.length > 0) {
-                    //         logger.info(`Skipping duplicate case: ${result.title}`);
-                    //         continue;
-                    //     }
-                    //     const globalLink = `https://orzeczenia.ms.gov.pl${result.link}`;
-                    //     const detailsLink = globalLink;
-                    //     const judgementLink = globalLink.replace('/details', '/content');
-                    //     const regulationsLink = globalLink.replace('/details', '/regulations');
+                        if (existingRecords && existingRecords.length > 0) {
+                            logger.info(`Skipping duplicate case: ${result.title}`);
+                            continue;
+                        }
+                        const globalLink = `https://orzeczenia.ms.gov.pl${result.link}`;
+                        const detailsLink = globalLink;
+                        const judgementLink = globalLink.replace('/details', '/content');
+                        const regulationsLink = globalLink.replace('/details', '/regulations');
 
-                    //     const detailsContent = await getDetails(globalLink, config, gotScraping, proxyUrl);                     
-                    //     const judgementContent = await getDetails(globalLink.replace('/details', '/content'), config, gotScraping, proxyUrl);
-                    //     const regulationsContent = await getDetails(globalLink.replace('/details', '/regulations'), config, gotScraping, proxyUrl);
+                        const detailsContent = await getDetails(globalLink, config, gotScraping, proxyUrl);                     
+                        const judgementContent = await getDetails(globalLink.replace('/details', '/content'), config, gotScraping, proxyUrl);
+                        const regulationsContent = await getDetails(globalLink.replace('/details', '/regulations'), config, gotScraping, proxyUrl);
 
-                    //     const data = {
-                    //         details_html: detailsContent.body,
-                    //         judgment_html: judgementContent.body,
-                    //         regulations_html: regulationsContent.body,
-                    //         title: result.title,
-                    //         details_link: detailsLink,
-                    //         judgement_link: judgementLink,
-                    //         regulations_link: regulationsLink,
-                    //         status_code: statusCode,
-                    //         page,
-                    //         page_html: body,
-                    //         page_link: url,
-                    //     };
+                        const data = {
+                            details_html: detailsContent.body,
+                            judgment_html: judgementContent.body,
+                            regulations_html: regulationsContent.body,
+                            title: result.title,
+                            details_link: detailsLink,
+                            judgement_link: judgementLink,
+                            regulations_link: regulationsLink,
+                            status_code: statusCode,
+                            page,
+                            page_link: url,
+                        };
             
-                    //     await config.database.insertData('scraped_data', data);
-                    // }
+                        await config.database.insertData('scraped_data', data);
+                    }
 
                     allResultsLength -= 10;
                     page+=1;
