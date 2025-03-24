@@ -40,7 +40,7 @@ async function getOrCreateTopic(database, topicName) {
     
     return result.insertId;
 }
-async function insertParsedData(database, parsedData) {
+async function insertParsedData(database, parsedData, logger) {
     try {
         // Format the date before insertion
         const formattedDate = formatDate(parsedData['Data wydania rozstrzygnięcia']);
@@ -118,8 +118,7 @@ async function insertParsedData(database, parsedData) {
                     [parsedDataId, articleId]
                 );
             } catch (error) {
-                console.error(`Error linking article "${article}": ${error.message}`);
-                // Continue with next article even if this one fails
+                logger.error(`Error linking article: "${article}, Link: ${parsedData['page_link']} Error: ${error.message}`);
             }
         }
       
@@ -136,15 +135,14 @@ async function insertParsedData(database, parsedData) {
                     [parsedDataId, topicId]
                 );
             } catch (error) {
-                console.error(`Error linking topic "${topic}": ${error.message}`);
+                logger.error(`Error linking topic "${topic}, Link: ${parsedData['page_link']} Error: ${error.message}`);
                 // Continue with next topic even if this one fails
             }
         }
         
         return true;
     } catch (error) {
-        console.error(`Error in insertParsedData: ${error.message}`);
-        throw error;
+        throw new Error('insertParsedData error', error);
     }
 }
 // Add this function to update article descriptions when needed
@@ -327,8 +325,7 @@ async function parseIFrame(row) {
             judgementCleared: judgment.text()
         };
     } catch (error) {
-        console.error(`Error parsing document date for id ${row.id}:`, error);
-        throw error;
+        throw new Error('parseIFrame error ', error);
     }
 }
 
@@ -346,7 +343,7 @@ const uzpParser = async (database, logger) => {
                 parsedData.judgementCleared = iFrameDAta?.judgementCleared ?? null;
                 parsedData.page_link = row.page_link;
 
-                await insertParsedData(database, {id: row.id, ...parsedData});
+                await insertParsedData(database, {id: row.id, ...parsedData}, logger);
 
 
                 // const articles = await getArticlesForParsedData(database, row.id);

@@ -201,7 +201,7 @@ async function scraper(config) {
     const tasks = [];
 
     if (config.useDataParser) {
-        console.log('Running data parser');
+        logger.info('Running data parser');
         tasks.push(config.dataParser.parse(config.database));
     }
     

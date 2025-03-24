@@ -44,7 +44,6 @@ class MsHelper {
             
             const currentPageElement = $('.t-data-grid-pager .current');
             const currentPage = currentPageElement.length > 0 ? parseInt(currentPageElement.text(), 10) : null;
-            console.log(currentPageElement > 0, currentPageElement.text(), currentPage);
             if (currentPage === null) {
                 return false;
             }
