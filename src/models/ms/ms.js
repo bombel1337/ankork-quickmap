@@ -117,10 +117,8 @@ const scrape = async (config) => {
                         logger.log(`Running last page: ${page}.`);
                     } 
                     const results = Helper.extractCourtCases(body);
-                    console.log(results.length);
                     if (allResultsLength > 0 && results.length === 0) {
                         logger.warn(`No results found for page: ${page} and date since: ${sinceDate} to ${todaysDate}`);
-                        console.log(body);
                         break;
                     }
                     for (const result of results) {

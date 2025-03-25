@@ -1,0 +1,39 @@
+[2025-03-25T12:43:25.605] [INFO] ms - Logger initialized for ms
+[2025-03-25T12:43:25.607] [INFO] database - Database: ms connection pool initialized
+[2025-03-25T12:43:25.608] [INFO] ms - Running data parser
+[2025-03-25T12:43:25.656] [INFO] data-parser - Found 34 rows to process
+[2025-03-25T12:43:25.726] [INFO] data-parser - Processed row ID: 1
+[2025-03-25T12:43:25.821] [INFO] data-parser - Processed row ID: 2
+[2025-03-25T12:43:25.837] [INFO] data-parser - Processed row ID: 3
+[2025-03-25T12:43:25.878] [INFO] data-parser - Processed row ID: 4
+[2025-03-25T12:43:25.895] [INFO] data-parser - Processed row ID: 5
+[2025-03-25T12:43:25.923] [INFO] data-parser - Processed row ID: 6
+[2025-03-25T12:43:25.937] [INFO] data-parser - Processed row ID: 7
+[2025-03-25T12:43:25.951] [INFO] data-parser - Processed row ID: 8
+[2025-03-25T12:43:25.978] [INFO] data-parser - Processed row ID: 9
+[2025-03-25T12:43:25.996] [INFO] data-parser - Processed row ID: 10
+[2025-03-25T12:43:26.039] [INFO] data-parser - Processed row ID: 11
+[2025-03-25T12:43:26.063] [INFO] data-parser - Processed row ID: 12
+[2025-03-25T12:43:26.079] [INFO] data-parser - Processed row ID: 13
+[2025-03-25T12:43:26.094] [INFO] data-parser - Processed row ID: 14
+[2025-03-25T12:43:26.113] [INFO] data-parser - Processed row ID: 15
+[2025-03-25T12:43:26.130] [INFO] data-parser - Processed row ID: 16
+[2025-03-25T12:43:26.155] [INFO] data-parser - Processed row ID: 17
+[2025-03-25T12:43:26.171] [INFO] data-parser - Processed row ID: 18
+[2025-03-25T12:43:26.189] [INFO] data-parser - Processed row ID: 19
+[2025-03-25T12:43:26.206] [INFO] data-parser - Processed row ID: 20
+[2025-03-25T12:43:26.219] [INFO] data-parser - Processed row ID: 21
+[2025-03-25T12:43:26.236] [INFO] data-parser - Processed row ID: 22
+[2025-03-25T12:43:26.256] [INFO] data-parser - Processed row ID: 23
+[2025-03-25T12:43:26.274] [INFO] data-parser - Processed row ID: 24
+[2025-03-25T12:43:26.291] [INFO] data-parser - Processed row ID: 25
+[2025-03-25T12:43:26.307] [INFO] data-parser - Processed row ID: 26
+[2025-03-25T12:43:26.326] [INFO] data-parser - Processed row ID: 27
+[2025-03-25T12:43:26.341] [INFO] data-parser - Processed row ID: 28
+[2025-03-25T12:43:26.360] [INFO] data-parser - Processed row ID: 29
+[2025-03-25T12:43:26.376] [INFO] data-parser - Processed row ID: 30
+[2025-03-25T12:43:26.390] [INFO] data-parser - Processed row ID: 31
+[2025-03-25T12:43:26.412] [INFO] data-parser - Processed row ID: 32
+[2025-03-25T12:43:26.426] [INFO] data-parser - Processed row ID: 33
+[2025-03-25T12:43:26.442] [INFO] data-parser - Processed row ID: 34
+[2025-03-25T12:43:26.442] [INFO] database - Closing database: ms connection pool

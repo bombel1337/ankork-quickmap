@@ -13,7 +13,9 @@ const getRowsNeededParsing = async (database) => {
         throw new Error(`getRowsNeededParsing: ${error.message}`);
     }
 };
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 module.exports = {
-    getRowsNeededParsing
+    getRowsNeededParsing,
+    sleep
 };

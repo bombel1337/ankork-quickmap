@@ -1,5 +1,5 @@
 const cheerio = require('cheerio');
-const { getRowsNeededParsing } = require('../dPUtils');
+const { getRowsNeededParsing, sleep } = require('../dPUtils');
 
 const parseArticles = (html) => {
     const $ = cheerio.load(html);
@@ -72,36 +72,42 @@ const parseCaseDetails = (html) => {
 const parseH2Sections = (html) => {
     const $ = cheerio.load(html);
     const sections = {};
-    const supportedHeaders = ['wyrok', 'uzasadnienie', 'zarzadzenie'];
-    
-    // Find all h2 tags
-    const h2Tags = $('h2').toArray();
-    
+    const supportedHeaders = ['wyrok', 'uzasadnienie', 'zarzadzenie', 'postanowienie'];
+
     // Process each h2 tag
-    for (let i = 0; i < h2Tags.length; i++) {
-        const currentH2 = $(h2Tags[i]);
-        const headerText = currentH2.text().trim().toLowerCase();
-      
-        // Check if this is one of our supported headers
+    $('h2').each((i, h2Element) => {
+        const currentH2 = $(h2Element);
+        const headerText = currentH2.text().trim().toLowerCase().replace(/ą/g, 'a');
         const matchedHeader = supportedHeaders.find(header => headerText.includes(header));
+
         if (matchedHeader) {
             let sectionContent = '';
-            let currentElement = currentH2.next();
-        
-            // Continue until we hit another h2 or the end of document
-            while (currentElement.length > 0 && currentElement.prop('tagName') !== 'H2') {
-                sectionContent += currentElement.toString();
-                currentElement = currentElement.next();
+
+            // Check if the h2 is inside a table row (tr)
+            const parentTr = currentH2.closest('tr');
+            if (parentTr.length) {
+                const table = parentTr.closest('table');
+                const allTrs = table.find('tr');
+                const parentTrIndex = allTrs.index(parentTr);
+                const subsequentTrs = allTrs.slice(parentTrIndex + 1);
+
+                subsequentTrs.each((i, tr) => {
+                    sectionContent += $(tr).toString();
+                });
+            } else {
+                // Handle non-table cases (original approach)
+                let currentElement = currentH2.next();
+                while (currentElement.length > 0 && currentElement.prop('tagName') !== 'H2') {
+                    sectionContent += currentElement.toString();
+                    currentElement = currentElement.next();
+                }
             }
-        
-            // Clean the content - remove HTML tags if needed
+
             const cleanContent = $('<div>').html(sectionContent).text().trim();
-        
-            // Store the content under the appropriate key
             sections[matchedHeader] = cleanContent;
         }
-    }
-    
+    });
+
     return sections;
 };
 const getOrCreateArticle = async (connection, article) => {
@@ -130,8 +136,8 @@ const saveDataToDatabase = async (database, parsedData, articles, logger) => {
             INSERT INTO parsed_data 
             (id, tytul, data_orzeczenia, data_publikacji, sygnatura, sad, 
             wydzial, przewodniczacy, protokolant, hasla_tematyczne, 
-            podstawa_prawna, wyrok, uzasadnienie, zarzadzenie, link)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            podstawa_prawna, wyrok, uzasadnienie, zarzadzenie, postanowienie, link)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON DUPLICATE KEY UPDATE
             tytul = VALUES(tytul),
             data_orzeczenia = VALUES(data_orzeczenia),
@@ -146,6 +152,7 @@ const saveDataToDatabase = async (database, parsedData, articles, logger) => {
             wyrok = VALUES(wyrok),
             uzasadnienie = VALUES(uzasadnienie),
             zarzadzenie = VALUES(zarzadzenie),
+            postanowienie = VALUES(postanowienie),
             link = VALUES(link)
         `;
         
@@ -165,6 +172,7 @@ const saveDataToDatabase = async (database, parsedData, articles, logger) => {
             parsedData.wyrok,
             parsedData.uzasadnienie,
             parsedData.zarzadzenie,
+            parsedData.postanowienie,
             parsedData.link
         ]);
         // Handle article relationships
@@ -215,6 +223,8 @@ const msParser = async (database, logger) => {
     } catch (error) {
         logger.error('msParser error:', error);
     }
+    await sleep(60000);
+    msParser(database, logger);
 };
 
 

@@ -1,0 +1,5 @@
+[2025-03-25T12:14:23.085] [INFO] ms - Logger initialized for ms
+[2025-03-25T12:14:23.086] [INFO] database - Database: ms connection pool initialized
+[2025-03-25T12:14:23.087] [INFO] ms - Running data parser
+[2025-03-25T12:14:23.129] [INFO] data-parser - Found 0 rows to process
+[2025-03-25T12:14:23.130] [INFO] database - Closing database: ms connection pool
