@@ -52,20 +52,20 @@ class UzpHelper {
                 logger.warn('"Uzasadnienie" not found');
                 return {
                     wholeHtml: body.html(),
-                    judgementDiv: null, 
+                    judgmentDiv: null, 
                     decisionDiv: null
                 };           
             }
 
             const markerIndex = markerMatch.index;
-            const judgement = body.text().substring(0, markerIndex);
+            const judgment = body.text().substring(0, markerIndex);
             const decision =  body.text().substring(markerIndex); 
       
-            const judgementCheerio = cheerio.load(`<div>${judgement}</div>`);
+            const judgmentCheerio = cheerio.load(`<div>${judgment}</div>`);
             const decisionCheerio = cheerio.load(`<div>${decision}</div>`);
             return {
                 wholeHtml: body.html(),
-                judgementDiv: judgementCheerio.html(), 
+                judgmentDiv: judgmentCheerio.html(), 
                 decisionDiv: decisionCheerio.html()
             };
     

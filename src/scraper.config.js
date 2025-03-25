@@ -33,7 +33,7 @@ const config = {
             sinceDate: '2025-02-18', // 'yyyy-mm-dd'    
         },
         ms: {
-            enabled: true,
+            enabled: false,
             database: new Database(Sites.orzeczenia_ms_gov),
             useDataParser: true,
             dataParser: createDataParser(Sites.orzeczenia_ms_gov),

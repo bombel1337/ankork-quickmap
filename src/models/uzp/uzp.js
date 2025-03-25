@@ -114,7 +114,7 @@ const scrape = async (config) => {
                         const data = {
                             page_html: body,
                             iframe_html: results.wholeHtml,
-                            judgment_div: results.judgementDiv,
+                            judgment_div: results.judgmentDiv,
                             decision_div: results.decisionDiv,
                             details_metrics: detailsMetrics,
                             title,

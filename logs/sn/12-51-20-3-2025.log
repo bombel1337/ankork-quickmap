@@ -1,5 +1,0 @@
-[2025-03-20T12:51:56.439] [INFO] sn - Logger initialized for sn
-[2025-03-20T12:51:56.440] [INFO] database - Database: sn connection pool initialized
-[2025-03-20T12:51:56.441] [INFO] sn - Running model: sn
-[2025-03-20T12:51:56.670] [INFO] sn - Running date: 2025-02-18
-[2025-03-20T12:51:57.539] [ERROR] sn - Found error scraping sn: getDetails: Expected property string `proxyUrl` to be a URL, got `undefined` in object, date: 2025-02-18

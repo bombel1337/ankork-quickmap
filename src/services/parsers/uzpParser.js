@@ -94,7 +94,7 @@ async function insertParsedData(database, parsedData, logger) {
             sygnatura,
             sygnatura_decyzja,
             parsedData['Tryb postępowania'] || null,
-            parsedData['judgementCleared'] || null,
+            parsedData['judgmentCleared'] || null,
             parsedData['decisionCleared'] || null,
             parsedData['fullDate'] || null,
             parsedData['year'] || null,
@@ -322,7 +322,7 @@ async function parseIFrame(row) {
             fullDate,
             year,
             decisionCleared: decision.text(),
-            judgementCleared: judgment.text()
+            judgmentCleared: judgment.text()
         };
     } catch (error) {
         throw new Error('parseIFrame error ', error);
@@ -340,7 +340,7 @@ const uzpParser = async (database, logger) => {
                 parsedData.fullDate = iFrameDAta?.fullDate ?? null;
                 parsedData.year = iFrameDAta?.year ?? null;
                 parsedData.decisionCleared = iFrameDAta?.decisionCleared ?? null;
-                parsedData.judgementCleared = iFrameDAta?.judgementCleared ?? null;
+                parsedData.judgmentCleared = iFrameDAta?.judgmentCleared ?? null;
                 parsedData.page_link = row.page_link;
 
                 await insertParsedData(database, {id: row.id, ...parsedData}, logger);

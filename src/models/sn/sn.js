@@ -109,7 +109,7 @@ const scrape = async (config) => {
                             if (detailsStatus !== 200) {
                                 throw new Error(`bad statusCode in detailsBody scraping: ${detailsStatus}`);
                             }
-                            const {status: judgmentStatus, body: judgmentBody} = await getDetails(result.judgementLink, config, gotScraping, proxyUrl);
+                            const {status: judgmentStatus, body: judgmentBody} = await getDetails(result.judgmentLink, config, gotScraping, proxyUrl);
                             if (judgmentStatus !== 200) {
                                 throw new Error(`bad statusCode in judgmentBody scraping: ${judgmentStatus}`);
                             }
@@ -118,7 +118,7 @@ const scrape = async (config) => {
                                 page_html: caseBody,
                                 page_link: result.caseLink,
                                 judgment_html: judgmentBody,
-                                judgment_link: result.judgementLink,
+                                judgment_link: result.judgmentLink,
                                 title: result.caseNumber,
                                 date: polishDate,
                                 year: parseInt(date.split('-')[0], 10),

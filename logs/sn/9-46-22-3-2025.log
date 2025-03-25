@@ -1,8 +1,0 @@
-[2025-03-22T09:46:52.116] [INFO] sn - Logger initialized for sn
-[2025-03-22T09:46:52.117] [INFO] database - Database: sn connection pool initialized
-[2025-03-22T09:46:52.118] [INFO] sn - Running model: sn
-[2025-03-22T09:46:52.339] [INFO] sn - Running date: 2025-02-18
-[2025-03-22T09:46:52.920] [INFO] sn - Skipping duplicate case with ItemSID: 146808-6e9ffc09-7b83-4b3d-8c04-f640e774865f
-[2025-03-22T09:46:53.537] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 1
-[2025-03-22T09:46:54.031] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 2
-[2025-03-22T09:46:54.637] [INFO] database - Database: sn data inserted successfully into scraped_data, index: 3

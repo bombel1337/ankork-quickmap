@@ -135,20 +135,20 @@ const scrape = async (config) => {
                         }
                         const globalLink = `https://orzeczenia.ms.gov.pl${result.link}`;
                         const detailsLink = globalLink;
-                        const judgementLink = globalLink.replace('/details', '/content');
+                        const judgmentLink = globalLink.replace('/details', '/content');
                         const regulationsLink = globalLink.replace('/details', '/regulations');
 
                         const detailsContent = await getDetails(globalLink, config, gotScraping, proxyUrl);                     
-                        const judgementContent = await getDetails(globalLink.replace('/details', '/content'), config, gotScraping, proxyUrl);
+                        const judgmentContent = await getDetails(globalLink.replace('/details', '/content'), config, gotScraping, proxyUrl);
                         const regulationsContent = await getDetails(globalLink.replace('/details', '/regulations'), config, gotScraping, proxyUrl);
 
                         const data = {
                             details_html: detailsContent.body,
-                            judgment_html: judgementContent.body,
+                            judgment_html: judgmentContent.body,
                             regulations_html: regulationsContent.body,
                             title: result.title,
                             details_link: detailsLink,
-                            judgement_link: judgementLink,
+                            judgment_link: judgmentLink,
                             regulations_link: regulationsLink,
                             status_code: statusCode,
                             page,

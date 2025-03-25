@@ -39,7 +39,7 @@ class SnHelper {
                 const url = new URL(caseLink);
                 const itemSid = url.searchParams.get('ItemSID');
                 
-                const judgementLink = $element.find('div.Download a').filter((i, el) => {
+                const judgmentLink = $element.find('div.Download a').filter((i, el) => {
                     return $(el).text().includes('treść orzeczenia w wersji HTML');
                 }).attr('href').replace('http','https');
                 
@@ -48,7 +48,7 @@ class SnHelper {
                     caseLink: caseLink.includes('&DataWDniu=') 
                         ? caseLink.substring(0, caseLink.indexOf('&DataWDniu=')) 
                         : caseLink,
-                    judgementLink,
+                    judgmentLink,
                     itemSid
                 });
             });
