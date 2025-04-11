@@ -10,16 +10,15 @@ const config = {
     cookieJar: new CookieJar(),
     delay: 11,
     timeout: 10000,
-    maxRetries: 2,
-    retryDelay: 1111,
-    saveResults: true,
+    maxRetries: 10,
+    retryDelay: 30111,
     proxyManager: new ProxyManager(),
 
     models: {
         uzp: {
             enabled: false,
             database: new Database(Sites.orzeczenia_uzp_gov),
-            useDataParser: true,
+            useDataParser: false,
             dataParser: createDataParser(Sites.orzeczenia_uzp_gov),
             delay: 111,
             scrapLength: 125,
@@ -27,7 +26,7 @@ const config = {
         sn: {
             enabled: false,
             database: new Database(Sites.sad_najwyzszy),
-            useDataParser: true,
+            useDataParser: false,
             dataParser: createDataParser(Sites.sad_najwyzszy),
             delay: 11551,
             sinceDate: '2025-02-18', // 'yyyy-mm-dd'    
@@ -35,7 +34,7 @@ const config = {
         ms: {
             enabled: false,
             database: new Database(Sites.orzeczenia_ms_gov),
-            useDataParser: true,
+            useDataParser: false,
             dataParser: createDataParser(Sites.orzeczenia_ms_gov),
             delay: 1111,
             sinceDate: '2024-02-18', // 'yyyy-mm-dd' 
@@ -43,6 +42,18 @@ const config = {
                 enabled: true,
                 rotate: 'random' // 'random' or 'sequential'
             },   
+        },
+        nsa: {
+            enabled: true,
+            // database: new Database(Sites.orzeczenia_nsa_gov),
+            useDataParser: false,
+            // dataParser: createDataParser(Sites.orzeczenia_nsa_gov),
+            delay: 1111,
+            proxies: {
+                enabled: true,
+                rotate: 'random' // 'random' or 'sequential'
+            },   
+            sinceDate: '2015-02-02', // 'yyyy-mm-dd'    // scraper przelecial od 2022-01-01
         },
     }
 };

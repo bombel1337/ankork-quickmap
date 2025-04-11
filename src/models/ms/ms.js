@@ -46,7 +46,7 @@ const getDetails = async (url, config, gotScraping, proxyUrl, retryCount = 0) =>
         return { status: statusCode, body };
     } catch (error) {
         logger.error(`Found error scraping ms getDetails: ${error.message}, page: ${url}`);
-        if (!config.abortOnFailure || retryCount >= config.maxRetries) {
+        if (config.abortOnFailure || retryCount >= config.maxRetries) {
             logger.warn(`Max retries reached for page: ${url}`);
         } else {
             await sleep(config.retryDelay);

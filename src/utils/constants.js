@@ -9,6 +9,7 @@ class Sites {
     static orzeczenia_uzp_gov = 'uzp';
     static sad_najwyzszy = 'sn';
     static orzeczenia_ms_gov = 'ms';
+    static orzeczenia_nsa_gov = 'nsa';
 }
 
 module.exports = { Constants, Sites };
