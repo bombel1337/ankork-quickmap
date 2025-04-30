@@ -65,6 +65,33 @@ class DatabaseService {
         }
     }
     
+    async updateData(table, data, uniqueKey, uniqueKeyValue) {
+        try {
+            // Remove the unique key from the data object to avoid updating it
+            const updateData = { ...data };
+            delete updateData[uniqueKey];
+
+            if (Object.keys(updateData).length === 0) {
+                logger.warn(`Database: ${this.database} No data provided to update for ${uniqueKey}=${uniqueKeyValue} in table ${table}.`);
+                return;
+            }
+
+            const [result] = await this.pool.query(
+                'UPDATE ?? SET ? WHERE ?? = ?',
+                [table, updateData, uniqueKey, uniqueKeyValue]
+            );
+
+            if (result.affectedRows > 0) {
+                logger.info(`Database: ${this.database} data updated successfully in ${table} for ${uniqueKey}=${uniqueKeyValue}`);
+            } else {
+                logger.warn(`Database: ${this.database} No record found or updated in ${table} for ${uniqueKey}=${uniqueKeyValue}`);
+            }
+        } catch (error) {
+            logger.error(`Database: ${this.database} Error updating data in ${table} for ${uniqueKey}=${uniqueKeyValue}: ${error.message}`);
+            throw new Error(`Database: ${this.database} updateData error: ${error.message}`);
+        }
+    }
+    
     async getLargestId(table, column = 'id') {
         try {
             const [results] = await this.pool.query(
@@ -78,6 +105,16 @@ class DatabaseService {
         }
     }
   
+    async query(sql, params) {
+        try {
+            const [results] = await this.pool.query(sql, params);
+            return results;
+        } catch (error) {
+            logger.error(`Database: ${this.database} Error executing query: ${error.message}`);
+            throw new Error(`Database: ${this.database} query error: ${error.message}`);
+        }
+    }
+
     async close() {
         if (this.pool) {
             logger.info(`Closing database: ${this.database} connection pool`);

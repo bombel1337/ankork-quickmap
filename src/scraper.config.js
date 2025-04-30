@@ -45,15 +45,29 @@ const config = {
         },
         nsa: {
             enabled: true,
-            // database: new Database(Sites.orzeczenia_nsa_gov),
+            database: new Database(Sites.orzeczenia_nsa_gov),
             useDataParser: false,
             // dataParser: createDataParser(Sites.orzeczenia_nsa_gov),
+            pageLinksScraper: false,
+            singleLinksScraper: true,
             delay: 1111,
+            retryDelay: 10000,
             proxies: {
                 enabled: true,
                 rotate: 'random' // 'random' or 'sequential'
             },   
-            sinceDate: '2015-02-02', // 'yyyy-mm-dd'    // scraper przelecial od 2022-01-01
+            toDate: '2023-07-06', // 'yyyy-mm-dd'
+            sinceDate: '2010-01-01', // 'yyyy-mm-dd'  
+        },
+        kidp: {
+            enabled: false,
+            kidpInfo: false,
+            podatkibezryzykaInfo: false,
+            database: new Database(Sites.krajowa_izba_doradcow_podatkowych),
+            useDataParser: false,
+            dataParser: createDataParser(Sites.krajowa_izba_doradcow_podatkowych),
+            delay: 111,
+            scrapLength: 125,
         },
     }
 };

@@ -102,13 +102,6 @@ const scrape = async (config) => {
                     },
                 });
                 if (statusCode == 200) {
-                    logger.log(`Running page: ${page}, pages left: ${maxPage - page} and ${allResultsLength} results. Link: ${url}`);
-                    if (body.includes('<title>Połączenie odrzucone</title>')) {
-                        proxyUrl = config.proxyManager.getProxyBasedOnConfig(config);
-                        throw new Error('connection refused by server');
-                    }
-
-
                     if (maxPage === 0) {
                         maxPage = Helper.getLastPageNumber(body);
                         allResultsLength = Helper.getResultsLength(body);
@@ -116,6 +109,14 @@ const scrape = async (config) => {
                     } else  if (allResultsLength <= 10) {
                         logger.log(`Running last page: ${page}.`);
                     } 
+                    logger.log(`Running page: ${page}, pages left: ${maxPage - page} and ${allResultsLength} results. Link: ${url}`);
+                    if (body.includes('<title>Połączenie odrzucone</title>')) {
+                        proxyUrl = config.proxyManager.getProxyBasedOnConfig(config);
+                        throw new Error('connection refused by server');
+                    }
+
+
+
                     const results = Helper.extractCourtCases(body);
                     if (allResultsLength > 0 && results.length === 0) {
                         logger.warn(`No results found for page: ${page} and date since: ${sinceDate} to ${todaysDate}`);
@@ -169,10 +170,11 @@ const scrape = async (config) => {
             } catch (error) {
                 logger.error(`Found error scraping ms: ${error.message}, date since: ${sinceDate} to ${todaysDate}, page ${page}`);
                 if (config.abortOnFailure) {
+                    logger.error(`Aborting on failure for page: ${page} and date since: ${sinceDate} to ${todaysDate}`);
                     return;
                 } else if (retryCount >= config.maxRetries) {
                     logger.warn(`Max retries reached for page: ${page} and date since: ${sinceDate} to ${todaysDate}`);
-                    retryCount = 0;
+                    return;
                 } else {
                     retryCount++;
                     await sleep(config.retryDelay);

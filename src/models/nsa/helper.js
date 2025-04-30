@@ -68,10 +68,12 @@ class NsaHelper {
                 const firstAnchor = $(table).find('tbody a').first();
                 const href = firstAnchor.attr('href');
                 const title = firstAnchor.text().trim();
+                const date = title.split(' ').pop() || '';
                 elements.push({
                     number: i+1,
                     href,
-                    title
+                    title,
+                    date
                 });
                 
             });
@@ -82,9 +84,9 @@ class NsaHelper {
             throw new Error(`NsaHelper extractElements: ${error.message}`);
         }
     }
-    static createDateRanges = (startDate) => {
+    static createDateRanges = (startDate, todaysDate) => {
         try {
-            const today = new Date();
+            const today = new Date(todaysDate);
             const start = new Date(startDate);
             const ranges = [];
           
@@ -112,6 +114,7 @@ class NsaHelper {
         }
     };
     
+
 }
 
 module.exports = NsaHelper;

@@ -1,4 +1,5 @@
 const getLogger = require('../utils/logger');
+const { kidpParser } = require('./parsers/kidpParser');
 const { msParser } = require('./parsers/msParser');
 const { snParser } = require('./parsers/snParser');
 const { uzpParser } = require('./parsers/uzpParser');
@@ -28,6 +29,10 @@ const parsingStrategies = {
     ms: async (database, logger) => {
         if (!database) return null;
         return await msParser(database, logger);
+    },
+    kidp: async (database, logger) => {
+        if (!database) return null;
+        return await kidpParser(database, logger);
     },
 };
   
