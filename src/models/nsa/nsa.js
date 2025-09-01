@@ -4,6 +4,7 @@ const getLogger = require('../../utils/logger');
 const { Sites } = require('../../utils/constants');
 const Helper = require('./helper');
 const logger = getLogger('nsa');
+const FormData = require('form-data');
 
 const processSingleLink = async (url, config, gotScraping, retryCount = 0) => {
     try { 

@@ -1,5 +1,5 @@
 const cheerio = require('cheerio');
-const { getRowsNeededParsing, sleep } = require('../dPUtils');
+const { getRowsNeededParsing } = require('../dPUtils');
 
 const extractData = (htmlContent) => {
     const $ = cheerio.load(htmlContent);
@@ -157,8 +157,6 @@ const kidpParser = async (database, logger) => {
     } catch (error) {
         logger.error('msParser error:', error);
     }
-    await sleep(60000);
-    kidpParser(database, logger);
 };
 
 

@@ -30,21 +30,12 @@ class DatabaseService {
     }
   
 
-    async insertData(table, data) {
+    async insertData(table, data, uniqueKey = null) {
         try {
-            // Now get the largest ID from the idx column instead of item_sid
-            const largestId = await this.getLargestId(table, 'id'); 
-            const nextId = largestId + 1;
-            
-            data.id = nextId;
-            
-            
             for (const key in data) {
                 if (key === 'item_sid') continue;
-                const [columns] = await this.pool.query(
-                    'SHOW COLUMNS FROM ?? LIKE ?', 
-                    [table, key]
-                );
+                const [columns] = await this.pool.query('SHOW COLUMNS FROM ?? LIKE ?', [table, key]);
+
                 if (columns.length === 0) {
                     const columnType = typeof data[key] === 'string' ? 'LONGTEXT' : 'INT';
     
@@ -56,9 +47,32 @@ class DatabaseService {
                     logger.info(`Database: ${this.database} Added column ${key} (${columnType}) to table ${table}`);
                 }
             }
-    
+            if (uniqueKey && data[uniqueKey] != null) {
+                const keys = Object.keys(data);
+                const cols = keys.map(() => '??').join(', ');
+                const vals = keys.map(() => '?').join(', ');
+
+                const updateKeys = keys.filter(k => k !== uniqueKey);
+                const updates = updateKeys.map(() => '??=VALUES(??)').join(', ');
+
+                const params = [
+                    table,
+                    ...keys,                                  // columns for (??)
+                    ...keys.map(k => data[k]),                // values for (?)
+                    ...updateKeys.flatMap(k => [k, k])        // col + col for (??=VALUES(??))
+                ];
+
+                await this.pool.query(
+                    `INSERT INTO ?? (${cols}) VALUES (${vals}) ON DUPLICATE KEY UPDATE ${updates}`,
+                    params
+                );
+                logger.info(`Database: ${this.database} upserted by ${uniqueKey} into ${table}`);
+                return;
+            }
+            const largestId = await this.getLargestId(table, 'id');
+            data.id = largestId + 1;
             await this.pool.query('INSERT INTO ?? SET ?', [table, data]);
-            logger.info(`Database: ${this.database} data inserted successfully into ${table}, index: ${nextId}`);
+            logger.info(`Database: ${this.database} data inserted successfully into ${table}, index: ${data.id}`);
         } catch (error) {
             logger.error(`Database: ${this.database} Error inserting data into ${table}: ${error.message}`);
             throw new Error(`Database: ${this.database} insertData error: ${error.message}`);

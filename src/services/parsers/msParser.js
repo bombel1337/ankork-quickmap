@@ -1,5 +1,5 @@
 const cheerio = require('cheerio');
-const { getRowsNeededParsing, sleep } = require('../dPUtils');
+const { getRowsNeededParsing } = require('../dPUtils');
 
 const parseArticles = (html) => {
     const $ = cheerio.load(html);
@@ -223,8 +223,6 @@ const msParser = async (database, logger) => {
     } catch (error) {
         logger.error('msParser error:', error);
     }
-    await sleep(60000);
-    msParser(database, logger);
 };
 
 

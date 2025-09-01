@@ -1,5 +1,5 @@
 const cheerio = require('cheerio');
-const { getRowsNeededParsing, sleep } = require('../dPUtils');
+const { getRowsNeededParsing } = require('../dPUtils');
 
 
 const getOrCreateJudge = async (connection, judgeName) => {
@@ -202,8 +202,6 @@ const snParser = async (database, logger) => {
         logger.error('snParser error:', error);
         throw error;
     }
-    await sleep(60000);
-    snParser(database, logger);
 };
 
 

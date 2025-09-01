@@ -1,5 +1,5 @@
 const cheerio = require('cheerio');
-const { getRowsNeededParsing, sleep } = require('../dPUtils');
+const { getRowsNeededParsing } = require('../dPUtils');
 
 
 async function getOrCreateArticle(database, articleReference) {
@@ -349,9 +349,6 @@ const uzpParser = async (database, logger) => {
     } catch (error) {
         logger.error('uzpParser error:', error);
     }
-
-    await sleep(60000);
-    uzpParser(database, logger);
 };
 
 
