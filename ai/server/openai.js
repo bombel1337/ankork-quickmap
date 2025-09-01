@@ -49,3 +49,19 @@ ${ctx.map((c,i)=>`[${i+1}] (${c.dt || "?"}, prawomocne:${c.prawomocne ?? "?"}, l
 
   return safe + "\n" + tail;
 }
+export async function answerWithContext(question, ctx) {
+  const prompt = `Pytanie: ${question}
+
+Kontekst:
+${ctx.map((c,i)=>`[${i+1}] (${c.dt || "?"}, prawomocne:${c.prawomocne ?? "?"}) ${c.snippet}`).join("\n\n")}`;
+
+  const r = await oai.chat.completions.create({
+    model: cfg.openai.chatModel,
+    temperature: 0.1,
+    messages: [{ role: 'system', content: sys }, { role: 'user', content: prompt }]
+  });
+
+  const raw = r.choices[0]?.message?.content || "";
+  const safe = stripModelExamples(raw);
+  return safe;
+}

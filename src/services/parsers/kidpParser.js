@@ -102,7 +102,7 @@ const saveDataToDatabase = async (database, parsedData, logger) => {
                 email = VALUES(email),
                 adres = VALUES(adres),
                 strona_http = VALUES(strona_http),
-                strona_http = VALUES(page_link),
+                page_link = VALUES(page_link),
                 created_at = NOW()
         `;
         

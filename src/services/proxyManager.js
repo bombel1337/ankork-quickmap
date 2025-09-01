@@ -2,7 +2,25 @@ const fs = require('fs');
 const log4js = require('log4js');
 const logger = log4js.getLogger('proxyManager');
 
-
+function mask(p) {
+    if (!p) return p;
+    // http://user:pass@host:port  -> http://***:***@host:port
+    try {
+        const u = new URL(p);
+        if (u.username || u.password) {
+            u.username = '***';
+            u.password = '***';
+            return u.toString();
+        }
+    } catch {
+        return p; // jeśli nie jest to prawidłowy URL, zwróć oryginał
+    }
+    if (p.includes('@')) {
+        const [, host] = p.split('@');
+        return `***:***@${host}`;
+    }
+    return p;
+}
 class ProxyManager {
     constructor(proxyFilePath = 'proxies.txt') {
         this.proxyFilePath = proxyFilePath;
@@ -11,9 +29,10 @@ class ProxyManager {
         this.usedProxies = new Set(); 
         this.loadProxies();
     }
-    isProxyless() {
-        return this.isProxyless;
+    get isProxyless() {
+        return this.proxies.length === 0;
     }
+
     getProxyBasedOnConfig(config) {
         if (config?.proxies?.enabled && config?.proxyManager) {
             const proxy =  config.proxies.rotate === 'random'
@@ -26,13 +45,13 @@ class ProxyManager {
     loadProxies() {
         try {
             const fileContent = fs.readFileSync(this.proxyFilePath, 'utf8');
-            this.proxies = fileContent.split('\n')
-                .map(line => line.trim())
-                .filter(line => line !== '');
-
-
-            this.isProxyless = this.proxies.length === 0;
-
+            this.proxies = [...new Set(
+                fileContent
+                    .split('\n')
+                    .map(line => line.trim())
+                    .filter(line => line && !line.startsWith('#')) // pomiń puste i komentarze
+            )];
+      
             logger.info(`Loaded ${this.proxies.length} proxies from ${this.proxyFilePath}`);
       
             if (this.proxies.length === 0) {
@@ -40,31 +59,31 @@ class ProxyManager {
                 logger.warn('No valid proxies found in the proxy file');
             }
             this.usedProxies.clear();
+            this.currentProxyIndex = 0; // reset indeksu po przeładowaniu
 
         } catch (error) {
             logger.error(`Failed to load proxy file: ${error.message}`);
             this.proxies = [];
+            this.usedProxies.clear();
+            this.currentProxyIndex = 0;
         }
     }
 
     getNextProxy() {
-        if (this.proxies.length === 0) {
-            if (!this.isProxyless)    logger.warn('No proxies available');
-            return undefined;
-        }
+        if (this.isProxyless)  {logger.warn('No proxies available');  return undefined;}
+
 
         const proxy = this.proxies[this.currentProxyIndex];
-        logger.debug(`Using proxy: ${(proxy)}`);
+        logger.debug(`Using proxy: ${mask(proxy)}`);
+
     
         this.currentProxyIndex = (this.currentProxyIndex + 1) % this.proxies.length; // (9 + 1) % 10 = 0
     
         return this.formatProxy(proxy);
     }
     getRandomProxy() {
-        if (this.proxies.length === 0) {
-            if (!this.isProxyless)    logger.warn('No proxies available');
-            return undefined;
-        }
+        if (this.isProxyless)  {logger.warn('No proxies available');  return undefined;}
+
 
         if (this.usedProxies.size >= this.proxies.length) {
             this.usedProxies.clear();
@@ -79,7 +98,7 @@ class ProxyManager {
     
         this.usedProxies.add(proxy);
     
-        logger.debug(`Randomly selected proxy: ${(proxy)}`);
+        logger.debug(`Randomly selected proxy: ${mask(proxy)}`);
     
         return this.formatProxy(proxy);
     }

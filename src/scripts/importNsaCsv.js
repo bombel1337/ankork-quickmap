@@ -14,7 +14,12 @@ const csvFilePath = path.resolve(__dirname, '../../results.csv');
 const dbTable = 'scraped_data';
 const uniqueColumn = 'link'; // Column used to check for duplicates
 // ---------------------
-
+async function isUnique(database, table, column, value) {
+    const [rows] = await database.pool.query(
+        'SELECT 1 FROM ?? WHERE ?? = ? LIMIT 1', [table, column, value]
+    );
+    return rows.length === 0;
+}
 const importData = async () => {
     logger.info(`Starting CSV import from: ${csvFilePath}`);
 
@@ -66,8 +71,8 @@ const importData = async () => {
                 };
 
                 // Check uniqueness before attempting insert
-                const isUnique = await database.isUnique(dbTable, uniqueColumn, link);
-                if (!isUnique) {
+                const ok = await isUnique(database, dbTable, uniqueColumn, link);
+                if (!ok) {
                     logger.info(`Skipping row ${rowsProcessed}: Link '${link}' already exists in ${dbTable}`);
                     rowsSkipped++;
                 } else {
