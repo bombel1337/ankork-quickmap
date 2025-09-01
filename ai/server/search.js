@@ -2,18 +2,27 @@ import { MongoClient } from 'mongodb';
 import { cfg } from './config.js';
 import { oai } from './openai.js';
 
-export async function vectorSearch(question, topK, numCandidates) {
-  const mc = new MongoClient(cfg.mongo.uri);
-  await mc.connect();
-  const col = mc.db(cfg.mongo.db).collection(cfg.mongo.coll);
+const mc = new MongoClient(cfg.mongo.uri);
+let colPromise;
 
-  // 1) embedding zapytania
+async function getCollection() {
+  if (!colPromise) {
+    colPromise = (async () => {
+      await mc.connect();
+      return mc.db(cfg.mongo.db).collection(cfg.mongo.coll);
+    })();
+  }
+  return colPromise;
+}
+
+export async function vectorSearch(question, topK, numCandidates) {
+  const col = await getCollection();
+
   const emb = (await oai.embeddings.create({
     model: cfg.openai.embedModel,
     input: [question]
   })).data[0].embedding;
 
-  // 2) Vector Search pipeline
   const pipeline = [
     {
       $vectorSearch: {
@@ -33,7 +42,6 @@ export async function vectorSearch(question, topK, numCandidates) {
   ];
 
   const docs = await col.aggregate(pipeline).toArray();
-  await mc.close();
 
   return docs.map(d => ({
     link: d.link,

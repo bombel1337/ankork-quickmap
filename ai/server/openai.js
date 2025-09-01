@@ -13,9 +13,17 @@ const SYS = [
 ].join(' ');
 
 function stripModelExamples(text) {
-  if (!text) return text;
-  // wytnij wszystko od nagłówków typu "Przykłady orzeczeń"
-  return text.replace(/(?:^|\n)Przykłady\s+orzeczeń:[\s\S]*$/i, '').trim();
+  if (!text) return '';
+  // 1) utnij wszystko od nagłówka "Przykłady orzeczeń:" (również gdy jest \r\n)
+  let out = text.replace(/(?:^|[\r\n])\s*przykłady\s+orzeczeń\s*:[\s\S]*$/i, '');
+
+  // 2) usuń wszystkie URL-e (model czasem je „przemyca”)
+  out = out.replace(/\bhttps?:\/\/\S+/gi, '');
+
+  // 3) porządki w białych znakach
+  out = out.replace(/[ \t]+\n/g, '\n').trim();
+
+  return out;
 }
 
 export async function embedBatch(texts) {
@@ -44,10 +52,10 @@ ${ctx.map((c, i) =>
   });
 
   const raw = r.choices[0]?.message?.content || '';
-  const safe = stripModelExamples(raw);
+  let safe = stripModelExamples(raw);
 
-  // zawsze kończ klauzulą prawną (jeśli model jej nie dodał)
-  return /\bto nie jest porada prawna\b/i.test(safe)
-    ? safe
-    : `${safe}\n\nTo nie jest porada prawna.`;
+  if (!/\bto nie jest porada prawna\b/i.test(safe)) {
+    safe += `\n\nTo nie jest porada prawna.`;
+  }
+  return safe.trim();
 }

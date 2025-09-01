@@ -104,7 +104,7 @@ const scrape = async (config) => {
                 if (statusCode == 200) {
                     if (maxPage === 0) {
                         maxPage = Helper.getLastPageNumber(body);
-                        allResultsLength = Helper.getResultsLength(body);
+                        allResultsLength = Helper.getResultsLength(body, sinceDate);
                         logger.log(`Starting at page: ${page}, out of: ${maxPage} for date since: ${sinceDate} to ${todaysDate}. All results length ${allResultsLength}`);
                     } else  if (allResultsLength <= 10) {
                         logger.log(`Running last page: ${page}.`);
