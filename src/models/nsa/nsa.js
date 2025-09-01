@@ -180,7 +180,7 @@ const processDateRange = async (config, fromDate, toDate, retryCount = 0) => {
         if (statusCode === 200) {
             const maxPage = Helper.extractMaxPage(body);
             logger.info(`Max page number: ${maxPage}`);
-            for (let page = maxPage; page >= 1; page--) {
+            for (let page = 1; page <= maxPage; page++) {
                 const url = `https://orzeczenia.nsa.gov.pl/cbo/find?p=${page}`;
                 logger.info(`Processing page ${page} of ${maxPage}`);
                 const { status, body } = await processPage(url, config, gotScraping);
@@ -188,18 +188,62 @@ const processDateRange = async (config, fromDate, toDate, retryCount = 0) => {
                 const results = Helper.extractElements(body);
                 // Helper.saveResultsToCsv(results, page, `${fromDate} - ${toDate}`);
 
-                // Insert results into the database
+                // Insert results into the database and scrape individual links
+                const scrapingPromises = [];
+                
                 for (const result of results) {
                     try {
+                        const link = `https://orzeczenia.nsa.gov.pl${result.href}`;
+                        // First insert the basic data
                         await config.database.insertData('scraped_data', {
-                            link: result.href,
+                            link,
                             date: result.date,
-                            title: result.title
+                            title: result.title,
+                            current_page: page,
+                            date_range_from: fromDate,
+                            date_range_to: toDate
                         }, 'link'); 
+                        
+                        // Create a promise for scraping the individual link
+                        const scrapingPromise = (async () => {
+                            try {
+                                logger.info(`Scraping individual link: ${link}`);
+
+                                const singleLinkResults = await processSingleLink(link, config, gotScraping);
+
+                                // Update the record with HTML content and other details
+                                await config.database.updateData('scraped_data', {
+                                    status_code: singleLinkResults.status,
+                                    prawomocne: singleLinkResults.prawomocne,
+                                    uzasadnienie: singleLinkResults.uzasadnienie,
+                                    link_html: singleLinkResults.body
+                                }, 'link', link);
+
+                                logger.info(`Successfully scraped and updated: ${link}`);
+                            } catch (scrapingError) {
+                                logger.error(`Failed to scrape individual link ${link}: ${scrapingError.message}`);
+                            }
+                        })();
+                        
+                        scrapingPromises.push(scrapingPromise);
+                        
                     } catch (dbError) {
                         logger.error(`Failed to insert record with link ${result.href}: ${dbError.message}`);
                     }
                 }
+                
+                // Wait for all individual link scraping to complete
+                logger.info(`Waiting for ${scrapingPromises.length} individual links to finish scraping...`);
+                const scrapingResults = await Promise.allSettled(scrapingPromises);
+                
+                // Log results summary
+                const successful = scrapingResults.filter(result => result.status === 'fulfilled').length;
+                const failed = scrapingResults.filter(result => result.status === 'rejected');
+                logger.info(`Completed scraping all individual links for page ${page}: ${successful} successful, ${failed.length} failed`);
+                
+                failed.forEach((result, index) => {
+                    logger.error(`Failed to scrape link at index ${index}: ${result.reason}`);
+                });
 
                 await sleep(config.delay);
             }
