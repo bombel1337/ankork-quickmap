@@ -48,16 +48,16 @@ const config = {
             database: new Database(Sites.orzeczenia_nsa_gov),
             useDataParser: false,
             // dataParser: createDataParser(Sites.orzeczenia_nsa_gov),
-            pageLinksScraper: true,
-            singleLinksScraper: false,
-            delay: 15,
+            pageLinksScraper: false,
+            singleLinksScraper: true,
+            delay: 1111,
             retryDelay: 10000,
             proxies: {
                 enabled: true,
                 rotate: 'random' // 'random' or 'sequential'
             },   
-            toDate: '2025-08-31', // 'yyyy-mm-dd'
-            sinceDate: '2020-01-01', // 'yyyy-mm-dd'  
+            toDate: '2023-07-06', // 'yyyy-mm-dd'
+            sinceDate: '2010-01-01', // 'yyyy-mm-dd'  
         },
         kidp: {
             enabled: false,

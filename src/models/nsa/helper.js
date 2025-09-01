@@ -108,7 +108,7 @@ class NsaHelper {
                 currentStart.setDate(currentStart.getDate() + 1);
             }
           
-            return ranges;           
+            return ranges;            
         } catch (error) {
             throw new Error(`NsaHelper createDateRanges: ${error.message}`);
         }
