@@ -2,4 +2,5 @@ logs
 node_modules
 *.csv
 .env
+*.txt
 proxies.txt
