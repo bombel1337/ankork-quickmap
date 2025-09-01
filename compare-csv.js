@@ -30,10 +30,8 @@ async function processFiles() {
     
         console.log(`Loaded ${nsaLinks.size} links from NSA decisions file`);
     
-        // Now read results_check.csv and check each link against the Set
         const missingRecords = [];
     
-        // Create a readable stream for the results_check.csv file
         const resultsParser = fs
             .createReadStream(resultsCheckPath)
             .pipe(parse({

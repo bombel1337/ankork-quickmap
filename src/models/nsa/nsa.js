@@ -257,7 +257,9 @@ const singlesScraper = async (config) => {
                 prawomocne: results.prawomocne,
                 uzasadnienie: results.uzasadnienie,
                 link_html: results.body
-            }, 'link', link);       
+            }, 'link', link);      
+            await sleep(config.delay);
+ 
         }
 
     } catch (error) {

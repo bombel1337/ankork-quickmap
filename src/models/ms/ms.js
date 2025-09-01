@@ -70,7 +70,7 @@ const scrape = async (config) => {
         let maxPage = 0;
         let allResultsLength = 0;
         let retryCount = 0;
-        while (page !== maxPage){
+        while (maxPage === 0 || page <= maxPage){
             const url = `https://orzeczenia.ms.gov.pl/search.gridpager/${page}?t:ac=advanced/$N/$N/$N/$N/$N/$N/$N/${sinceDate}/${todaysDate}/$N/$N/$N/$N/$N/$N/score/descending/${page}`;
 
             try {
@@ -181,7 +181,7 @@ const scrape = async (config) => {
                 }
 
             }
-
+            page += 1;
         } 
 
         

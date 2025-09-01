@@ -1,5 +1,5 @@
 const getLogger = require('../../utils/logger');
-const logger = getLogger('ms-helper');  
+const logger = getLogger('kidp-helper');  
 const cheerio = require('cheerio');
 
 class KidpHelper {

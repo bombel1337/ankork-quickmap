@@ -12,19 +12,6 @@ const SYS = [
   'Na końcu dodaj zdanie: "To nie jest porada prawna."'
 ].join(' ');
 
-function stripModelExamples(text) {
-  if (!text) return '';
-  // 1) utnij wszystko od nagłówka "Przykłady orzeczeń:" (również gdy jest \r\n)
-  let out = text.replace(/(?:^|[\r\n])\s*przykłady\s+orzeczeń\s*:[\s\S]*$/i, '');
-
-  // 2) usuń wszystkie URL-e (model czasem je „przemyca”)
-  out = out.replace(/\bhttps?:\/\/\S+/gi, '');
-
-  // 3) porządki w białych znakach
-  out = out.replace(/[ \t]+\n/g, '\n').trim();
-
-  return out;
-}
 
 export async function embedBatch(texts) {
   const r = await oai.embeddings.create({
@@ -52,10 +39,9 @@ ${ctx.map((c, i) =>
   });
 
   const raw = r.choices[0]?.message?.content || '';
-  let safe = stripModelExamples(raw);
 
-  if (!/\bto nie jest porada prawna\b/i.test(safe)) {
-    safe += `\n\nTo nie jest porada prawna.`;
+  if (!/\bto nie jest porada prawna\b/i.test(raw)) {
+    raw += `\n\nTo nie jest porada prawna.`;
   }
-  return safe.trim();
+  return raw.trim();
 }

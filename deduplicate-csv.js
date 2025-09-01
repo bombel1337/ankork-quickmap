@@ -13,7 +13,7 @@ async function removeDuplicatesFromCsv(inputFile, outputFile) {
     return new Promise((resolve, reject) => {
         try {
             const results = [];
-            const titleSet = new Set();
+            const linkSet = new Set();
             let duplicatesCount = 0;
             let totalRows = 0;
       
@@ -22,8 +22,8 @@ async function removeDuplicatesFromCsv(inputFile, outputFile) {
                 .on('data', (data) => {
                     totalRows++;
                     // Check if we've seen this title before
-                    if (!titleSet.has(data.title)) {
-                        titleSet.add(data.title);
+                    if (!linkSet.has(data.title)) {
+                        linkSet.add(data.title);
                         results.push(data);
                     } else {
                         duplicatesCount++;

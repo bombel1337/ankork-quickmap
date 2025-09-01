@@ -77,7 +77,7 @@ const importData = async () => {
                     rowsSkipped++;
                 } else {
                     // We don't need insertData's unique check now, but we still use it for column creation and ID generation.
-                    await database.insertData(dbTable, dataToInsert, null); 
+                    await database.insertData(dbTable, dataToInsert, 'link'); 
                     rowsImported++;
                     if (rowsImported % 100 === 0) { // Log progress every 100 imports
                         logger.info(`Processed ${rowsProcessed} rows, Imported ${rowsImported} rows...`);
