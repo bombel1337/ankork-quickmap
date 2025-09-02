@@ -1,8 +1,8 @@
+// server/ingest.js
 import crypto from 'node:crypto';
 import mysql from 'mysql2/promise';
 import { MongoClient } from 'mongodb';
 import { htmlToText } from 'html-to-text';
-import pLimit from 'p-limit';
 import { cfg } from './config.js';
 import { embedBatch } from './openai.js';
 
@@ -10,7 +10,7 @@ const sha = (s) => crypto.createHash('sha256').update(s, 'utf8').digest('hex');
 
 function chunkText(txt, size, overlap) {
   if (!txt) return [];
-  const clean = txt.replace(/\s+/g, ' ').trim();
+  const clean = cfg.sanitize ? txt.replace(/\s+/g, ' ').trim() : (txt || '');
   const out = [];
   let i = 0;
   while (i < clean.length) {
@@ -21,78 +21,123 @@ function chunkText(txt, size, overlap) {
   return out;
 }
 
+function safeParseJSON(x) {
+  if (!x) return null;
+  if (typeof x === 'object') return x;
+  try { return JSON.parse(String(x)); } catch { return null; }
+}
+
+function maybeDate(s) {
+  if (!s) return null;
+  const t = Date.parse(s);
+  return Number.isFinite(t) ? new Date(t) : null;
+}
+
 async function main() {
+  // --- MySQL unified ---
   const my = await mysql.createConnection({
     host: cfg.mysql.host,
     port: cfg.mysql.port,
     user: cfg.mysql.user,
     password: cfg.mysql.password,
-    database: cfg.mysql.database
+    database: cfg.mysql.database, // np. 'ai_unified'
+    charset: 'utf8mb4',
   });
 
+  // --- MongoDB ---
   const mc = new MongoClient(cfg.mongo.uri);
   await mc.connect();
   const col = mc.db(cfg.mongo.db).collection(cfg.mongo.coll);
 
-  // ⚠️ HARD REFRESH: czyść kolekcję przy starcie (zachowuje indeks Vector Search)
+  // HARD REFRESH (zostawia index Atlas Search/Vector)
   if (process.env.RESET_BEFORE_INGEST === '1') {
     const del = await col.deleteMany({});
     console.log(`RESET_BEFORE_INGEST=1 → usunięto ${del.deletedCount} dokumentów z ${cfg.mongo.db}.${cfg.mongo.coll}`);
   }
 
-  // indeksy (idempotentnie)
+  // idempotentne indeksy
   await col.createIndex({ text_hash: 1 }, { unique: true }).catch(() => {});
   await col.createIndex({ dt: 1 }).catch(() => {});
   await col.createIndex({ link: 1 }).catch(() => {});
-
+  await col.createIndex({ source: 1, source_pk: 1 }).catch(() => {});
 
   let offset = 0, processed = 0;
-  const limit = cfg.ingest.batchRows;
-  const size = cfg.chunk.size, overlap = cfg.chunk.overlap;
+  const batchRows = Number(cfg.ingest.batchRows) || 1000;
+  const size = Number(cfg.chunk.size) || 8000;
+  const overlap = Number(cfg.chunk.overlap) || 1000;
+  const maxRows = Number(cfg.ingest.maxRows ?? -1);
 
   while (true) {
-    if (cfg.ingest.maxRows !== -1 && processed >= cfg.ingest.maxRows) break;
+    if (maxRows !== -1 && processed >= maxRows) break;
 
-    const lim = Number(limit) | 0;
-    const off = Number(offset) | 0;
     const sql = `
-      SELECT id, created_at, updated_at, status_code, link,
-            \`date\` AS date, link_html, prawomocne, uzasadnienie, title
+      SELECT
+        unified_id AS id,
+        source,
+        source_pk,
+        title,
+        date_text,
+        link,
+        created_at,
+        updated_at,
+        content_text,
+        meta
       FROM \`${cfg.mysql.table}\`
-      WHERE status_code=200 AND link_html IS NOT NULL AND link_html <> ''
-      ORDER BY id
-      LIMIT ${lim} OFFSET ${off}
+      WHERE (content_text IS NOT NULL AND content_text <> '')
+      ORDER BY unified_id
+      LIMIT ? OFFSET ?
     `;
-    const [rows] = await my.query(sql);
-
+    const [rows] = await my.query(sql, [batchRows, offset]);
     if (!rows.length) break;
-    offset += rows.length; processed += rows.length;
+
+    offset += rows.length;
+    processed += rows.length;
 
     // 1) przygotuj chunki
     const envelope = [];
     for (const r of rows) {
-      const text = htmlToText(r.link_html || '', { wordwrap: false, selectors: [{ selector: 'a', options: { ignoreHref: true }}] });
-      if (!text || text.length < 50) continue;
+      const meta = safeParseJSON(r.meta);
+      const body =
+        (r.content_text && String(r.content_text).trim()) ||
+        htmlToText(r.content_html || '', { wordwrap: false, selectors: [{ selector: 'a', options: { ignoreHref: true } }] }) ||
+        '';
+
+      if (!body || body.length < 50) continue;
+
+      const headerParts = [];
+      if (r.title) headerParts.push(`Tytuł: ${r.title}`);
+      if (r.date) headerParts.push(`Data: ${r.date}`);
+      if (r.source) headerParts.push(`Źródło: ${r.source}${r.source_pk ? ` (${r.source_pk})` : ''}`);
+      if (r.link) headerParts.push(`Link: ${r.link}`);
+      const header = headerParts.join('\n');
+
+      const text = [header, body].filter(Boolean).join('\n\n');
       const chunks = chunkText(text, size, overlap);
+
       chunks.forEach((ch, idx) => {
         const hash = sha(`${r.id}:${idx}:${ch}`);
-        envelope.push({ r, idx, ch, hash });
+        envelope.push({ r: { ...r, meta }, idx, ch, hash });
       });
     }
+
     if (!envelope.length) { console.log(`offset=${offset}: brak chunków`); continue; }
 
     // 2) sprawdź, które już istnieją
     const hashes = envelope.map(e => e.hash);
-    const existing = await col.find({ text_hash: { $in: hashes } }, { projection: { text_hash: 1, embedding: 1 } }).toArray();
+    const existing = await col.find(
+      { text_hash: { $in: hashes } },
+      { projection: { text_hash: 1, embedding: 1 } }
+    ).toArray();
+
     const existsMap = new Map(existing.map(x => [x.text_hash, !!x.embedding]));
     const toInsert = [];
     const toEmbed = [];
 
     for (const e of envelope) {
       const had = existsMap.get(e.hash);
-      if (had === true) continue;               // jest i ma embedding
-      if (had === undefined) toInsert.push(e);  // nowy dokument
-      toEmbed.push(e);                           // trzeba policzyć embedding
+      if (had === true) continue;           // jest i ma embedding
+      if (had === undefined) toInsert.push(e); // nowy dokument
+      toEmbed.push(e);                      // policz embedding
     }
 
     // 3) insert nowych bez embeddingu (upsert)
@@ -102,14 +147,20 @@ async function main() {
           filter: { text_hash: e.hash },
           update: {
             $setOnInsert: {
-              source_id: e.r.id,
+              text_hash: e.hash,
+              source_id: e.r.id,          // unified_id
+              source: e.r.source,
+              source_pk: e.r.source_pk,
               link: e.r.link,
               title: e.r.title,
-              dt: e.r.date ? new Date(e.r.date) : null,
-              prawomocne: e.r.prawomocne,
-              uzasadnienie: e.r.uzasadnienie,
+              date_str: e.r.date || null, // oryginalny string
+              dt: maybeDate(e.r.date),    // Date lub null
+              status_code: e.r.status_code ?? null,
+              created_at: e.r.created_at ?? null,
+              updated_at: e.r.updated_at ?? null,
+              meta: e.r.meta ?? null,
               chunk_index: e.idx,
-              text: e.ch
+              text: e.ch,
             }
           },
           upsert: true
@@ -119,8 +170,8 @@ async function main() {
     }
 
     // 4) policz embeddingi i zapisz
-    for (let i = 0; i < toEmbed.length; i += cfg.ingest.embedBatch) {
-      const batch = toEmbed.slice(i, i + cfg.ingest.embedBatch);
+    for (let i = 0; i < toEmbed.length; i += Number(cfg.ingest.embedBatch) || 128) {
+      const batch = toEmbed.slice(i, i + (Number(cfg.ingest.embedBatch) || 128));
       const vecs = await embedBatch(batch.map(b => b.ch));
       const bulk = [];
       for (let j = 0; j < batch.length; j++) {
@@ -137,7 +188,8 @@ async function main() {
     console.log(`offset=${offset}, wierszy=${rows.length}, nowe=${toInsert.length}, embedowane=${toEmbed.length}`);
   }
 
-  await my.end(); await mc.close();
+  await my.end();
+  await mc.close();
   console.log('Ingest zakończony.');
 }
 

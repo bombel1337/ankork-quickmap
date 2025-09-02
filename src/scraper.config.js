@@ -18,9 +18,13 @@ const config = {
         uzp: {
             enabled: false,
             database: new Database(Sites.orzeczenia_uzp_gov),
-            useDataParser: false,
+            useDataParser: true,
             dataParser: createDataParser(Sites.orzeczenia_uzp_gov),
-            delay: 111,
+            delay: 15,
+            proxies: {
+                enabled: true,
+                rotate: 'random' // 'random' or 'sequential'
+            },  
             scrapLength: 125,
         },
         sn: {
@@ -28,15 +32,19 @@ const config = {
             database: new Database(Sites.sad_najwyzszy),
             useDataParser: true,
             dataParser: createDataParser(Sites.sad_najwyzszy),
-            delay: 11551,
-            sinceDate: '2025-02-18', // 'yyyy-mm-dd'    
+            delay: 15,
+            proxies: {
+                enabled: true,
+                rotate: 'random' // 'random' or 'sequential'
+            },  
+            sinceDate: '2020-01-01', // 'yyyy-mm-dd'    
         },
         ms: {
             enabled: false,
             database: new Database(Sites.orzeczenia_ms_gov),
-            useDataParser: false,
+            useDataParser: true,
             dataParser: createDataParser(Sites.orzeczenia_ms_gov),
-            delay: 1111,
+            delay: 15,
             sinceDate: '2020-01-01', // 'yyyy-mm-dd' 
             proxies: {
                 enabled: true,
@@ -44,12 +52,13 @@ const config = {
             },   
         },
         nsa: {
-            enabled: false,
+            enabled: true,
             database: new Database(Sites.orzeczenia_nsa_gov),
             useDataParser: true,
             dataParser: createDataParser(Sites.orzeczenia_nsa_gov),
-            singleLinksScraper: false,
-            delay: 1111,
+            pagesScraper: false,
+            singleLinksScraper: true,
+            delay: 15,
             retryDelay: 10000,
             proxies: {
                 enabled: true,

@@ -13,7 +13,7 @@ const logger = getLogger('uzp');
 
 
 
-const getIFrameContent = async (url, config, gotScraping) => {
+const getIFrameContent = async (url, config, gotScraping, proxy) => {
     try {
         let {body, statusCode} = await gotScraping.get({
             url,			
@@ -36,11 +36,7 @@ const getIFrameContent = async (url, config, gotScraping) => {
             followRedirect: false,
             cookieJar: config.cookieJar,
             throwHttpErrors: false,
-            proxyUrl: config?.proxyManager
-                ? config.proxies.rotate === 'random'
-                    ? config.proxyManager.getRandomProxy()
-                    : config.proxyManager.getNextProxy()
-                : undefined,        
+            proxyUrl: proxy,     
             timeout: {
                 request: config.timeout,
             },
@@ -74,6 +70,11 @@ const scrape = async (config) => {
             
             do {
                 try {
+                    const proxy = config?.proxyManager
+                        ? config.proxies.rotate === 'random'
+                            ? config.proxyManager.getRandomProxy()
+                            : config.proxyManager.getNextProxy()
+                        : undefined;
                     let { body, statusCode } = await gotScraping.get({
                         url:`https://orzeczenia.uzp.gov.pl/Home/Details/${nextIndex}`,			
                         headers: {
@@ -95,11 +96,7 @@ const scrape = async (config) => {
                         followRedirect: false,
                         cookieJar: config.cookieJar,
                         throwHttpErrors: false,
-                        proxyUrl: config?.proxyManager
-                            ? config.proxies.rotate === 'random'
-                                ? config.proxyManager.getRandomProxy()
-                                : config.proxyManager.getNextProxy()
-                            : undefined,        
+                        proxyUrl: proxy,        
                         timeout: {
                             request: config.timeout,
                         },
@@ -107,7 +104,7 @@ const scrape = async (config) => {
                     if (statusCode == 200) {
                         const {detailsMetrics, iFrame, title} = await Helper.getDetailsMetricsDivAndIframe(body); 
                         await sleep(config.delay);
-                        const {status, results} = await getIFrameContent(iFrame, config, gotScraping);
+                        const {status, results} = await getIFrameContent(iFrame, config, gotScraping, proxy);
                         if (status !== 200) {
                             throw new Error(`bad statusCode in iFrame scraping: ${status}`);
                         }

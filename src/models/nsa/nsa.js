@@ -198,8 +198,14 @@ const processDateRange = async (config, fromDate, toDate, retryCount = 0) => {
                         await config.database.insertData('scraped_data', {
                             link,
                             date: result.date,
-                            title: result.title
+                            title: result.title,
+                            current_page: page,
+                            date_range_from: fromDate,
+                            date_range_to: toDate
                         }, 'link'); 
+
+
+                        
                     } catch (dbError) {
                         logger.error(`Failed to insert record with link ${result.href}: ${dbError.message}`);
                     }
@@ -295,7 +301,7 @@ async function scraper(config) {
     const tasks = [];
     await config.database.initialize();
 
-    if (config.models[Sites.orzeczenia_nsa_gov] && config.models[Sites.orzeczenia_nsa_gov].enabled) {
+    if (config.models[Sites.orzeczenia_nsa_gov] && config.models[Sites.orzeczenia_nsa_gov].enabled && config.models[Sites.orzeczenia_nsa_gov].pagesScraper) {
         logger.info('Running model:', Sites.orzeczenia_nsa_gov);
         tasks.push(scrape(config));
     }

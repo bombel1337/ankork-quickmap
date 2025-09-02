@@ -61,11 +61,7 @@ const getDetails = async (url, config, gotScraping, proxyUrl, retryCount = 0) =>
             throw new Error('connection refused by server');
         }
         if (isMsCaptcha(body)) {
-            logger.warn(`Captcha detected for url: ${url}`);
-            return {
-                status: 403,
-                body: 'Captcha detected'
-            };
+            throw new Error('Captcha detected');
         }
         return { status: statusCode, body };
     } catch (error) {

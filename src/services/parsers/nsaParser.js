@@ -5,13 +5,11 @@ const { getRowsNeededParsing } = require('../dPUtils');
 const LABEL_MAP = {
     'Sygnatura': 'sygnatura',              // rzadko w tabeli – zwykle w nagłówku
     'Data orzeczenia': 'data_orzeczenia',
-    'Data publikacji': 'data_publikacji',
     'Data wpływu': 'data_wplywu',
     'Sąd': 'sad',
-    'Wydział': 'wydzial',
     'Sędziowie': 'sedziowie_raw',
     'Hasła tematyczne': 'hasla_tematyczne',
-    'Skarżony organ': 'skarzony_organ',
+    'Skarżony organ': 'oskarzony_organ',
     'Treść wyniku': 'tresc_wyniku',
     'Symbol z opisem': 'symbol_z_opisem',
     'Powołane przepisy': 'powolane_przepisy',
@@ -172,12 +170,10 @@ async function saveDataToDatabase(database, parsed, logger) {
         id,                -- trzymamy to samo id co w scraped_data
         sygnatura,
         data_orzeczenia,
-        data_publikacji,
         data_wplywu,
         sad,
-        wydzial,
         hasla_tematyczne,
-        skarzony_organ,
+        oskarzony_organ,
         tresc_wyniku,
         powolane_przepisy,
         sentencja,
@@ -190,12 +186,10 @@ async function saveDataToDatabase(database, parsed, logger) {
       ON DUPLICATE KEY UPDATE
         sygnatura = VALUES(sygnatura),
         data_orzeczenia = VALUES(data_orzeczenia),
-        data_publikacji = VALUES(data_publikacji),
         data_wplywu = VALUES(data_wplywu),
         sad = VALUES(sad),
-        wydzial = VALUES(wydzial),
         hasla_tematyczne = VALUES(hasla_tematyczne),
-        skarzony_organ = VALUES(skarzony_organ),
+        oskarzony_organ = VALUES(oskarzony_organ),
         tresc_wyniku = VALUES(tresc_wyniku),
         powolane_przepisy = VALUES(powolane_przepisy),
         sentencja = VALUES(sentencja),
@@ -210,12 +204,10 @@ async function saveDataToDatabase(database, parsed, logger) {
             parsed.id,
             parsed.sygnatura || null,
             parsed.data_orzeczenia || null,
-            parsed.data_publikacji || null,
             parsed.data_wplywu || null,
             parsed.sad || null,
-            parsed.wydzial || null,
             parsed.hasla_tematyczne || null,
-            parsed.skarzony_organ || null,
+            parsed.oskarzony_organ || null,
             parsed.tresc_wyniku || null,
             parsed.powolane_przepisy || null,
             parsed.sentencja || null,
@@ -315,12 +307,10 @@ const nsaParser = async (database, logger) => {
                 id: row.id, // utrzymujemy spójność klucza z scraped_data
                 sygnatura,
                 data_orzeczenia: info.data_orzeczenia || null,
-                data_publikacji: info.data_publikacji || null,
                 data_wplywu: info.data_wplywu || null,
                 sad: info.sad || null,
-                wydzial: info.wydzial || null,
                 hasla_tematyczne: info.hasla_tematyczne || null,
-                skarzony_organ: info.skarzony_organ || null,
+                oskarzony_organ: info.oskarzony_organ || null,
                 tresc_wyniku: info.tresc_wyniku || null,
                 powolane_przepisy: info.powolane_przepisy || null,
 
@@ -343,7 +333,7 @@ const nsaParser = async (database, logger) => {
             };
 
             // sanity: nie łataj placeholderami – jeśli czegoś nie znaleziono, zostaje null
-            ['data_orzeczenia', 'data_publikacji', 'data_wplywu'].forEach(k => {
+            ['data_orzeczenia', 'data_wplywu'].forEach(k => {
                 if (parsed[k] && /[A-Za-zążźćśńółęĄŻŹĆŚŃÓŁĘ]/.test(parsed[k])) parsed[k] = null; // odrzuć ew. "Data orzeczenia"
             });
 
