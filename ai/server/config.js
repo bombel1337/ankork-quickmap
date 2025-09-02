@@ -32,6 +32,6 @@ export const cfg = {
   api: {
     port: +process.env.PORT || 8000,
     topK: +process.env.TOP_K || 6,
-    numCandidates: +process.env.NUM_CANDIDATES || 200
+    numCandidates: +process.env.NUM_CANDIDATES || 200,
   }
 };
