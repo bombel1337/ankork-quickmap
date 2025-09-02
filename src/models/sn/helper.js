@@ -41,7 +41,7 @@ class SnHelper {
                 
                 const judgmentLink = $element.find('div.Download a').filter((i, el) => {
                     return $(el).text().includes('treść orzeczenia w wersji HTML');
-                }).attr('href').replace('http','https');
+                }).attr('href').replace('http:','https:');
                 
                 parseResults.push({
                     caseNumber,

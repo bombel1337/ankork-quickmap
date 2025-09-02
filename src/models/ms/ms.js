@@ -166,7 +166,7 @@ const scrape = async (config) => {
                 }
 
                 await sleep(config.delay);
-                retryCount = config.maxRetries;
+                retryCount = 0;
             } catch (error) {
                 logger.error(`Found error scraping ms: ${error.message}, date since: ${sinceDate} to ${todaysDate}, page ${page}`);
                 if (config.abortOnFailure) {

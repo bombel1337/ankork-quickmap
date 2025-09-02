@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb';
 import { cfg } from './config.js';
 import { oai } from './openai.js';
-
+import { embedBatch } from './openai.js';
 const mc = new MongoClient(cfg.mongo.uri);
 let colPromise;
 
@@ -18,10 +18,7 @@ async function getCollection() {
 export async function vectorSearch(question, topK, numCandidates) {
   const col = await getCollection();
 
-  const emb = (await oai.embeddings.create({
-    model: cfg.openai.embedModel,
-    input: [question]
-  })).data[0].embedding;
+  const [emb] = await embedBatch([question]);
 
   const pipeline = [
     {
