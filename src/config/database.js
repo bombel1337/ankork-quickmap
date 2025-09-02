@@ -53,7 +53,7 @@ class DatabaseService {
                 const vals = keys.map(() => '?').join(', ');
 
                 const updateKeys = keys.filter(k => k !== uniqueKey);
-                const updates = updateKeys.map(() => '??=VALUES(??)').join(', ');
+                const updates = updateKeys.map(() => '?? = VALUES(??)').join(', ');
 
                 const params = [
                     table,

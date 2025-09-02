@@ -63,10 +63,19 @@ if (selectedSite) {
     Object.keys(run).forEach(siteKey => {
         const m = config.models[siteKey];
         if (!m) return;
-        if (m.enabled || m.useDataParser) {
-            const what = m.useDataParser && !m.enabled ? 'parser' : 'scraper';
-            logger.log(`Running ${what} for site: ${siteKey}`);
+        if (m.enabled) {
+            logger.info(`Running scraper for site: ${siteKey}`);
             run[siteKey]();
+        } else if (m.useDataParser && m.dataParser?.parsingStrategy) {
+            (async () => {
+                logger.info(`Running parser for site: ${siteKey}`);
+                await m.database.initialize();
+                try {
+                    await m.dataParser.parsingStrategy(m.database, require('./utils/logger')('data-parser'));
+                } finally {
+                    await m.database.close();
+                }
+            })().catch(e => logger.error(e));
         }
     });
 }
