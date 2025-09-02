@@ -26,7 +26,7 @@ const config = {
         sn: {
             enabled: false,
             database: new Database(Sites.sad_najwyzszy),
-            useDataParser: false,
+            useDataParser: true,
             dataParser: createDataParser(Sites.sad_najwyzszy),
             delay: 11551,
             sinceDate: '2025-02-18', // 'yyyy-mm-dd'    
@@ -34,22 +34,22 @@ const config = {
         ms: {
             enabled: false,
             database: new Database(Sites.orzeczenia_ms_gov),
+            scrape: true,
             useDataParser: false,
             dataParser: createDataParser(Sites.orzeczenia_ms_gov),
             delay: 1111,
-            sinceDate: '2024-02-18', // 'yyyy-mm-dd' 
+            sinceDate: '2020-01-01', // 'yyyy-mm-dd' 
             proxies: {
                 enabled: true,
                 rotate: 'random' // 'random' or 'sequential'
             },   
         },
         nsa: {
-            enabled: true,
+            enabled: false,
             database: new Database(Sites.orzeczenia_nsa_gov),
             useDataParser: false,
             // dataParser: createDataParser(Sites.orzeczenia_nsa_gov),
-            pageLinksScraper: false,
-            singleLinksScraper: true,
+            singleLinksScraper: false,
             delay: 1111,
             retryDelay: 10000,
             proxies: {

@@ -5,7 +5,7 @@ const getRowsNeededParsing = async (database) => {
         SELECT * FROM scraped_data 
         WHERE status_code = 200 
         AND id NOT IN (SELECT id FROM parsed_data) ORDER BY id ASC
-      `;    
+      `;
     
         const [rows] = await database.pool.query(query);
         return rows;        

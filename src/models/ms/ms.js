@@ -6,7 +6,17 @@ const { Sites } = require('../../utils/constants');
 const Helper = require('./helper');
 const logger = getLogger('ms');  
 
-
+function isMsCaptcha(html) {
+    const markers = [
+        'Wykryliśmy zbyt dużą liczbę zapytań',
+        'id="captchaForm"',
+        '/captcharenderer/',
+        'name="captchaConfirmationField"',
+        'f5_cspm',
+        '/TSPD/?type='
+    ];
+    return markers.some(m => html.includes(m));
+}
 const getDetails = async (url, config, gotScraping, proxyUrl, retryCount = 0) => {
     try { 
         let {body, statusCode} = await gotScraping.get({
@@ -37,11 +47,25 @@ const getDetails = async (url, config, gotScraping, proxyUrl, retryCount = 0) =>
             },
         });
         if (statusCode !== 200) {
-            throw new Error(`getDetails: bad status code: ${statusCode}, url: ${url}`);
+            if (statusCode === 400) {
+                logger.warn(`Bad request for url: ${url}, probably doesn't exist.`);
+                return {
+                    status: statusCode,
+                    body: null
+                };
+            }
+            throw new Error(`bad status code: ${statusCode}, url: ${url}`);
         }
         if (body.includes('<title>Połączenie odrzucone</title>')) {
             proxyUrl = config.proxyManager.getProxyBasedOnConfig(config);
             throw new Error('connection refused by server');
+        }
+        if (isMsCaptcha(body)) {
+            logger.warn(`Captcha detected for url: ${url}`);
+            return {
+                status: 403,
+                body: 'Captcha detected'
+            };
         }
         return { status: statusCode, body };
     } catch (error) {
