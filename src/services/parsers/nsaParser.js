@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 const { getRowsNeededParsing } = require('../dPUtils');
 
 const LABEL_MAP = {
-    'Sygnatura': 'sygnatura',
+    'Sygnatura': 'sygnatura',              // rzadko w tabeli – zwykle w nagłówku
     'Data orzeczenia': 'data_orzeczenia',
     'Data publikacji': 'data_publikacji',
     'Data wpływu': 'data_wplywu',
@@ -14,18 +14,22 @@ const LABEL_MAP = {
     'Skarżony organ': 'skarzony_organ',
     'Treść wyniku': 'tresc_wyniku',
     'Symbol z opisem': 'symbol_z_opisem',
-    'Powołane przepisy': 'powolane_przepisy'
+    'Powołane przepisy': 'powolane_przepisy',
 };
 
 function textWithBrToLines($, el) {
-    // zamień <br> na \n i weź 'goły' tekst
     const html = $(el).html() || '';
-    return cheerio.load(`<div>${html}</div>`).text().replace(/\r/g, '').replace(/\n{2,}/g, '\n').trim();
+    return cheerio.load(`<div>${html}</div>`)('div')
+        .text()
+        .replace(/\r/g, '')
+        .replace(/\u00A0/g, ' ')
+        .replace(/\s+\n/g, '\n')
+        .replace(/\n{2,}/g, '\n')
+        .trim();
 }
 
 function splitListLike(value) {
     if (!value) return [];
-    // dzielenie po \n, średnikach, przecinkach – bez rozbijania dat typu "12, 34" w treści
     return value
         .split(/\n|;|(?<!\d),\s+/g)
         .map(s => s.trim())
@@ -35,7 +39,7 @@ function splitListLike(value) {
 function parseJudges(raw) {
     const items = splitListLike(raw);
     return items.map(s => {
-        // np. "Jan Kowalski /przewodniczący sprawozdawca/"
+    // "Jan Kowalski /przewodniczący sprawozdawca/"
         const m = s.match(/^(.*?)(?:\s*\/\s*([^/]+)\s*\/\s*)?$/u);
         const name = (m?.[1] || s).trim().replace(/\s{2,}/g, ' ');
         const role = (m?.[2] || '').trim();
@@ -45,64 +49,102 @@ function parseJudges(raw) {
 
 function parseSymbols(raw) {
     const items = splitListLike(raw);
-    // próbujemy złapać wiodący kod (3–4 cyfry), reszta jako opis
     return items.map(s => {
         const m = s.match(/^\s*(\d{3,4})\s*(.*)$/);
-        return m ? { code: m[1], opis: m[2].trim() || null } : { code: null, opis: s };
+        return m ? { code: m[1], opis: m[2].trim() || null } : { code: null, opis: s || null };
     });
+}
+
+function extractSygnatura($) {
+    // Przykład: "V SA/Wa 3345/24 - Wyrok WSA w Warszawie..."
+    const head = $('#warunek .war_header').first().text().trim() || $('title').first().text().trim();
+    if (!head) return null;
+    const beforeDash = head.split(/\s+-\s+/)[0].trim();
+    return beforeDash || null;
 }
 
 function extractInfoList($) {
     const out = {};
-    $('.info-list, table.info-list').each((_, tbl) => {
-        $(tbl).find('tr').each((__, tr) => {
-            const label = $(tr).find('.info-list-label, td:first-child, th:first-child').first().text().trim();
-            const key = LABEL_MAP[label];
-            if (!key) return;
-            const valCell = $(tr).find('.info-list-value, td:last-child').first();
-            const value = textWithBrToLines($, valCell);
-            if (!value) return;
-            if (key in out && out[key]) {
-                // jeśli wielokrotnie, łączymy z nową linią
-                out[key] = `${out[key]}\n${value}`;
-            } else {
-                out[key] = value;
-            }
-        });
+
+    // przejdź po wierszach właściwej tabeli z danymi
+    $('#res-div table.info-list tr').each((_, tr) => {
+        const $tr = $(tr);
+
+        // label zawsze jest w .lista-label (wewnętrzna tabelka w lewej kolumnie)
+        const label = $tr.find('.lista-label').first().text().trim();
+        const key = LABEL_MAP[label];
+        if (!key) return;
+
+        // standardowa prawa kolumna
+        const $valCell = $tr.find('.info-list-value').first();
+
+        // Uzasadnienie/Sentencja mają inny układ – łapiemy niżej w extractSections
+        if (!$valCell.length) {
+            return;
+        }
+
+        // W "Data orzeczenia" wartość siedzi w 1. <td>, a w 2. bywa "orzeczenie nieprawomocne"
+        let raw = '';
+        const firstTd = $valCell.find('td').first();
+        if (firstTd.length) {
+            raw = firstTd.text().trim();
+        } else {
+            raw = textWithBrToLines($, $valCell);
+        }
+
+        if (!raw) return;
+
+        if (out[key]) out[key] += `\n${raw}`;
+        else out[key] = raw;
+
+        // podgląd prawomocności jeśli akurat jesteśmy na wierszu z datą orzeczenia
+        if (key === 'data_orzeczenia') {
+            const side = $valCell.find('td').eq(1).text().toLowerCase();
+            if (side.includes('nieprawomocne')) out.__prawomocne_guess = 0;
+            else if (side.includes('prawomocne')) out.__prawomocne_guess = 1;
+        }
     });
+
     return out;
 }
 
 function extractSections($) {
-    const bodyText = $('body').text().replace(/\r/g, '').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
-
-    // Prosty heurystyczny rozdzielacz na podstawie nagłówków
-    const sentIdx = bodyText.search(/\bSENTENCJA\b|\bSentencja\b/u);
-    const uzasIdx = bodyText.search(/\bUZASADNIENIE\b|\bUzasadnienie\b/u);
-
+    // Sentencja bywa w wierszu z .info-list-label-uzasadnienie
     let sentencja = '';
-    let uzasadnienie = '';
+    const sentCell = $('.info-list-label-uzasadnienie .lista-label')
+        .filter((_, el) => $(el).text().trim().toLowerCase() === 'sentencja')
+        .closest('td')
+        .siblings('td')
+        .find('.info-list-value-uzasadnienie');
 
-    if (sentIdx !== -1 && uzasIdx !== -1) {
-        if (sentIdx < uzasIdx) {
-            sentencja = bodyText.slice(sentIdx, uzasIdx).trim();
-            uzasadnienie = bodyText.slice(uzasIdx).trim();
-        } else {
-            // rzadkie – gdy "Uzasadnienie" pojawia się wcześniej
-            uzasadnienie = bodyText.slice(uzasIdx, sentIdx).trim();
-            sentencja = bodyText.slice(sentIdx).trim();
+    if (sentCell.length) {
+        sentencja = textWithBrToLines($, sentCell);
+    } else {
+    // fallback – heurystyka po nagłówkach w tekście strony
+        const bodyText = $('body').text().replace(/\r/g, '').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+        const sentIdx = bodyText.search(/\bSENTENCJA\b|\bSentencja\b/u);
+        if (sentIdx !== -1) {
+            // do końca lub do UZASADNIENIE
+            const uzasIdx = bodyText.search(/\bUZASADNIENIE\b|\bUzasadnienie\b/u);
+            sentencja = bodyText.slice(sentIdx, uzasIdx !== -1 ? uzasIdx : undefined).trim();
         }
-    } else if (uzasIdx !== -1) {
-        uzasadnienie = bodyText.slice(uzasIdx).trim();
-    } else if (sentIdx !== -1) {
-        sentencja = bodyText.slice(sentIdx).trim();
     }
 
-    // Dodatkowa próba: czasem "Sentencja" jest w polu info-list – wtedy sekcja powyżej bywa pusta.
-    if (!sentencja) {
-        const ilSent = $('.info-list-label:contains("Sentencja")').closest('tr').find('.info-list-value');
-        if (ilSent.length) {
-            sentencja = textWithBrToLines($, ilSent);
+    // Uzasadnienie
+    let uzasadnienie = '';
+    const uzCell = $('.info-list-label-uzasadnienie .lista-label')
+        .filter((_, el) => $(el).text().trim().toLowerCase() === 'uzasadnienie')
+        .closest('td')
+        .siblings('td')
+        .find('.info-list-value-uzasadnienie');
+
+    if (uzCell.length) {
+        uzasadnienie = textWithBrToLines($, uzCell);
+    } else {
+        const bodyText = $('body').text().replace(/\r/g, '').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+        const uzasIdx = bodyText.search(/\bUZASADNIENIE\b|\bUzasadnienie\b/u);
+        if (uzasIdx !== -1) {
+            uzasadnienie = bodyText.slice(uzasIdx).trim();
         }
     }
 
@@ -114,57 +156,56 @@ function normalizeJoined(list) {
     return list.join(' | ');
 }
 
+function cap(str, len) {
+    if (str == null) return null;
+    const s = String(str);
+    return s.length > len ? s.slice(0, len) : s;
+}
+
 async function saveDataToDatabase(database, parsed, logger) {
     const conn = await database.pool.getConnection();
     await conn.beginTransaction();
     try {
-        // UWAGA: Twój DatabaseService i tak potrafi ALTER TABLE, ale tu robimy jeden INSERT/UPSERT jak w innych parserach
+    // upsert do parsed_data po UNIQUE(link)
         const sql = `
-            INSERT INTO parsed_data (
-                id,
-                sygnatura,
-                data_orzeczenia,
-                data_publikacji,
-                data_wplywu,
-                sad,
-                wydzial,
-                hasla_tematyczne,
-                skarzony_organ,
-                tresc_wyniku,
-                sedziowie,             -- złączone nazwiska
-                sedziowie_json,        -- pełny JSON z rolami
-                symbole,               -- złączone "kod opis"
-                symbole_json,          -- JSON tablicy {code, opis}
-                powolane_przepisy,     -- złączone
-                sentencja,
-                uzasadnienie,
-                prawomocne,            -- z scraped_data
-                uzasadnienie_flag,     -- z scraped_data
-                link,
-                tytul
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ON DUPLICATE KEY UPDATE
-                sygnatura = VALUES(sygnatura),
-                data_orzeczenia = VALUES(data_orzeczenia),
-                data_publikacji = VALUES(data_publikacji),
-                data_wplywu = VALUES(data_wplywu),
-                sad = VALUES(sad),
-                wydzial = VALUES(wydzial),
-                hasla_tematyczne = VALUES(hasla_tematyczne),
-                skarzony_organ = VALUES(skarzony_organ),
-                tresc_wyniku = VALUES(tresc_wyniku),
-                sedziowie = VALUES(sedziowie),
-                sedziowie_json = VALUES(sedziowie_json),
-                symbole = VALUES(symbole),
-                symbole_json = VALUES(symbole_json),
-                powolane_przepisy = VALUES(powolane_przepisy),
-                sentencja = VALUES(sentencja),
-                uzasadnienie = VALUES(uzasadnienie),
-                prawomocne = VALUES(prawomocne),
-                uzasadnienie_flag = VALUES(uzasadnienie_flag),
-                link = VALUES(link),
-                tytul = VALUES(tytul)
-        `;
+      INSERT INTO parsed_data (
+        id,                -- trzymamy to samo id co w scraped_data
+        sygnatura,
+        data_orzeczenia,
+        data_publikacji,
+        data_wplywu,
+        sad,
+        wydzial,
+        hasla_tematyczne,
+        skarzony_organ,
+        tresc_wyniku,
+        powolane_przepisy,
+        sentencja,
+        uzasadnienie,
+        prawomocne,
+        uzasadnienie_flag,
+        link,
+        tytul
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ON DUPLICATE KEY UPDATE
+        sygnatura = VALUES(sygnatura),
+        data_orzeczenia = VALUES(data_orzeczenia),
+        data_publikacji = VALUES(data_publikacji),
+        data_wplywu = VALUES(data_wplywu),
+        sad = VALUES(sad),
+        wydzial = VALUES(wydzial),
+        hasla_tematyczne = VALUES(hasla_tematyczne),
+        skarzony_organ = VALUES(skarzony_organ),
+        tresc_wyniku = VALUES(tresc_wyniku),
+        powolane_przepisy = VALUES(powolane_przepisy),
+        sentencja = VALUES(sentencja),
+        uzasadnienie = VALUES(uzasadnienie),
+        prawomocne = VALUES(prawomocne),
+        uzasadnienie_flag = VALUES(uzasadnienie_flag),
+        link = VALUES(link),
+        tytul = VALUES(tytul)
+    `;
+
         await conn.query(sql, [
             parsed.id,
             parsed.sygnatura || null,
@@ -176,21 +217,46 @@ async function saveDataToDatabase(database, parsed, logger) {
             parsed.hasla_tematyczne || null,
             parsed.skarzony_organ || null,
             parsed.tresc_wyniku || null,
-            parsed.sedziowie_joined || null,
-            parsed.sedziowie_json || null,
-            parsed.symbole_joined || null,
-            parsed.symbole_json || null,
             parsed.powolane_przepisy || null,
             parsed.sentencja || null,
             parsed.uzasadnienie || null,
             parsed.prawomocne ?? null,
             parsed.uzasadnienie_flag ?? null,
             parsed.link || null,
-            parsed.tytul || null
+            parsed.tytul || null,
         ]);
 
+        // === tabele zależne ===
+        const parsedId = parsed.id;
+
+        // sedziowie
+        await conn.query('DELETE FROM sedziowie WHERE parsed_data_id = ?', [parsedId]);
+        if (parsed.sedziowie_arr?.length) {
+            const values = parsed.sedziowie_arr
+                .map(j => [parsedId, cap(j?.name, 255) || null, cap(j?.role, 255) || null])
+                .filter(v => v[1]); // musi być nazwisko
+            if (values.length) {
+                await conn.query('INSERT INTO sedziowie (parsed_data_id, sedzia, rola) VALUES ?', [values]);
+            }
+        }
+
+        // symbol_z_opisem
+        await conn.query('DELETE FROM symbol_z_opisem WHERE parsed_data_id = ?', [parsedId]);
+        if (parsed.symbole_arr?.length) {
+            const values = parsed.symbole_arr.map(s => {
+                const full = (s?.code ? `${s.code} ${s.opis || ''}` : (s?.opis || '')).trim();
+                return [parsedId, cap(s?.code, 32) || null, cap(s?.opis, 512) || null, cap(full, 1024) || null];
+            });
+            if (values.length) {
+                await conn.query(
+                    'INSERT INTO symbol_z_opisem (parsed_data_id, symbol, opis, pelna_wartosc) VALUES ?',
+                    [values],
+                );
+            }
+        }
+
         await conn.commit();
-        logger.info(`NSA: zapisano parsed_data id=${parsed.id}`);
+        logger.info(`NSA: zapisano parsed_data id=${parsedId}`);
     } catch (err) {
         await conn.rollback();
         throw err;
@@ -203,29 +269,51 @@ const nsaParser = async (database, logger) => {
     try {
         const rows = await getRowsNeededParsing(database);
         logger.info(`NSA parser: do przetworzenia wierszy: ${rows.length}`);
+
         for (const row of rows) {
             if (!row.link_html) {
                 logger.warn(`NSA parser: brak link_html dla id=${row.id} (link=${row.link}) — pomijam`);
                 continue;
             }
+
             const $ = cheerio.load(row.link_html);
 
+            // 1) odczyt prostych pól
             const info = extractInfoList($);
 
-            // sędziowie
-            const sedziowie = parseJudges(info.sedziowie_raw || '');
-            const sedziowieJoined = normalizeJoined(sedziowie.map(x => x.name + (x.role ? ` (${x.role})` : '')));
+            // 2) sędziowie
+            const sedziowieRaw = info.sedziowie_raw || '';
+            const sedziowieArr = parseJudges(textWithBrToLines($, $('<div>').html(sedziowieRaw)));
+            const sedziowieJoined = normalizeJoined(
+                sedziowieArr.map(x => x.name + (x.role ? ` (${x.role})` : '')),
+            );
 
-            // symbole
-            const symbole = parseSymbols(info.symbol_z_opisem || '');
-            const symboleJoined = normalizeJoined(symbole.map(s => s.code ? `${s.code}${s.opis ? ' ' + s.opis : ''}` : (s.opis || '')));
+            // 3) symbole
+            const symboleArr = parseSymbols(info.symbol_z_opisem || '');
+            const symboleJoined = normalizeJoined(
+                symboleArr.map(s => (s.code ? `${s.code}${s.opis ? ' ' + s.opis : ''}` : (s.opis || ''))),
+            );
 
-            // sekcje
+            // 4) sekcje
             const { sentencja, uzasadnienie } = extractSections($);
 
+            // 5) sygnatura (z nagłówka/tytułu – bo zwykle nie ma w info-list)
+            const sygnatura =
+        info.sygnatura /* jeśli wyjątkowo jest w tabeli */ ||
+        extractSygnatura($) ||
+        null;
+
+            // 6) title strony
+            const tytul = ($('title').text() || row.title || '').trim() || null;
+
+            // 7) prawomocność / uzasadnienie z scraped_data (preferujmy dane z bazy, jeśli są)
+            const prawomocne =
+        row.prawomocne ?? (typeof info.__prawomocne_guess !== 'undefined' ? info.__prawomocne_guess : null);
+            const uzasadnienie_flag = row.uzasadnienie ?? null;
+
             const parsed = {
-                id: row.id,
-                sygnatura: info.sygnatura || null,
+                id: row.id, // utrzymujemy spójność klucza z scraped_data
+                sygnatura,
                 data_orzeczenia: info.data_orzeczenia || null,
                 data_publikacji: info.data_publikacji || null,
                 data_wplywu: info.data_wplywu || null,
@@ -236,30 +324,36 @@ const nsaParser = async (database, logger) => {
                 tresc_wyniku: info.tresc_wyniku || null,
                 powolane_przepisy: info.powolane_przepisy || null,
 
-                sedziowie_joined: sedziowieJoined,
-                sedziowie_json: JSON.stringify(sedziowie),
+                sentencja: sentencja || null,
+                uzasadnienie: uzasadnienie || null,
 
-                symbole_joined: symboleJoined,
-                symbole_json: JSON.stringify(symbole),
-
-                sentencja,
-                uzasadnienie,
-
-                prawomocne: row.prawomocne ?? null,
-                uzasadnienie_flag: row.uzasadnienie ?? null,
+                prawomocne,
+                uzasadnienie_flag,
 
                 link: row.link || null,
-                tytul: row.title || null
+                tytul,
+
+                // do tabel zależnych
+                sedziowie_arr: sedziowieArr,
+                symbole_arr: symboleArr,
+
+                // (opcjonalnie – jeśli chcesz też trzymać w parsed_data, dodaj kolumny i zapisz)
+                sedziowie_joined: sedziowieJoined,
+                symbole_joined: symboleJoined,
             };
+
+            // sanity: nie łataj placeholderami – jeśli czegoś nie znaleziono, zostaje null
+            ['data_orzeczenia', 'data_publikacji', 'data_wplywu'].forEach(k => {
+                if (parsed[k] && /[A-Za-zążźćśńółęĄŻŹĆŚŃÓŁĘ]/.test(parsed[k])) parsed[k] = null; // odrzuć ew. "Data orzeczenia"
+            });
 
             await saveDataToDatabase(database, parsed, logger);
         }
+
         logger.info('NSA parser: zakończono.');
     } catch (error) {
         logger.error('nsaParser error:', error);
     }
 };
 
-module.exports = {
-    nsaParser,
-};
+module.exports = { nsaParser };

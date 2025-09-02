@@ -97,10 +97,9 @@ class ProxyManager {
         const proxy = proxyPool[randomIndex];
     
         this.usedProxies.add(proxy);
-    
-        logger.debug(`Randomly selected proxy: ${mask(proxy)}`);
-    
-        return this.formatProxy(proxy);
+        const formatted = this.formatProxy(proxy);
+        logger.debug(`Randomly selected proxy: ${mask(formatted)}`);
+        return formatted;
     }
   
     formatProxy(proxyString) {
