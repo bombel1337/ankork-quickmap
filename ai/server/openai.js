@@ -3,7 +3,14 @@ import OpenAI from 'openai';
 import { cfg } from './config.js';
 
 export const oai = new OpenAI({ apiKey: cfg.openai.key });
+const SANITIZE = process.env.SANITIZE_OUTPUT !== '0';
 
+function sanitizeAnswer(s) {
+  if (!SANITIZE || !s) return s || '';
+  s = s.replace(/^\s*przykłady\s+orzeczeń:\s*[\s\S]*$/gim, '').trim();
+  const noLinks = s.split('\n').filter(line => !/(https?:\/\/|www\.)/i.test(line));
+  return noLinks.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+}
 const SYS = [
   'Jesteś asystentem prawnym. Odpowiadaj po polsku.',
   'Korzystaj WYŁĄCZNIE z dostarczonego kontekstu.',
@@ -38,10 +45,11 @@ ${ctx.map((c, i) =>
     ]
   });
 
-  const raw = r.choices[0]?.message?.content || '';
+  let text = r.choices[0]?.message?.content || '';
+  text = sanitizeAnswer(text);
 
-  if (!/\bto nie jest porada prawna\b/i.test(raw)) {
-    raw += `\n\nTo nie jest porada prawna.`;
+  if (!/\bto nie jest porada prawna\b/i.test(text)) {
+    text += `\n\nTo nie jest porada prawna.`;
   }
   return raw.trim();
 }

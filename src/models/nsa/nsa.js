@@ -248,10 +248,9 @@ const singlesScraper = async (config) => {
 
         logger.info(`Found ${links.length} links to re-scrape.`);
         for (const link of links) {
-            const url = `https://orzeczenia.nsa.gov.pl${link}`;
-            logger.info(`Re-scraping link: ${url}`);
+            logger.info(`Re-scraping link: ${link}`);
 
-            const results = await processSingleLink(url, config, gotScraping);
+            const results = await processSingleLink(link, config, gotScraping);
             await config.database.updateData('scraped_data', {
                 status_code: results.status,
                 prawomocne: results.prawomocne,
