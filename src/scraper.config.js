@@ -34,7 +34,6 @@ const config = {
         ms: {
             enabled: false,
             database: new Database(Sites.orzeczenia_ms_gov),
-            scrape: true,
             useDataParser: false,
             dataParser: createDataParser(Sites.orzeczenia_ms_gov),
             delay: 1111,
@@ -47,8 +46,8 @@ const config = {
         nsa: {
             enabled: false,
             database: new Database(Sites.orzeczenia_nsa_gov),
-            useDataParser: false,
-            // dataParser: createDataParser(Sites.orzeczenia_nsa_gov),
+            useDataParser: true,
+            dataParser: createDataParser(Sites.orzeczenia_nsa_gov),
             singleLinksScraper: false,
             delay: 1111,
             retryDelay: 10000,

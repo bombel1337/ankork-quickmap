@@ -170,11 +170,6 @@ async function scraper(config) {
 
     const tasks = [];
 
-    if (config.useDataParser) {
-        logger.info('Running data parser');
-        tasks.push(config.dataParser.parse(config.database));
-    }
-    
     if (config.models[Sites.sad_najwyzszy] && config.models[Sites.sad_najwyzszy].enabled) {
         logger.info('Running model:', Sites.sad_najwyzszy);
         tasks.push(scrape(config));

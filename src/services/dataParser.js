@@ -3,17 +3,14 @@ const { kidpParser } = require('./parsers/kidpParser');
 const { msParser } = require('./parsers/msParser');
 const { snParser } = require('./parsers/snParser');
 const { uzpParser } = require('./parsers/uzpParser');
-
+const { nsaParser } = require('./parsers/nsaParser');
 
 class DataParser {
     constructor(modelType, parsingStrategy) {
         this.modelType = modelType;
+        console.log(parsingStrategy);
         this.parsingStrategy = parsingStrategy;
         this.logger = getLogger('data-parser');
-    }
-    
-    async parse(database) {
-        return await this.parsingStrategy(database, this.logger);
     }
 }
 
@@ -33,6 +30,10 @@ const parsingStrategies = {
     kidp: async (database, logger) => {
         if (!database) return null;
         return await kidpParser(database, logger);
+    },
+    nsa: async (database, logger) => {
+        if (!database) return null;
+        return await nsaParser(database, logger);
     },
 };
   

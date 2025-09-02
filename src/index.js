@@ -61,8 +61,11 @@ if (selectedSite) {
 } else {
     // Run all enabled models
     Object.keys(run).forEach(siteKey => {
-        if (config.models[siteKey] && config.models[siteKey].enabled) {
-            logger.log(`Running scraper for site: ${siteKey}`);
+        const m = config.models[siteKey];
+        if (!m) return;
+        if (m.enabled || m.useDataParser) {
+            const what = m.useDataParser && !m.enabled ? 'parser' : 'scraper';
+            logger.log(`Running ${what} for site: ${siteKey}`);
             run[siteKey]();
         }
     });

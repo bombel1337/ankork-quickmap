@@ -224,10 +224,6 @@ async function scraper(config) {
 
     const tasks = [];
 
-    if (config.useDataParser) {
-        logger.info('Running data parser');
-        tasks.push(config.dataParser.parse(config.database));
-    }
     
     if (config.models[Sites.orzeczenia_ms_gov] && config.models[Sites.orzeczenia_ms_gov].enabled) {
         logger.info('Running model:', Sites.orzeczenia_ms_gov);
