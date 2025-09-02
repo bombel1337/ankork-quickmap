@@ -52,12 +52,12 @@ const config = {
             },   
         },
         nsa: {
-            enabled: true,
+            enabled: false,
             database: new Database(Sites.orzeczenia_nsa_gov),
             useDataParser: true,
             dataParser: createDataParser(Sites.orzeczenia_nsa_gov),
             pagesScraper: false,
-            singleLinksScraper: true,
+            singleLinksScraper: false,
             delay: 15,
             retryDelay: 10000,
             proxies: {

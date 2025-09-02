@@ -78,13 +78,12 @@ const saveDataToDatabase = async (database, parsedData, judges) => {
         
         // Handle judge relationships
         for (const judgeName of judges) {
-            // Get or create judge (similar to your getOrCreateArticle)
             const judgeId = await getOrCreateJudge(connection, judgeName);
             
             // Create relationship
             await connection.query(
                 'INSERT IGNORE INTO orzeczenia_sedziowie (orzeczenie_sid, sedzia_id) VALUES (?, ?)',
-                [parsedData.id, judgeId]
+                [parsedData.item_sid, judgeId]
             );
         }
         
@@ -118,6 +117,9 @@ const extractDataFromHtml = ($) => {
     };
     if (parsedData.link_html && parsedData.link_html.startsWith('/')) {
         parsedData.link_html = `https://www.sn.pl${parsedData.link_html}`;
+    }
+    if (parsedData.jednostka_obslugujaca) {
+        parsedData.jednostka_obslugujaca = parsedData.jednostka_obslugujaca.replace('przejdź do danych teleadresowych dla', '').trim();
     }
     return parsedData;
 };

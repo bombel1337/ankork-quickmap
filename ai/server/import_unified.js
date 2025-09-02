@@ -38,145 +38,204 @@ async function main() {
     `DB ${UNIFIED_DB} ready`
   );
 
-  // 1) Tabela unified_docs (data jako STRING)
+  // 1) Tabela unified_docs (bez created_at/updated_at/status_code/content_html)
   await exec(
     `
     CREATE TABLE IF NOT EXISTS \`${UNIFIED_DB}\`.unified_docs (
-      unified_id     BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-      source         ENUM('ms','sn','nsa','uzp') NOT NULL,
-      source_pk      VARCHAR(255) NOT NULL,
+      unified_id   BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      source       ENUM('ms','sn','nsa','uzp') NOT NULL,
+      source_pk    VARCHAR(255) NOT NULL,
       UNIQUE KEY uniq_source (source, source_pk),
 
-      title          TEXT NULL,
-      date_text      VARCHAR(255) NULL,        -- <-- zamiast DATETIME
-      link           VARCHAR(500) NULL,
-      status_code    INT NULL,
-      created_at     TIMESTAMP NULL,
-      updated_at     TIMESTAMP NULL,
+      title        TEXT NULL,
+      date_text    VARCHAR(500) NULL,
+      link         VARCHAR(500) NULL,
 
-      content_html   LONGTEXT NULL,
-      content_text   LONGTEXT NULL,
+      content_text LONGTEXT NULL,
+      meta         JSON NULL,
 
-      meta           JSON NULL,
-
-      KEY idx_source (source)
+      KEY idx_source (source),
+      KEY idx_date_text (date_text)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     `,
     'Create unified_docs'
   );
 
-  // 1a) Migracja starej kolumny `date` -> `date_text` (jeśli istnieje)
+  // 1a) Migracje porządkujące (bez błędu jeśli kolumny nie istnieją)
   try {
     await conn.query(
-      `ALTER TABLE \`${UNIFIED_DB}\`.unified_docs CHANGE COLUMN \`date\` date_text VARCHAR(255) NULL;`
+      `ALTER TABLE \`${UNIFIED_DB}\`.unified_docs CHANGE COLUMN \`date\` date_text VARCHAR(500) NULL;`
     );
     console.log('✔ Migrate `date` -> `date_text`');
-  } catch {
-    // brak starej kolumny — ignorujemy
-  }
-  // 1b) Index po date_text (opcjonalny)
+  } catch {}
   try {
     await conn.query(
-      `CREATE INDEX idx_date_text ON \`${UNIFIED_DB}\`.unified_docs (date_text);`
+      `ALTER TABLE \`${UNIFIED_DB}\`.unified_docs DROP COLUMN IF EXISTS status_code;`
     );
-    console.log('✔ Create index idx_date_text');
-  } catch {
-    // istnieje — ignorujemy
-  }
+    console.log('✔ Drop `status_code` (if existed)');
+  } catch {}
+  try {
+    await conn.query(
+      `ALTER TABLE \`${UNIFIED_DB}\`.unified_docs DROP COLUMN IF EXISTS content_html;`
+    );
+    console.log('✔ Drop `content_html` (if existed)');
+  } catch {}
+  try {
+    await conn.query(
+      `ALTER TABLE \`${UNIFIED_DB}\`.unified_docs DROP COLUMN IF EXISTS created_at;`
+    );
+    console.log('✔ Drop `created_at` (if existed)');
+  } catch {}
+  try {
+    await conn.query(
+      `ALTER TABLE \`${UNIFIED_DB}\`.unified_docs DROP COLUMN IF EXISTS updated_at;`
+    );
+    console.log('✔ Drop `updated_at` (if existed)');
+  } catch {}
 
-  // 2) Widok: MS (daty jako surowy tekst)
+  // 2) Widok: MS — source_pk z parsed_data, link z parsed_data, obie daty w meta
   await exec(
     `
-    CREATE OR REPLACE VIEW \`${UNIFIED_DB}\`.v_unified_ms AS
+    CREATE OR REPLACE VIEW \`${UNIFIED_DB}\`.v_unified_ms
+    (source, source_pk, title, date_text, link, content_text, meta)
+    AS
     SELECT
       'ms' AS source,
-      CAST(a.article_id AS CHAR) AS source_pk,
-
-      ANY_VALUE(COALESCE(NULLIF(p.tytul,''), NULLIF(a.title,''), 'MS sprawa')) AS title,
+      CAST(p.id AS CHAR) AS source_pk,
 
       ANY_VALUE(
         COALESCE(
-          NULLIF(p.data_orzeczenia,''),
-          NULLIF(p.data_publikacji,''),
-          DATE_FORMAT(a.created_at, '%Y-%m-%d %H:%i:%s')
+          NULLIF(p.tytul,''),
+          NULLIF(a.title,''),
+          'MS sprawa'
         )
+      ) AS title,
+
+      -- date_text: preferuj data_orzeczenia, potem data_publikacji, na końcu created_at z articles (tylko do wyliczenia)
+      ANY_VALUE(
+        CASE
+          WHEN NULLIF(p.data_orzeczenia,'') IS NOT NULL THEN p.data_orzeczenia
+          WHEN NULLIF(p.data_publikacji,'') IS NOT NULL THEN p.data_publikacji
+          ELSE DATE_FORMAT(MIN(a.created_at), '%Y-%m-%d %H:%i:%s')
+        END
       ) AS date_text,
 
-      ANY_VALUE(a.link) AS link,
-      ANY_VALUE(sd.status_code) AS status_code,
-      ANY_VALUE(a.created_at) AS created_at,
-      ANY_VALUE(a.created_at) AS updated_at,
-
-      ANY_VALUE(NULL) AS content_html,
+      ANY_VALUE(p.link) AS link,
 
       ANY_VALUE(TRIM(CONCAT_WS('\\n\\n',
-        CONCAT('Sygnatura: ', NULLIF(p.sygnatura,'')),
-        CONCAT('Sąd: ', NULLIF(p.sad,'')),
-        CONCAT('Wydział: ', NULLIF(p.wydzial,'')),
-        CONCAT('Hasła tematyczne: ', NULLIF(p.hasla_tematyczne,'')),
-        CONCAT('Podstawa prawna:\\n', NULLIF(p.podstawa_prawna,'')),
-        CONCAT('Wyrok:\\n', NULLIF(p.wyrok,'')),
-        CONCAT('Uzasadnienie:\\n', NULLIF(p.uzasadnienie,'')),
-        CONCAT('Zarządzenie:\\n', NULLIF(p.zarzadzenie,'')),
+        CONCAT('Sygnatura: ',       NULLIF(p.sygnatura,'')),
+        CONCAT('Sąd: ',             NULLIF(p.sad,'')),
+        CONCAT('Wydział: ',         NULLIF(p.wydzial,'')),
+        CONCAT('Hasła tematyczne: ',NULLIF(p.hasla_tematyczne,'')),
+        CONCAT('Podstawa prawna:\\n',NULLIF(p.podstawa_prawna,'')),
+        CONCAT('Wyrok:\\n',         NULLIF(p.wyrok,'')),
+        CONCAT('Uzasadnienie:\\n',  NULLIF(p.uzasadnienie,'')),
+        CONCAT('Zarządzenie:\\n',   NULLIF(p.zarzadzenie,'')),
         CONCAT('Postanowienie:\\n', NULLIF(p.postanowienie,''))
       ))) AS content_text,
 
       JSON_OBJECT(
-        'sygnatura',        ANY_VALUE(p.sygnatura),
-        'sad',              ANY_VALUE(p.sad),
-        'wydzial',          ANY_VALUE(p.wydzial),
-        'hasla_tematyczne', ANY_VALUE(p.hasla_tematyczne),
-        'link_parsed',      ANY_VALUE(p.link)
+        'sygnatura',         ANY_VALUE(p.sygnatura),
+        'sad',               ANY_VALUE(p.sad),
+        'wydzial',           ANY_VALUE(p.wydzial),
+        'hasla',             ANY_VALUE(p.hasla_tematyczne),
+        'link_parsed',       ANY_VALUE(p.link),
+
+        -- obie daty, jeżeli są
+        'data_orzeczenia',   ANY_VALUE(NULLIF(p.data_orzeczenia,'')),
+        'data_publikacji',   ANY_VALUE(NULLIF(p.data_publikacji,'')),
+
+        -- informacja skąd pochodzi date_text
+        'date_text_source',  ANY_VALUE(
+                               CASE
+                                 WHEN NULLIF(p.data_orzeczenia,'') IS NOT NULL THEN 'data_orzeczenia'
+                                 WHEN NULLIF(p.data_publikacji,'') IS NOT NULL THEN 'data_publikacji'
+                                 ELSE 'articles.created_at'
+                               END
+                             ),
+
+        -- powiązane artykuły (id, tytuł, link) z articles <-> parsed_data
+        'articles',
+          (
+            SELECT JSON_ARRAYAGG(
+                     JSON_OBJECT(
+                       'article_id', x.article_id,
+                       'title',      x.title,
+                       'link',       x.link
+                     )
+                   )
+            FROM (
+              SELECT DISTINCT a2.article_id, a2.title, a2.link
+              FROM ms.articles_references ar2
+              JOIN ms.articles a2 ON a2.article_id = ar2.article_id
+              WHERE ar2.parsed_data_id = p.id
+            ) AS x
+          )
       ) AS meta
 
-    FROM ms.articles a
-    LEFT JOIN ms.articles_references ar ON ar.article_id = a.article_id
-    LEFT JOIN ms.parsed_data p ON p.id = ar.parsed_data_id
-    LEFT JOIN ms.scraped_data sd ON sd.details_link = a.link
-    GROUP BY a.article_id;
+    FROM ms.parsed_data p
+    LEFT JOIN ms.articles_references ar ON ar.parsed_data_id = p.id
+    LEFT JOIN ms.articles a             ON a.article_id      = ar.article_id
+    GROUP BY p.id;
     `,
     'Create view v_unified_ms'
   );
 
-  // 3) Widok: SN
+  // 3) Widok: SN (bez created_at/updated_at)
   await exec(
     `
-    CREATE OR REPLACE VIEW \`${UNIFIED_DB}\`.v_unified_sn AS
+    CREATE OR REPLACE VIEW \`${UNIFIED_DB}\`.v_unified_sn
+    (source, source_pk, title, date_text, link, content_text, meta)
+    AS
     SELECT
       'sn' AS source,
       p.item_sid AS source_pk,
 
       ANY_VALUE(COALESCE(NULLIF(p.sygnatura,''), 'Sprawa SN')) AS title,
       ANY_VALUE(NULLIF(p.data_wydania,'')) AS date_text,
-      ANY_VALUE(COALESCE(NULLIF(p.link_html,''), NULLIF(p.link_pdf,''), NULLIF(p.page_link,''))) AS link,
-      ANY_VALUE(NULL) AS status_code,
-      ANY_VALUE(p.created_at) AS created_at,
-      ANY_VALUE(p.updated_at) AS updated_at,
 
-      ANY_VALUE(NULL) AS content_html,
+      -- LINK: zawsze page_link
+      ANY_VALUE(NULLIF(p.page_link,'')) AS link,
 
+      -- CONTENT: metadane + pełne sekcje z nagłówkami
       ANY_VALUE(TRIM(CONCAT_WS('\\n\\n',
-        CONCAT('Sygnatura: ', NULLIF(p.sygnatura,'')),
-        CONCAT('Izba: ', NULLIF(p.izba,''), '  Skład: ', NULLIF(p.typ_skladu_sedziow,'')),
+        CONCAT('Sygnatura: ',           NULLIF(p.sygnatura,'')),
+        CONCAT('Forma orzeczenia: ',    NULLIF(p.forma_orzeczenia,'')),
+        CONCAT('Data wydania: ',        NULLIF(p.data_wydania,'')),
+        CONCAT('Izba: ',                NULLIF(p.izba,'')),
+        CONCAT('Typ składu sędziów: ',  NULLIF(p.typ_skladu_sedziow,'')),
         CONCAT('Przewodniczący składu: ', NULLIF(p.przewodniczacy_skladu,'')),
-        CONCAT('Sprawozdawca: ', NULLIF(p.sprawozdawca,'')),
-        CONCAT('Autor uzasadnienia: ', NULLIF(p.autor_uzasadnienia,'')),
-        CONCAT('Forma orzeczenia: ', NULLIF(p.forma_orzeczenia,'')),
-        CONCAT('Wyrok:\\n', NULLIF(p.wyrok,'')),
-        CONCAT('Uzasadnienie:\\n', NULLIF(p.uzasadnienie,'')),
-        CONCAT('Postanowienie:\\n', NULLIF(p.postanowienie,'')),
-        CONCAT('Uchwała:\\n', NULLIF(p.uchwala,'')),
-        CONCAT('Zarządzenie:\\n', NULLIF(p.zarzadzenie,'')),
-        CONCAT('Treść orzeczenia:\\n', NULLIF(p.tresc_orzeczenia,''))
+        CONCAT('Sprawozdawca: ',        NULLIF(p.sprawozdawca,'')),
+        CONCAT('Autor uzasadnienia: ',  NULLIF(p.autor_uzasadnienia,'')),
+        CONCAT('Jednostka obsługująca: ',NULLIF(p.jednostka_obslugujaca,'')),
+
+        CONCAT('Wyrok:\\n',             NULLIF(p.wyrok,'')),
+        CONCAT('Uzasadnienie:\\n',      NULLIF(p.uzasadnienie,'')),
+        CONCAT('Postanowienie:\\n',     NULLIF(p.postanowienie,'')),
+        CONCAT('Uchwała:\\n',           NULLIF(p.uchwala,'')),
+        CONCAT('Zarządzenie:\\n',       NULLIF(p.zarzadzenie,'')),
+        CONCAT('Treść orzeczenia:\\n',  NULLIF(p.tresc_orzeczenia,''))
       ))) AS content_text,
 
       JSON_OBJECT(
-        'sygnatura',              ANY_VALUE(p.sygnatura),
-        'izba',                   ANY_VALUE(p.izba),
-        'typ_skladu',            ANY_VALUE(p.typ_skladu_sedziow),
-        'przewodniczacy',        ANY_VALUE(p.przewodniczacy_skladu),
-        'sprawozdawca',          ANY_VALUE(p.sprawozdawca),
-        'autor_uzasadnienia',    ANY_VALUE(p.autor_uzasadnienia),
+        'sygnatura',            ANY_VALUE(p.sygnatura),
+        'forma_orzeczenia',     ANY_VALUE(p.forma_orzeczenia),
+        'data_wydania',         ANY_VALUE(p.data_wydania),
+        'izba',                 ANY_VALUE(p.izba),
+        'typ_skladu_sedziow',   ANY_VALUE(p.typ_skladu_sedziow),
+        'przewodniczacy_skladu',ANY_VALUE(p.przewodniczacy_skladu),
+        'sprawozdawca',         ANY_VALUE(p.sprawozdawca),
+        'autor_uzasadnienia',   ANY_VALUE(p.autor_uzasadnienia),
+        'jednostka_obslugujaca',ANY_VALUE(p.jednostka_obslugujaca),
+
+        -- wszystkie linki do meta
+        'links', JSON_OBJECT(
+          'page_link', ANY_VALUE(p.page_link),
+          'link_html', ANY_VALUE(p.link_html),
+          'link_pdf',  ANY_VALUE(p.link_pdf)
+        ),
+
+        -- pełna lista sędziów (id, name)
         'sedziowie',
           (
             SELECT JSON_ARRAYAGG(JSON_OBJECT('id', x.id, 'name', x.name))
@@ -185,6 +244,7 @@ async function main() {
               FROM sn.orzeczenia_sedziowie os
               JOIN sn.sedziowie s ON s.id = os.sedzia_id
               WHERE os.orzeczenie_sid = p.item_sid
+              ORDER BY s.name
             ) AS x
           )
       ) AS meta
@@ -195,72 +255,83 @@ async function main() {
     'Create view v_unified_sn'
   );
 
-  // 4) Widok: NSA
+  // 4) Widok: NSA (bez created_at/updated_at)
   await exec(
     `
-    CREATE OR REPLACE VIEW \`${UNIFIED_DB}\`.v_unified_nsa AS
-    SELECT
-      'nsa' AS source,
-      CAST(p.id AS CHAR) AS source_pk,
+    CREATE OR REPLACE VIEW \`${UNIFIED_DB}\`.v_unified_nsa
+  (source, source_pk, title, date_text, link, content_text, meta)
+  AS
+  SELECT
+    'nsa' AS source,
+    CAST(p.id AS CHAR) AS source_pk,
 
-      ANY_VALUE(COALESCE(NULLIF(p.tytul,''), NULLIF(p.sygnatura,''))) AS title,
-      ANY_VALUE(COALESCE(NULLIF(p.data_orzeczenia,''))) AS date_text,
-      ANY_VALUE(p.link) AS link,
-      ANY_VALUE(NULL) AS status_code,
-      ANY_VALUE(p.created_at) AS created_at,
-      ANY_VALUE(p.updated_at) AS updated_at,
+    ANY_VALUE(COALESCE(NULLIF(p.tytul,''), NULLIF(p.sygnatura,''), 'Sprawa NSA')) AS title,
 
-      ANY_VALUE(NULL) AS content_html,
+    -- data do unified: data_wplywu
+    ANY_VALUE(NULLIF(p.data_wplywu,'')) AS date_text,
 
-      ANY_VALUE(TRIM(CONCAT_WS('\\n\\n',
-        CONCAT('Sygnatura: ', NULLIF(p.sygnatura,'')),
-        CONCAT('Sąd: ', NULLIF(p.sad,'')),
-        CONCAT('Hasła tematyczne:\\n', NULLIF(p.hasla_tematyczne,'')),
-        CONCAT('Sentencja:\\n', NULLIF(p.sentencja,'')),
-        CONCAT('Uzasadnienie:\\n', NULLIF(p.uzasadnienie,'')),
-        CONCAT('Skargony/oskarżony organ: ',
-               NULLIF(COALESCE(p.skarzony_organ, p.oskarzony_organ, ''), '')),
-        CONCAT('Powołane przepisy:\\n', NULLIF(p.powolane_przepisy,'')),
-        CONCAT('Treść wyniku: ', NULLIF(p.tresc_wyniku,'')),
-        CONCAT('Prawomocne: ', IFNULL(p.prawomocne, 0))
-      ))) AS content_text,
+    ANY_VALUE(p.link) AS link,
 
-      JSON_OBJECT(
-        'sygnatura',        ANY_VALUE(p.sygnatura),
-        'sad',              ANY_VALUE(p.sad),
-        'hasla_tematyczne', ANY_VALUE(p.hasla_tematyczne),
-        'prawomocne',       ANY_VALUE(p.prawomocne),
-        'uzasadnienie_flag',ANY_VALUE(p.uzasadnienie_flag),
-        'sedziowie',
-          (
-            SELECT JSON_ARRAYAGG(JSON_OBJECT('name', y.sedzia, 'rola', y.rola))
-            FROM (
-              SELECT DISTINCT s.sedzia, s.rola
-              FROM nsa.sedziowie s
-              WHERE s.parsed_data_id = p.id
-            ) AS y
-          ),
-        'symbole',
-          (
-            SELECT JSON_ARRAYAGG(JSON_OBJECT('symbol', z.symbol, 'opis', z.opis, 'pelna_wartosc', z.pelna_wartosc))
-            FROM (
-              SELECT DISTINCT so.symbol, so.opis, so.pelna_wartosc
-              FROM nsa.symbol_z_opisem so
-              WHERE so.parsed_data_id = p.id
-            ) AS z
-          )
-      ) AS meta
+    -- content_text: najpierw skrócone metadane, potem pełna Sentencja i Uzasadnienie
+    ANY_VALUE(TRIM(CONCAT_WS('\\n\\n',
+      CONCAT('Sygnatura: ',        NULLIF(p.sygnatura,'')),
+      CONCAT('Sąd: ',              NULLIF(p.sad,'')),
+      CONCAT('Skarżony organ: ',   NULLIF(p.skarzony_organ,'')),
+      CONCAT('Treść wyniku: ',     NULLIF(p.tresc_wyniku,'')),
 
-    FROM nsa.parsed_data p
-    GROUP BY p.id;
-    `,
-    'Create view v_unified_nsa'
+      CONCAT('Sentencja:\\n',      NULLIF(p.sentencja,'')),
+      CONCAT('Uzasadnienie:\\n',   NULLIF(p.uzasadnienie,''))
+    ))) AS content_text,
+
+    JSON_OBJECT(
+      'sygnatura',          ANY_VALUE(p.sygnatura),
+      'sad',                ANY_VALUE(p.sad),
+      'data_orzeczenia',    ANY_VALUE(p.data_orzeczenia),
+      'data_wplywu',        ANY_VALUE(p.data_wplywu),
+      'skarzony_organ',     ANY_VALUE(p.skarzony_organ),
+      'tresc_wyniku',       ANY_VALUE(p.tresc_wyniku),
+      'hasla_tematyczne',   ANY_VALUE(p.hasla_tematyczne),
+      'powolane_przepisy',  ANY_VALUE(p.powolane_przepisy),
+      'prawomocne',         ANY_VALUE(p.prawomocne),
+      'uzasadnienie_flag',  ANY_VALUE(p.uzasadnienie_flag),
+
+      -- sędziowie tej sprawy (nsa.sedziowie)
+      'sedziowie',
+        (
+          SELECT JSON_ARRAYAGG(JSON_OBJECT('name', y.sedzia, 'rola', y.rola))
+          FROM (
+            SELECT DISTINCT s.sedzia, s.rola
+            FROM nsa.sedziowie s
+            WHERE s.parsed_data_id = p.id
+            ORDER BY s.sedzia
+          ) AS y
+        ),
+
+      -- symbole z opisem (nsa.symbol_z_opisem)
+      'symbole',
+        (
+          SELECT JSON_ARRAYAGG(JSON_OBJECT('symbol', z.symbol, 'opis', z.opis, 'pelna_wartosc', z.pelna_wartosc))
+          FROM (
+            SELECT DISTINCT so.symbol, so.opis, so.pelna_wartosc
+            FROM nsa.symbol_z_opisem so
+            WHERE so.parsed_data_id = p.id
+            ORDER BY so.symbol
+          ) AS z
+        )
+    ) AS meta
+
+  FROM nsa.parsed_data p
+  GROUP BY p.id;
+  `,
+  'Create view v_unified_nsa'
   );
 
-  // 5) Widok: UZP
+  // 5) Widok: UZP (bez created_at/updated_at)
   await exec(
     `
-    CREATE OR REPLACE VIEW \`${UNIFIED_DB}\`.v_unified_uzp AS
+    CREATE OR REPLACE VIEW \`${UNIFIED_DB}\`.v_unified_uzp
+    (source, source_pk, title, date_text, link, content_text, meta)
+    AS
     SELECT
       'uzp' AS source,
       CAST(p.id AS CHAR) AS source_pk,
@@ -268,11 +339,6 @@ async function main() {
       ANY_VALUE(COALESCE(NULLIF(p.rodzaj_dokumentu,''), NULLIF(p.sygnatura,''), 'UZP dokument')) AS title,
       ANY_VALUE(COALESCE(DATE_FORMAT(p.data_wydania_rozstrzygniecia, '%Y-%m-%d'), NULLIF(p.data_wyroku,''))) AS date_text,
       ANY_VALUE(p.page_link) AS link,
-      ANY_VALUE(NULL) AS status_code,
-      ANY_VALUE(p.created_at) AS created_at,
-      ANY_VALUE(p.updated_at) AS updated_at,
-
-      ANY_VALUE(NULL) AS content_html,
 
       ANY_VALUE(TRIM(CONCAT_WS('\\n\\n',
         CONCAT('Sygnatura: ', NULLIF(p.sygnatura,'')),
@@ -295,7 +361,6 @@ async function main() {
         'tryb_postepowania', p.tryb_postepowania,
         'rodzaj_zamowienia', p.rodzaj_zamowienia,
         'rok_wyroku', p.rok_wyroku,
-
         'tematy',
         (
           SELECT JSON_ARRAYAGG(JSON_OBJECT('id', x.id, 'name', x.topic_name))
@@ -306,7 +371,6 @@ async function main() {
             WHERE ct.parsed_data_id = p.id
           ) AS x
         ),
-
         'kluczowe_przepisy',
         (
           SELECT JSON_ARRAYAGG(
@@ -329,22 +393,18 @@ async function main() {
     'Create view v_unified_uzp'
   );
 
-  // 6) UPSERT z widoków
+  // 6) UPSERT z widoków — bez created_at/updated_at/status_code/content_html
   const upsert = async (viewName) => {
     await exec(
       `
       INSERT INTO \`${UNIFIED_DB}\`.unified_docs
-        (source, source_pk, title, date_text, link, status_code, created_at, updated_at, content_html, content_text, meta)
-      SELECT source, source_pk, title, date_text, link, status_code, created_at, updated_at, content_html, content_text, meta
+        (source, source_pk, title, date_text, link, content_text, meta)
+      SELECT source, source_pk, title, date_text, link, content_text, meta
       FROM \`${UNIFIED_DB}\`.${viewName}
       ON DUPLICATE KEY UPDATE
         title        = VALUES(title),
         date_text    = VALUES(date_text),
         link         = VALUES(link),
-        status_code  = VALUES(status_code),
-        created_at   = VALUES(created_at),
-        updated_at   = VALUES(updated_at),
-        content_html = VALUES(content_html),
         content_text = VALUES(content_text),
         meta         = VALUES(meta);
       `,
