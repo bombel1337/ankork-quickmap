@@ -1,0 +1,1488 @@
+{
+  "when": "2025-09-03T10:54:01.795Z",
+  "API_URL": "http://localhost:8000/ask",
+  "results": [
+    {
+      "ok": true,
+      "question": "Kiedy organ może odmówić udostępnienia informacji publicznej?",
+      "ms": 4363,
+      "data": {
+        "answer": "W dostarczonym kontekście brakuje informacji na temat sytuacji, w których organ może odmówić udostępnienia informacji publicznej. W związku z tym nie mogę udzielić szczegółowej odpowiedzi na to pytanie.\n\nTo nie jest porada prawna.",
+        "hits": [
+          {
+            "unified_id": 21001,
+            "source": "uzp",
+            "source_pk": "397",
+            "chunk_idx": 0,
+            "title": "wyrok",
+            "link": "https://orzeczenia.uzp.gov.pl/Home/Details/397",
+            "date_text": "17 lutego 2016",
+            "created_at": "2025-09-03T09:48:42.000Z",
+            "updated_at": "2025-09-03T09:48:42.000Z",
+            "snippet": null,
+            "meta": {
+              "tematy": [
+                {
+                  "id": 3,
+                  "name": "wybór oferty"
+                },
+                {
+                  "id": 4,
+                  "name": "wyjaśnienia treści oferty"
+                },
+                {
+                  "id": 5,
+                  "name": "rażąco niska cena"
+                },
+                {
+                  "id": 6,
+                  "name": "RNC"
+                },
+                {
+                  "id": 20,
+                  "name": "tajemnica przedsiębiorstwa"
+                },
+                {
+                  "id": 21,
+                  "name": "TP"
+                }
+              ],
+              "sygnatura": "KIO 149/16",
+              "rok_wyroku": 2016,
+              "miejscowosc": "Warszawa",
+              "zamawiajacy": "PL.2012+ Sp. z o.o.",
+              "organ_wydajacy": "Krajowa Izba Odwoławcza",
+              "rodzaj_dokumentu": "wyrok",
+              "kluczowe_przepisy": [
+                {
+                  "reference": "art. 89 ust. 1 pkt 4",
+                  "article_id": 49,
+                  "description": null
+                },
+                {
+                  "reference": "art. 91 ust. 1",
+                  "article_id": 77,
+                  "description": null
+                },
+                {
+                  "reference": "art. 8 ust. 3",
+                  "article_id": 117,
+                  "description": null
+                },
+                {
+                  "reference": "art. 8 ust. 1",
+                  "article_id": 166,
+                  "description": null
+                },
+                {
+                  "reference": "art. 8 ust. 2",
+                  "article_id": 338,
+                  "description": null
+                }
+              ],
+              "rodzaj_zamowienia": null,
+              "tryb_postepowania": "dialog konkurencyjny"
+            },
+            "score": 0.787251353263855
+          },
+          {
+            "unified_id": 20718,
+            "source": "uzp",
+            "source_pk": "114",
+            "chunk_idx": 0,
+            "title": "wyrok",
+            "link": "https://orzeczenia.uzp.gov.pl/Home/Details/114",
+            "date_text": "29 stycznia 2004",
+            "created_at": "2025-09-03T09:48:42.000Z",
+            "updated_at": "2025-09-03T09:48:42.000Z",
+            "snippet": null,
+            "meta": {
+              "tematy": [
+                {
+                  "id": 20,
+                  "name": "tajemnica przedsiębiorstwa"
+                },
+                {
+                  "id": 21,
+                  "name": "TP"
+                }
+              ],
+              "sygnatura": "KIO 1711/16",
+              "rok_wyroku": 2004,
+              "miejscowosc": "Warszawa",
+              "zamawiajacy": "Miejskie Przedsiebiorstwo Wodociagów i Kanalizacji w m.st. Warszawie S.A.",
+              "organ_wydajacy": "Krajowa Izba Odwoławcza",
+              "rodzaj_dokumentu": "wyrok",
+              "kluczowe_przepisy": [
+                {
+                  "reference": "art. 8 ust. 1-3",
+                  "article_id": 109,
+                  "description": null
+                }
+              ],
+              "rodzaj_zamowienia": null,
+              "tryb_postepowania": "przetarg nieograniczony"
+            },
+            "score": 0.7854224443435669
+          },
+          {
+            "unified_id": 20939,
+            "source": "uzp",
+            "source_pk": "335",
+            "chunk_idx": 0,
+            "title": "wyrok",
+            "link": "https://orzeczenia.uzp.gov.pl/Home/Details/335",
+            "date_text": "19 kwietnia 2016",
+            "created_at": "2025-09-03T09:48:42.000Z",
+            "updated_at": "2025-09-03T09:48:42.000Z",
+            "snippet": null,
+            "meta": {
+              "tematy": [
+                {
+                  "id": 2,
+                  "name": "niezgodność z warunkami zamówienia"
+                },
+                {
+                  "id": 5,
+                  "name": "rażąco niska cena"
+                },
+                {
+                  "id": 6,
+                  "name": "RNC"
+                },
+                {
+                  "id": 14,
+                  "name": "czyn nieuczciwej konkurencji"
+                },
+                {
+                  "id": 33,
+                  "name": "wykluczenie wykonawcy"
+                }
+              ],
+              "sygnatura": "KIO 478/16",
+              "rok_wyroku": 2016,
+              "miejscowosc": "Warszawa",
+              "zamawiajacy": "Skarb Państwa – Centralne Biuro Antykorupcyjne w Warszawie",
+              "organ_wydajacy": "Krajowa Izba Odwoławcza",
+              "rodzaj_dokumentu": "wyrok",
+              "kluczowe_przepisy": [
+                {
+                  "reference": "art. 89 ust. 1 pkt 2",
+                  "article_id": 3,
+                  "description": null
+                },
+                {
+                  "reference": "art. 90 ust. 1",
+                  "article_id": 4,
+                  "description": null
+                },
+                {
+                  "reference": "art. 89 ust. 1 pkt 4",
+                  "article_id": 49,
+                  "description": null
+                },
+                {
+                  "reference": "art. 89 ust. 1 pkt 3",
+                  "article_id": 68,
+                  "description": null
+                }
+              ],
+              "rodzaj_zamowienia": null,
+              "tryb_postepowania": "przetarg ograniczony"
+            },
+            "score": 0.7820942401885986
+          },
+          {
+            "unified_id": 20718,
+            "source": "uzp",
+            "source_pk": "114",
+            "chunk_idx": 0,
+            "title": "wyrok",
+            "link": "https://orzeczenia.uzp.gov.pl/Home/Details/114",
+            "date_text": "29 stycznia 2004",
+            "created_at": "2025-09-03T09:48:42.000Z",
+            "updated_at": "2025-09-03T09:48:42.000Z",
+            "snippet": null,
+            "meta": {
+              "tematy": [
+                {
+                  "id": 20,
+                  "name": "tajemnica przedsiębiorstwa"
+                },
+                {
+                  "id": 21,
+                  "name": "TP"
+                }
+              ],
+              "sygnatura": "KIO 1711/16",
+              "rok_wyroku": 2004,
+              "miejscowosc": "Warszawa",
+              "zamawiajacy": "Miejskie Przedsiebiorstwo Wodociagów i Kanalizacji w m.st. Warszawie S.A.",
+              "organ_wydajacy": "Krajowa Izba Odwoławcza",
+              "rodzaj_dokumentu": "wyrok",
+              "kluczowe_przepisy": [
+                {
+                  "reference": "art. 8 ust. 1-3",
+                  "article_id": 109,
+                  "description": null
+                }
+              ],
+              "rodzaj_zamowienia": null,
+              "tryb_postepowania": "przetarg nieograniczony"
+            },
+            "score": 0.7808800935745239
+          },
+          {
+            "unified_id": 20752,
+            "source": "uzp",
+            "source_pk": "148",
+            "chunk_idx": 0,
+            "title": "wyrok",
+            "link": "https://orzeczenia.uzp.gov.pl/Home/Details/148",
+            "date_text": "21 grudnia 2016",
+            "created_at": "2025-09-03T09:48:42.000Z",
+            "updated_at": "2025-09-03T09:48:42.000Z",
+            "snippet": null,
+            "meta": {
+              "tematy": [
+                {
+                  "id": 20,
+                  "name": "tajemnica przedsiębiorstwa"
+                },
+                {
+                  "id": 21,
+                  "name": "TP"
+                }
+              ],
+              "sygnatura": "KIO 2322/16",
+              "rok_wyroku": 2016,
+              "miejscowosc": "Warszawa",
+              "zamawiajacy": "GDDKiA",
+              "organ_wydajacy": "Krajowa Izba Odwoławcza",
+              "rodzaj_dokumentu": "wyrok",
+              "kluczowe_przepisy": [
+                {
+                  "reference": "art. 8 ust. 3",
+                  "article_id": 117,
+                  "description": null
+                }
+              ],
+              "rodzaj_zamowienia": null,
+              "tryb_postepowania": "przetarg nieograniczony"
+            },
+            "score": 0.7792543172836304
+          },
+          {
+            "unified_id": 20614,
+            "source": "uzp",
+            "source_pk": "9",
+            "chunk_idx": 0,
+            "title": "wyrok",
+            "link": "https://orzeczenia.uzp.gov.pl/Home/Details/9",
+            "date_text": "29 grudnia 2015",
+            "created_at": "2025-09-03T09:48:42.000Z",
+            "updated_at": "2025-09-03T09:48:42.000Z",
+            "snippet": null,
+            "meta": {
+              "tematy": [
+                {
+                  "id": 4,
+                  "name": "wyjaśnienia treści oferty"
+                },
+                {
+                  "id": 5,
+                  "name": "rażąco niska cena"
+                },
+                {
+                  "id": 6,
+                  "name": "RNC"
+                },
+                {
+                  "id": 13,
+                  "name": "cena"
+                },
+                {
+                  "id": 14,
+                  "name": "czyn nieuczciwej konkurencji"
+                },
+                {
+                  "id": 19,
+                  "name": "protokół postępowania"
+                },
+                {
+                  "id": 20,
+                  "name": "tajemnica przedsiębiorstwa"
+                },
+                {
+                  "id": 21,
+                  "name": "TP"
+                },
+                {
+                  "id": 30,
+                  "name": "zasady udzielania zamówień | zasada jawności postępowania"
+                },
+                {
+                  "id": 31,
+                  "name": "udostępnianie przez zamawiającego dokumentacji postępowania"
+                }
+              ],
+              "sygnatura": "KIO 2720/15",
+              "rok_wyroku": 2015,
+              "miejscowosc": "Bydgoszcz",
+              "zamawiajacy": "Rejonowy Zarząd Infrastruktury w Bydgoszczy",
+              "organ_wydajacy": "Krajowa Izba Odwoławcza",
+              "rodzaj_dokumentu": "wyrok",
+              "kluczowe_przepisy": [
+                {
+                  "reference": "art. 7 ust 1",
+                  "article_id": 11,
+                  "description": null
+                },
+                {
+                  "reference": "art. 8 ust 2",
+                  "article_id": 29,
+                  "description": null
+                },
+                {
+                  "reference": "art. 8 ust 3",
+                  "article_id": 30,
+                  "description": null
+                },
+                {
+                  "reference": "art. 89 ust 1 pkt 4",
+                  "article_id": 31,
+                  "description": null
+                },
+                {
+                  "reference": "art. 90 ust 3",
+                  "article_id": 32,
+                  "description": null
+                }
+              ],
+              "rodzaj_zamowienia": null,
+              "tryb_postepowania": "przetarg ograniczony"
+            },
+            "score": 0.7763220071792603
+          }
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "question": "Czy błędne oznaczenie adresata decyzji powoduje jej nieważność?",
+      "ms": 4004,
+      "data": {
+        "answer": "W kontekście dostarczonych informacji nie ma wystarczających danych, aby jednoznacznie odpowiedzieć na pytanie dotyczące błędnego oznaczenia adresata decyzji i jego wpływu na ważność tej decyzji. Wymagana jest analiza przepisów prawa administracyjnego oraz orzecznictwa w tej kwestii.\n\nTo nie jest porada prawna.",
+        "hits": [
+          {
+            "unified_id": 20724,
+            "source": "uzp",
+            "source_pk": "120",
+            "chunk_idx": 0,
+            "title": "wyrok",
+            "link": "https://orzeczenia.uzp.gov.pl/Home/Details/120",
+            "date_text": "29 stycznia 2004",
+            "created_at": "2025-09-03T09:48:42.000Z",
+            "updated_at": "2025-09-03T09:48:42.000Z",
+            "snippet": null,
+            "meta": {
+              "tematy": [
+                {
+                  "id": 8,
+                  "name": "warunki udziału w postępowaniu"
+                },
+                {
+                  "id": 32,
+                  "name": "informacje wprowadzające w błąd"
+                },
+                {
+                  "id": 33,
+                  "name": "wykluczenie wykonawcy"
+                },
+                {
+                  "id": 48,
+                  "name": "wiedza i doświadczenie"
+                },
+                {
+                  "id": 49,
+                  "name": "oświadczenie o spełnieniu warunków udziału"
+                },
+                {
+                  "id": 50,
+                  "name": "doświadczenie"
+                }
+              ],
+              "sygnatura": "KIO 1773/16",
+              "rok_wyroku": 2004,
+              "miejscowosc": "Wrocław",
+              "zamawiajacy": "Dolnośląski Park Innwacji i Nauki S.A.",
+              "organ_wydajacy": "Krajowa Izba Odwoławcza",
+              "rodzaj_dokumentu": "wyrok",
+              "kluczowe_przepisy": [
+                {
+                  "reference": "art. 24 ust. 2 pkt 4",
+                  "article_id": 58,
+                  "description": null
+                },
+                {
+                  "reference": "art. 24 ust. 2 pkt 3",
+                  "article_id": 62,
+                  "description": null
+                }
+              ],
+              "rodzaj_zamowienia": null,
+              "tryb_postepowania": "przetarg nieograniczony"
+            },
+            "score": 0.773605465888977
+          },
+          {
+            "unified_id": 47,
+            "source": "ms",
+            "source_pk": "47",
+            "chunk_idx": 0,
+            "title": "Sąd Apelacyjny w Krakowie z 2024-07-05",
+            "link": "https://orzeczenia.ms.gov.pl/details/$N/152000000000503_I_ACa_000494_2024_Uz_2024-07-05_002",
+            "date_text": "5 lipca 2024",
+            "created_at": "2025-09-03T09:48:34.000Z",
+            "updated_at": "2025-09-03T09:48:34.000Z",
+            "snippet": null,
+            "meta": {
+              "sad": "Sąd Apelacyjny w Krakowie",
+              "hasla": "Odszkodowanie\n, \nDobra osobiste\n, \nZadośćuczynienie",
+              "wydzial": "I Wydział Cywilny",
+              "articles": [
+                {
+                  "link": "http://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19970780483",
+                  "title": "Dz. U. z 1997 r. Nr 78, poz. 483",
+                  "article_id": "WDU19970780483"
+                },
+                {
+                  "link": "http://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19640430296",
+                  "title": "Dz. U. z 1964 r. Nr 43, poz. 296",
+                  "article_id": "WDU19640430296"
+                }
+              ],
+              "sygnatura": "I ACa 494/24",
+              "link_parsed": "https://orzeczenia.ms.gov.pl/details/$N/152000000000503_I_ACa_000494_2024_Uz_2024-07-05_002",
+              "data_orzeczenia": "5 lipca 2024",
+              "data_publikacji": "26 czerwca 2025",
+              "date_text_source": "data_orzeczenia"
+            },
+            "score": 0.7701423168182373
+          },
+          {
+            "unified_id": 46,
+            "source": "ms",
+            "source_pk": "46",
+            "chunk_idx": 0,
+            "title": "Sąd Apelacyjny w Szczecinie z 2024-07-18",
+            "link": "https://orzeczenia.ms.gov.pl/details/$N/155500000000503_I_ACa_001790_2023_Uz_2024-08-12_001",
+            "date_text": "18 lipca 2024",
+            "created_at": "2025-09-03T09:48:34.000Z",
+            "updated_at": "2025-09-03T09:48:34.000Z",
+            "snippet": null,
+            "meta": {
+              "sad": "Sąd Apelacyjny w Szczecinie",
+              "hasla": "Bezpodstawne wzbogacenie\n, \nNieważność umowy",
+              "wydzial": "I Wydział Cywilny",
+              "articles": [
+                {
+                  "link": "http://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19970780483",
+                  "title": "Dz. U. z 1997 r. Nr 78, poz. 483",
+                  "article_id": "WDU19970780483"
+                },
+                {
+                  "link": "http://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19640430296",
+                  "title": "Dz. U. z 1964 r. Nr 43, poz. 296",
+                  "article_id": "WDU19640430296"
+                },
+                {
+                  "link": "http://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19971400939",
+                  "title": "Dz. U. z 1997 r. Nr 140, poz. 939",
+                  "article_id": "WDU19971400939"
+                },
+                {
+                  "link": "http://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20000220271",
+                  "title": "Dz. U. z 2000 r. Nr 22, poz. 271",
+                  "article_id": "WDU20000220271"
+                },
+                {
+                  "link": "http://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19640160093",
+                  "title": "Dz. U. z 1964 r. Nr 16, poz. 93",
+                  "article_id": "WDU19640160093"
+                },
+                {
+                  "link": "http://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19360370282",
+                  "title": "Dz. U. z 1936 r. Nr 37, poz. 282",
+                  "article_id": "WDU19360370282"
+                },
+                {
+                  "link": "http://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19971400938",
+                  "title": "Dz. U. z 1997 r. Nr 140, poz. 938",
+                  "article_id": "WDU19971400938"
+                },
+                {
+                  "link": "http://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19820300210",
+                  "title": "Dz. U. z 1982 r. Nr 30, poz. 210",
+                  "article_id": "WDU19820300210"
+                }
+              ],
+              "sygnatura": "I ACa 1790/23",
+              "link_parsed": "https://orzeczenia.ms.gov.pl/details/$N/155500000000503_I_ACa_001790_2023_Uz_2024-08-12_001",
+              "data_orzeczenia": "18 lipca 2024",
+              "data_publikacji": "14 lutego 2025",
+              "date_text_source": "data_orzeczenia"
+            },
+            "score": 0.7694805264472961
+          },
+          {
+            "unified_id": 20972,
+            "source": "uzp",
+            "source_pk": "368",
+            "chunk_idx": 0,
+            "title": "wyrok",
+            "link": "https://orzeczenia.uzp.gov.pl/Home/Details/368",
+            "date_text": "29 stycznia 2004",
+            "created_at": "2025-09-03T09:48:42.000Z",
+            "updated_at": "2025-09-03T09:48:42.000Z",
+            "snippet": null,
+            "meta": {
+              "tematy": [
+                {
+                  "id": 4,
+                  "name": "wyjaśnienia treści oferty"
+                },
+                {
+                  "id": 10,
+                  "name": "specyfikacja warunków zamówienia"
+                },
+                {
+                  "id": 11,
+                  "name": "SWZ"
+                },
+                {
+                  "id": 14,
+                  "name": "czyn nieuczciwej konkurencji"
+                },
+                {
+                  "id": 33,
+                  "name": "wykluczenie wykonawcy"
+                },
+                {
+                  "id": 47,
+                  "name": "uzupełnienie oświadczeń i dokumentów"
+                }
+              ],
+              "sygnatura": "KIO 1319/16",
+              "rok_wyroku": 2004,
+              "miejscowosc": "Warszawa",
+              "zamawiajacy": "Miasto Stołeczne Warszawa Dzielnica Ursynów",
+              "organ_wydajacy": "Krajowa Izba Odwoławcza",
+              "rodzaj_dokumentu": "wyrok",
+              "kluczowe_przepisy": [
+                {
+                  "reference": "art. 24 ust. 2 pkt 4",
+                  "article_id": 58,
+                  "description": null
+                },
+                {
+                  "reference": "art. 26 ust. 3",
+                  "article_id": 59,
+                  "description": null
+                },
+                {
+                  "reference": "art. 7 ust. 1",
+                  "article_id": 92,
+                  "description": null
+                },
+                {
+                  "reference": "art. 24 ust. 4",
+                  "article_id": 119,
+                  "description": null
+                },
+                {
+                  "reference": "24 ust. 2 pkt 3",
+                  "article_id": 307,
+                  "description": null
+                }
+              ],
+              "rodzaj_zamowienia": null,
+              "tryb_postepowania": "przetarg nieograniczony"
+            },
+            "score": 0.7683513164520264
+          },
+          {
+            "unified_id": 20972,
+            "source": "uzp",
+            "source_pk": "368",
+            "chunk_idx": 0,
+            "title": "wyrok",
+            "link": "https://orzeczenia.uzp.gov.pl/Home/Details/368",
+            "date_text": "29 stycznia 2004",
+            "created_at": "2025-09-03T09:48:42.000Z",
+            "updated_at": "2025-09-03T09:48:42.000Z",
+            "snippet": null,
+            "meta": {
+              "tematy": [
+                {
+                  "id": 4,
+                  "name": "wyjaśnienia treści oferty"
+                },
+                {
+                  "id": 10,
+                  "name": "specyfikacja warunków zamówienia"
+                },
+                {
+                  "id": 11,
+                  "name": "SWZ"
+                },
+                {
+                  "id": 14,
+                  "name": "czyn nieuczciwej konkurencji"
+                },
+                {
+                  "id": 33,
+                  "name": "wykluczenie wykonawcy"
+                },
+                {
+                  "id": 47,
+                  "name": "uzupełnienie oświadczeń i dokumentów"
+                }
+              ],
+              "sygnatura": "KIO 1319/16",
+              "rok_wyroku": 2004,
+              "miejscowosc": "Warszawa",
+              "zamawiajacy": "Miasto Stołeczne Warszawa Dzielnica Ursynów",
+              "organ_wydajacy": "Krajowa Izba Odwoławcza",
+              "rodzaj_dokumentu": "wyrok",
+              "kluczowe_przepisy": [
+                {
+                  "reference": "art. 24 ust. 2 pkt 4",
+                  "article_id": 58,
+                  "description": null
+                },
+                {
+                  "reference": "art. 26 ust. 3",
+                  "article_id": 59,
+                  "description": null
+                },
+                {
+                  "reference": "art. 7 ust. 1",
+                  "article_id": 92,
+                  "description": null
+                },
+                {
+                  "reference": "art. 24 ust. 4",
+                  "article_id": 119,
+                  "description": null
+                },
+                {
+                  "reference": "24 ust. 2 pkt 3",
+                  "article_id": 307,
+                  "description": null
+                }
+              ],
+              "rodzaj_zamowienia": null,
+              "tryb_postepowania": "przetarg nieograniczony"
+            },
+            "score": 0.7683010101318359
+          },
+          {
+            "unified_id": 20953,
+            "source": "uzp",
+            "source_pk": "349",
+            "chunk_idx": 0,
+            "title": "wyrok",
+            "link": "https://orzeczenia.uzp.gov.pl/Home/Details/349",
+            "date_text": "29 stycznia 2004",
+            "created_at": "2025-09-03T09:48:42.000Z",
+            "updated_at": "2025-09-03T09:48:42.000Z",
+            "snippet": null,
+            "meta": {
+              "tematy": [
+                {
+                  "id": 8,
+                  "name": "warunki udziału w postępowaniu"
+                },
+                {
+                  "id": 14,
+                  "name": "czyn nieuczciwej konkurencji"
+                },
+                {
+                  "id": 32,
+                  "name": "informacje wprowadzające w błąd"
+                },
+                {
+                  "id": 33,
+                  "name": "wykluczenie wykonawcy"
+                },
+                {
+                  "id": 48,
+                  "name": "wiedza i doświadczenie"
+                },
+                {
+                  "id": 49,
+                  "name": "oświadczenie o spełnieniu warunków udziału"
+                },
+                {
+                  "id": 50,
+                  "name": "doświadczenie"
+                }
+              ],
+              "sygnatura": "KIO 673/16",
+              "rok_wyroku": 2004,
+              "miejscowosc": "Przmyśl",
+              "zamawiajacy": "Gmina Miejska Przemyśl",
+              "organ_wydajacy": "Krajowa Izba Odwoławcza",
+              "rodzaj_dokumentu": "wyrok",
+              "kluczowe_przepisy": [
+                {
+                  "reference": "art. 24 ust. 2 pkt 4",
+                  "article_id": 58,
+                  "description": null
+                },
+                {
+                  "reference": "art. 26 ust. 3",
+                  "article_id": 59,
+                  "description": null
+                },
+                {
+                  "reference": "art. 26 ust. 4",
+                  "article_id": 60,
+                  "description": null
+                },
+                {
+                  "reference": "art. 24 ust. 2 pkt 3",
+                  "article_id": 62,
+                  "description": null
+                },
+                {
+                  "reference": "art. 7 ust. 1 i 3",
+                  "article_id": 311,
+                  "description": null
+                }
+              ],
+              "rodzaj_zamowienia": null,
+              "tryb_postepowania": "przetarg nieograniczony"
+            },
+            "score": 0.7681397199630737
+          }
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "question": "Jakie warunki musi spełnić skarga do WSA, aby nie została odrzucona?",
+      "ms": 3053,
+      "data": {
+        "answer": "Niestety, dostarczony kontekst nie zawiera informacji na temat warunków, które musi spełnić skarga do Wojewódzkiego Sądu Administracyjnego (WSA), aby nie została odrzucona.\n\nTo nie jest porada prawna.",
+        "hits": [
+          {
+            "unified_id": 39202,
+            "source": "nsa",
+            "source_pk": "1698",
+            "chunk_idx": 0,
+            "title": "II SA/Wa 193/25 - Wyrok WSA w Warszawie z 2025-08-19",
+            "link": "https://orzeczenia.nsa.gov.pl/doc/C5639625F5",
+            "date_text": "2025-02-03",
+            "created_at": "2025-09-03T09:51:22.000Z",
+            "updated_at": "2025-09-03T09:51:22.000Z",
+            "snippet": null,
+            "meta": {
+              "sad": "Wojewódzki Sąd Administracyjny w Warszawie",
+              "symbole": [
+                {
+                  "opis": "Inne o symbolu podstawowym 619",
+                  "symbol": "6199",
+                  "pelna_wartosc": "6199 Inne o symbolu podstawowym 619"
+                }
+              ],
+              "sedziowie": [
+                {
+                  "name": "Andrzej Wieczorek /sprawozdawca/Danuta Kania /przewodniczący/Dorota Kozub-Marciniak",
+                  "rola": null
+                }
+              ],
+              "sygnatura": "II SA/Wa 193/25",
+              "prawomocne": 0,
+              "data_wplywu": "2025-02-03",
+              "tresc_wyniku": "Oddalono skargę",
+              "skarzony_organ": "Samorządowe Kolegium Odwoławcze",
+              "data_orzeczenia": "2025-08-19",
+              "hasla_tematyczne": "Inne",
+              "powolane_przepisy": "Dz.U. 2024 poz 935 art. 151Ustawa z dnia 30 sierpnia 2002 r. Prawo o postępowaniu przed sądami administracyjnymi (t. j.)",
+              "uzasadnienie_flag": 1
+            },
+            "score": 0.8197755813598633
+          },
+          {
+            "unified_id": 39204,
+            "source": "nsa",
+            "source_pk": "1700",
+            "chunk_idx": 0,
+            "title": "II SA/Wa 195/25 - Wyrok WSA w Warszawie z 2025-08-19",
+            "link": "https://orzeczenia.nsa.gov.pl/doc/6A11BE97B9",
+            "date_text": "2025-02-03",
+            "created_at": "2025-09-03T09:51:22.000Z",
+            "updated_at": "2025-09-03T09:51:22.000Z",
+            "snippet": null,
+            "meta": {
+              "sad": "Wojewódzki Sąd Administracyjny w Warszawie",
+              "symbole": [
+                {
+                  "opis": "Inne o symbolu podstawowym 619",
+                  "symbol": "6199",
+                  "pelna_wartosc": "6199 Inne o symbolu podstawowym 619"
+                }
+              ],
+              "sedziowie": [
+                {
+                  "name": "Andrzej Wieczorek /sprawozdawca/Danuta Kania /przewodniczący/Dorota Kozub-Marciniak",
+                  "rola": null
+                }
+              ],
+              "sygnatura": "II SA/Wa 195/25",
+              "prawomocne": 0,
+              "data_wplywu": "2025-02-03",
+              "tresc_wyniku": "Oddalono skargę",
+              "skarzony_organ": "Samorządowe Kolegium Odwoławcze",
+              "data_orzeczenia": "2025-08-19",
+              "hasla_tematyczne": "Inne",
+              "powolane_przepisy": "Dz.U. 2024 poz 935 art. 151Ustawa z dnia 30 sierpnia 2002 r. Prawo o postępowaniu przed sądami administracyjnymi (t. j.)",
+              "uzasadnienie_flag": 1
+            },
+            "score": 0.8176186084747314
+          },
+          {
+            "unified_id": 39203,
+            "source": "nsa",
+            "source_pk": "1699",
+            "chunk_idx": 0,
+            "title": "II SA/Wa 194/25 - Wyrok WSA w Warszawie z 2025-08-19",
+            "link": "https://orzeczenia.nsa.gov.pl/doc/92928DBFA4",
+            "date_text": "2025-02-03",
+            "created_at": "2025-09-03T09:51:22.000Z",
+            "updated_at": "2025-09-03T09:51:22.000Z",
+            "snippet": null,
+            "meta": {
+              "sad": "Wojewódzki Sąd Administracyjny w Warszawie",
+              "symbole": [
+                {
+                  "opis": "Inne o symbolu podstawowym 619",
+                  "symbol": "6199",
+                  "pelna_wartosc": "6199 Inne o symbolu podstawowym 619"
+                }
+              ],
+              "sedziowie": [
+                {
+                  "name": "Andrzej Wieczorek /sprawozdawca/Danuta Kania /przewodniczący/Dorota Kozub-Marciniak",
+                  "rola": null
+                }
+              ],
+              "sygnatura": "II SA/Wa 194/25",
+              "prawomocne": 0,
+              "data_wplywu": "2025-02-03",
+              "tresc_wyniku": "Oddalono skargę",
+              "skarzony_organ": "Samorządowe Kolegium Odwoławcze",
+              "data_orzeczenia": "2025-08-19",
+              "hasla_tematyczne": "Inne",
+              "powolane_przepisy": "Dz.U. 2024 poz 935 art. 151Ustawa z dnia 30 sierpnia 2002 r. Prawo o postępowaniu przed sądami administracyjnymi (t. j.)",
+              "uzasadnienie_flag": 1
+            },
+            "score": 0.8173587918281555
+          },
+          {
+            "unified_id": 38869,
+            "source": "nsa",
+            "source_pk": "1365",
+            "chunk_idx": 0,
+            "title": "VI SA/Wa 3307/24 - Wyrok WSA w Warszawie z 2025-08-20",
+            "link": "https://orzeczenia.nsa.gov.pl/doc/7D9C607C6C",
+            "date_text": "2024-10-10",
+            "created_at": "2025-09-03T09:51:22.000Z",
+            "updated_at": "2025-09-03T09:51:22.000Z",
+            "snippet": null,
+            "meta": {
+              "sad": "Wojewódzki Sąd Administracyjny w Warszawie",
+              "symbole": [
+                {
+                  "opis": "Dopuszczenie pojazdu do ruchu",
+                  "symbol": "6030",
+                  "pelna_wartosc": "6030 Dopuszczenie pojazdu do ruchu"
+                }
+              ],
+              "sedziowie": [
+                {
+                  "name": "Dorota Dziedzic-Chojnacka /przewodniczący/Maciej BorychowskiSławomir Kozik",
+                  "rola": "sprawozdawca"
+                }
+              ],
+              "sygnatura": "VI SA/Wa 3307/24",
+              "prawomocne": 0,
+              "data_wplywu": "2024-10-10",
+              "tresc_wyniku": "Oddalono skargę",
+              "skarzony_organ": "Samorządowe Kolegium Odwoławcze",
+              "data_orzeczenia": "2025-08-20",
+              "hasla_tematyczne": null,
+              "powolane_przepisy": null,
+              "uzasadnienie_flag": 1
+            },
+            "score": 0.8148180842399597
+          },
+          {
+            "unified_id": 39033,
+            "source": "nsa",
+            "source_pk": "1529",
+            "chunk_idx": 0,
+            "title": "V SA/Wa 1988/25 - Wyrok WSA w Warszawie z 2025-08-19",
+            "link": "https://orzeczenia.nsa.gov.pl/doc/D73D5B2D71",
+            "date_text": "2025-06-27",
+            "created_at": "2025-09-03T09:51:22.000Z",
+            "updated_at": "2025-09-03T09:51:22.000Z",
+            "snippet": null,
+            "meta": {
+              "sad": "Wojewódzki Sąd Administracyjny w Warszawie",
+              "symbole": [
+                {
+                  "opis": null,
+                  "symbol": "6559",
+                  "pelna_wartosc": "6559"
+                }
+              ],
+              "sedziowie": [
+                {
+                  "name": "Adrianna Elżbieta Grzymska-TruksaJadwiga SmołuchaJarosław Stopczyński",
+                  "rola": "przewodniczący sprawozdawca"
+                }
+              ],
+              "sygnatura": "V SA/Wa 1988/25",
+              "prawomocne": 0,
+              "data_wplywu": "2025-06-27",
+              "tresc_wyniku": "Oddalono skargę",
+              "skarzony_organ": "Inne",
+              "data_orzeczenia": "2025-08-19",
+              "hasla_tematyczne": null,
+              "powolane_przepisy": null,
+              "uzasadnienie_flag": 1
+            },
+            "score": 0.8148170709609985
+          },
+          {
+            "unified_id": 39057,
+            "source": "nsa",
+            "source_pk": "1553",
+            "chunk_idx": 0,
+            "title": "V SA/Wa 1043/25 - Wyrok WSA w Warszawie z 2025-08-19",
+            "link": "https://orzeczenia.nsa.gov.pl/doc/508F20539E",
+            "date_text": "2025-04-01",
+            "created_at": "2025-09-03T09:51:22.000Z",
+            "updated_at": "2025-09-03T09:51:22.000Z",
+            "snippet": null,
+            "meta": {
+              "sad": "Wojewódzki Sąd Administracyjny w Warszawie",
+              "symbole": [
+                {
+                  "opis": "Inne o symbolu podstawowym 630",
+                  "symbol": "6309",
+                  "pelna_wartosc": "6309 Inne o symbolu podstawowym 630"
+                }
+              ],
+              "sedziowie": [
+                {
+                  "name": "Adrianna Elżbieta Grzymska-Truksa /sprawozdawca/Jadwiga SmołuchaJarosław Stopczyński",
+                  "rola": "przewodniczący"
+                }
+              ],
+              "sygnatura": "V SA/Wa 1043/25",
+              "prawomocne": 0,
+              "data_wplywu": "2025-04-01",
+              "tresc_wyniku": "Oddalono skargę",
+              "skarzony_organ": "Minister Rolnictwa i Rozwoju Wsi",
+              "data_orzeczenia": "2025-08-19",
+              "hasla_tematyczne": null,
+              "powolane_przepisy": null,
+              "uzasadnienie_flag": 1
+            },
+            "score": 0.8140575885772705
+          }
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "question": "Czy doręczenie przez ePUAP jest skuteczne, gdy pełnomocnictwo nie obejmuje tej formy?",
+      "ms": 2582,
+      "data": {
+        "answer": "Na podstawie dostarczonego kontekstu nie ma wystarczających informacji, aby odpowiedzieć na pytanie dotyczące skuteczności doręczenia przez ePUAP w przypadku, gdy pełnomocnictwo nie obejmuje tej formy.\n\nTo nie jest porada prawna.",
+        "hits": [
+          {
+            "unified_id": 20645,
+            "source": "uzp",
+            "source_pk": "40",
+            "chunk_idx": 0,
+            "title": "wyrok",
+            "link": "https://orzeczenia.uzp.gov.pl/Home/Details/40",
+            "date_text": "23 marca 2016",
+            "created_at": "2025-09-03T09:48:42.000Z",
+            "updated_at": "2025-09-03T09:48:42.000Z",
+            "snippet": null,
+            "meta": {
+              "tematy": [
+                {
+                  "id": 18,
+                  "name": "kryteria oceny ofert"
+                }
+              ],
+              "sygnatura": "KIO 294/16",
+              "rok_wyroku": 2016,
+              "miejscowosc": "Kraków",
+              "zamawiajacy": "Wojewódzki Urząd Pracy w Karkowie",
+              "organ_wydajacy": "Krajowa Izba Odwoławcza",
+              "rodzaj_dokumentu": "wyrok",
+              "kluczowe_przepisy": [
+                {
+                  "reference": "art. 91 ust. 1",
+                  "article_id": 77,
+                  "description": null
+                }
+              ],
+              "rodzaj_zamowienia": null,
+              "tryb_postepowania": "przetarg nieograniczony"
+            },
+            "score": 0.7579951286315918
+          },
+          {
+            "unified_id": 39161,
+            "source": "nsa",
+            "source_pk": "1657",
+            "chunk_idx": 0,
+            "title": "III SAB/Wr 15/25 - Postanowienie WSA we Wrocławiu z 2025-08-19",
+            "link": "https://orzeczenia.nsa.gov.pl/doc/E330C00B56",
+            "date_text": "2025-06-16",
+            "created_at": "2025-09-03T09:51:22.000Z",
+            "updated_at": "2025-09-03T09:51:22.000Z",
+            "snippet": null,
+            "meta": {
+              "sad": "Wojewódzki Sąd Administracyjny we Wrocławiu",
+              "symbole": [
+                {
+                  "opis": "Inne o symbolu podstawowym 653658",
+                  "symbol": "6539",
+                  "pelna_wartosc": "6539 Inne o symbolu podstawowym 653658"
+                }
+              ],
+              "sedziowie": [
+                {
+                  "name": "Anetta Chołuj",
+                  "rola": "przewodniczący sprawozdawca"
+                }
+              ],
+              "sygnatura": "III SAB/Wr 15/25",
+              "prawomocne": 0,
+              "data_wplywu": "2025-06-16",
+              "tresc_wyniku": "*Odrzucono skargę",
+              "skarzony_organ": "Prezes Zakładu Ubezpieczeń Społecznych/ZUS",
+              "data_orzeczenia": "2025-08-19",
+              "hasla_tematyczne": "Odrzucenie skargi",
+              "powolane_przepisy": "Dz.U. 2024 poz 935  art. 58 par. 1 pkt 1 par. 3Ustawa z dnia 30 sierpnia 2002 r. Prawo o postępowaniu przed sądami administracyjnymi (t. j.)",
+              "uzasadnienie_flag": 1
+            },
+            "score": 0.7520421743392944
+          },
+          {
+            "unified_id": 39162,
+            "source": "nsa",
+            "source_pk": "1658",
+            "chunk_idx": 0,
+            "title": "III SAB/Wr 23/25 - Postanowienie WSA we Wrocławiu z 2025-08-19",
+            "link": "https://orzeczenia.nsa.gov.pl/doc/BE5FEE2ABE",
+            "date_text": "2025-07-21",
+            "created_at": "2025-09-03T09:51:22.000Z",
+            "updated_at": "2025-09-03T09:51:22.000Z",
+            "snippet": null,
+            "meta": {
+              "sad": "Wojewódzki Sąd Administracyjny we Wrocławiu",
+              "symbole": [
+                {
+                  "opis": "Inne o symbolu podstawowym 653658",
+                  "symbol": "6539",
+                  "pelna_wartosc": "6539 Inne o symbolu podstawowym 653658"
+                }
+              ],
+              "sedziowie": [
+                {
+                  "name": "Anetta Chołuj",
+                  "rola": "przewodniczący sprawozdawca"
+                }
+              ],
+              "sygnatura": "III SAB/Wr 23/25",
+              "prawomocne": 0,
+              "data_wplywu": "2025-07-21",
+              "tresc_wyniku": "*Odrzucono skargę",
+              "skarzony_organ": "Prezes Zakładu Ubezpieczeń Społecznych/ZUS",
+              "data_orzeczenia": "2025-08-19",
+              "hasla_tematyczne": "Odrzucenie skargi",
+              "powolane_przepisy": "Dz.U. 2024 poz 935  art. 58 par. 1 pkt 1 par. 3Ustawa z dnia 30 sierpnia 2002 r. Prawo o postępowaniu przed sądami administracyjnymi (t. j.)",
+              "uzasadnienie_flag": 1
+            },
+            "score": 0.7501314282417297
+          },
+          {
+            "unified_id": 10,
+            "source": "ms",
+            "source_pk": "10",
+            "chunk_idx": 0,
+            "title": "Sąd Apelacyjny w Lublinie z 2025-01-08",
+            "link": "https://orzeczenia.ms.gov.pl/details/$N/153000000001521_III_AUa_000577_2024_Uz_2025-01-08_003",
+            "date_text": "8 stycznia 2025",
+            "created_at": "2025-09-03T09:48:34.000Z",
+            "updated_at": "2025-09-03T09:48:34.000Z",
+            "snippet": null,
+            "meta": {
+              "sad": "Sąd Apelacyjny w Lublinie",
+              "hasla": "Renta",
+              "wydzial": "III Wydział Pracy i Ubezpieczeń Społecznych",
+              "articles": [
+                {
+                  "link": "http://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19640430296",
+                  "title": "Dz. U. z 1964 r. Nr 43, poz. 296",
+                  "article_id": "WDU19640430296"
+                },
+                {
+                  "link": "http://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19981621118",
+                  "title": "Dz. U. z 1998 r. Nr 162, poz. 1118",
+                  "article_id": "WDU19981621118"
+                }
+              ],
+              "sygnatura": "III AUa 577/24",
+              "link_parsed": "https://orzeczenia.ms.gov.pl/details/$N/153000000001521_III_AUa_000577_2024_Uz_2025-01-08_003",
+              "data_orzeczenia": "8 stycznia 2025",
+              "data_publikacji": "24 lutego 2025",
+              "date_text_source": "data_orzeczenia"
+            },
+            "score": 0.7500646710395813
+          },
+          {
+            "unified_id": 11,
+            "source": "ms",
+            "source_pk": "11",
+            "chunk_idx": 0,
+            "title": "Sąd Apelacyjny w Lublinie z 2025-02-19",
+            "link": "https://orzeczenia.ms.gov.pl/details/$N/153000000001521_III_AUa_000579_2024_Uz_2025-02-19_003",
+            "date_text": "19 lutego 2025",
+            "created_at": "2025-09-03T09:48:34.000Z",
+            "updated_at": "2025-09-03T09:48:34.000Z",
+            "snippet": null,
+            "meta": {
+              "sad": "Sąd Apelacyjny w Lublinie",
+              "hasla": "Odsetki",
+              "wydzial": "III Wydział Pracy i Ubezpieczeń Społecznych",
+              "articles": [
+                {
+                  "link": "http://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19640430296",
+                  "title": "Dz. U. z 1964 r. Nr 43, poz. 296",
+                  "article_id": "WDU19640430296"
+                },
+                {
+                  "link": "http://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19981370887",
+                  "title": "Dz. U. z 1998 r. Nr 137, poz. 887",
+                  "article_id": "WDU19981370887"
+                },
+                {
+                  "link": "http://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19981621118",
+                  "title": "Dz. U. z 1998 r. Nr 162, poz. 1118",
+                  "article_id": "WDU19981621118"
+                }
+              ],
+              "sygnatura": "III AUa 579/24",
+              "link_parsed": "https://orzeczenia.ms.gov.pl/details/$N/153000000001521_III_AUa_000579_2024_Uz_2025-02-19_003",
+              "data_orzeczenia": "19 lutego 2025",
+              "data_publikacji": "15 maja 2025",
+              "date_text_source": "data_orzeczenia"
+            },
+            "score": 0.7492098808288574
+          },
+          {
+            "unified_id": 37507,
+            "source": "nsa",
+            "source_pk": "3",
+            "chunk_idx": 0,
+            "title": "II SA/Gd 580/25 - Postanowienie WSA w Gdańsku z 2025-08-29",
+            "link": "https://orzeczenia.nsa.gov.pl/doc/F332B14C97",
+            "date_text": "2025-08-06",
+            "created_at": "2025-09-03T09:51:22.000Z",
+            "updated_at": "2025-09-03T09:51:22.000Z",
+            "snippet": null,
+            "meta": {
+              "sad": "Wojewódzki Sąd Administracyjny w Gdańsku",
+              "symbole": [
+                {
+                  "opis": "prz",
+                  "symbol": null,
+                  "pelna_wartosc": "prz"
+                },
+                {
+                  "opis": "użytkowanie obiektu lub jego części",
+                  "symbol": null,
+                  "pelna_wartosc": "użytkowanie obiektu lub jego części"
+                },
+                {
+                  "opis": "wykonywanie robót budowlanych innych niż budowa obiektu",
+                  "symbol": null,
+                  "pelna_wartosc": "wykonywanie robót budowlanych innych niż budowa obiektu"
+                },
+                {
+                  "opis": "Pozwolenie na budowę",
+                  "symbol": "6010",
+                  "pelna_wartosc": "6010 Pozwolenie na budowę"
+                }
+              ],
+              "sedziowie": [
+                {
+                  "name": "Katarzyna Krzysztofowicz",
+                  "rola": "przewodniczący sprawozdawca"
+                }
+              ],
+              "sygnatura": "II SA/Gd 580/25",
+              "prawomocne": 0,
+              "data_wplywu": "2025-08-06",
+              "tresc_wyniku": "Odrzucono sprzeciw od decyzji",
+              "skarzony_organ": "Wojewoda",
+              "data_orzeczenia": "2025-08-29",
+              "hasla_tematyczne": "Odrzucenie skargi",
+              "powolane_przepisy": "Dz.U. 2024 poz 935 art. 58 par. 1 pkt 6 i art. 58 par. 3 w zw. z art. 64b par. 1Ustawa z dnia 30 sierpnia 2002 r. Prawo o postępowaniu przed sądami administracyjnymi (t. j.)",
+              "uzasadnienie_flag": 1
+            },
+            "score": 0.7489916682243347
+          }
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "question": "Kiedy można wznowić postępowanie administracyjne?",
+      "ms": 2196,
+      "data": {
+        "answer": "Niestety, dostarczony kontekst nie zawiera informacji na temat wznowienia postępowania administracyjnego. To nie jest porada prawna.",
+        "hits": [
+          {
+            "unified_id": 367,
+            "source": "sn",
+            "source_pk": "147352-6e9ffc09-7b83-4b3d-8c04-f640e774865f",
+            "chunk_idx": 0,
+            "title": "IV KO 40/24",
+            "link": "https://www.sn.pl/wyszukiwanie/SitePages/orzeczenia.aspx?ItemSID=147352-6e9ffc09-7b83-4b3d-8c04-f640e774865f&ListName=Orzeczenia3",
+            "date_text": "19 lutego 2025 r.",
+            "created_at": "2025-09-03T09:48:34.000Z",
+            "updated_at": "2025-09-03T09:48:34.000Z",
+            "snippet": null,
+            "meta": {
+              "izba": "Izba Karna",
+              "links": {
+                "link_pdf": "https://www.sn.pl/sites/orzecznictwo/Orzeczenia3/IV KO 40-24-4.pdf",
+                "link_html": "https://www.sn.pl/sites/orzecznictwo/OrzeczeniaHTML/iv ko 40-24-4.docx.html",
+                "page_link": "https://www.sn.pl/wyszukiwanie/SitePages/orzeczenia.aspx?ItemSID=147352-6e9ffc09-7b83-4b3d-8c04-f640e774865f&ListName=Orzeczenia3"
+              },
+              "sedziowie": [
+                {
+                  "id": 9,
+                  "name": "SSN Małgorzata Bednarek"
+                }
+              ],
+              "sygnatura": "IV KO 40/24",
+              "data_wydania": "19 lutego 2025 r.",
+              "sprawozdawca": "SSN Małgorzata Bednarek",
+              "forma_orzeczenia": "zarządzenie",
+              "autor_uzasadnienia": "",
+              "typ_skladu_sedziow": "Skład 1-osobowy",
+              "jednostka_obslugujaca": "Izba Karna Wydział IV",
+              "przewodniczacy_skladu": "SSN Małgorzata Bednarek"
+            },
+            "score": 0.8309711217880249
+          },
+          {
+            "unified_id": 39014,
+            "source": "nsa",
+            "source_pk": "1510",
+            "chunk_idx": 0,
+            "title": "III SA/Gl 578/25 - Postanowienie WSA w Gliwicach z 2025-08-20",
+            "link": "https://orzeczenia.nsa.gov.pl/doc/ED9E90D32E",
+            "date_text": "2025-06-24",
+            "created_at": "2025-09-03T09:51:22.000Z",
+            "updated_at": "2025-09-03T09:51:22.000Z",
+            "snippet": null,
+            "meta": {
+              "sad": "Wojewódzki Sąd Administracyjny w Gliwicach",
+              "symbole": [
+                {
+                  "opis": null,
+                  "symbol": "6480",
+                  "pelna_wartosc": "6480"
+                }
+              ],
+              "sedziowie": [
+                {
+                  "name": "Dorota Fleszer",
+                  "rola": "przewodniczący sprawozdawca"
+                }
+              ],
+              "sygnatura": "III SA/Gl 578/25",
+              "prawomocne": 0,
+              "data_wplywu": "2025-06-24",
+              "tresc_wyniku": "Odrzucono skargę",
+              "skarzony_organ": "Prokurator",
+              "data_orzeczenia": "2025-08-20",
+              "hasla_tematyczne": "Odrzucenie skargi",
+              "powolane_przepisy": "Dz.U. 2024 poz 935 art. 270 w zw. z art. 280 par. 1Ustawa z dnia 30 sierpnia 2002 r. Prawo o postępowaniu przed sądami administracyjnymi (t. j.)",
+              "uzasadnienie_flag": 1
+            },
+            "score": 0.8079544305801392
+          },
+          {
+            "unified_id": 38955,
+            "source": "nsa",
+            "source_pk": "1451",
+            "chunk_idx": 0,
+            "title": "II SAB/Wr 1049/25 - Postanowienie WSA we Wrocławiu z 2025-08-20",
+            "link": "https://orzeczenia.nsa.gov.pl/doc/2A80B8EBE0",
+            "date_text": "2025-08-11",
+            "created_at": "2025-09-03T09:51:22.000Z",
+            "updated_at": "2025-09-03T09:51:22.000Z",
+            "snippet": null,
+            "meta": {
+              "sad": "Wojewódzki Sąd Administracyjny we Wrocławiu",
+              "symbole": [
+                {
+                  "opis": "Przekształcenie użytkowania wieczystego w prawo własności659",
+                  "symbol": "6074",
+                  "pelna_wartosc": "6074 Przekształcenie użytkowania wieczystego w prawo własności659"
+                }
+              ],
+              "sedziowie": [
+                {
+                  "name": "Adam Habuda",
+                  "rola": "przewodniczący sprawozdawca"
+                }
+              ],
+              "sygnatura": "II SAB/Wr 1049/25",
+              "prawomocne": 0,
+              "data_wplywu": "2025-08-11",
+              "tresc_wyniku": "*Odrzucono skargę",
+              "skarzony_organ": "Prezydent Miasta",
+              "data_orzeczenia": "2025-08-20",
+              "hasla_tematyczne": "Odrzucenie skargi",
+              "powolane_przepisy": "Dz.U. 2024 poz 935 art. 58 par. 1 pkt 6 w zw. z  art. 270, art. 276, art. 280 par. 1Ustawa z dnia 30 sierpnia 2002 r. Prawo o postępowaniu przed sądami administracyjnymi (t. j.)",
+              "uzasadnienie_flag": 1
+            },
+            "score": 0.804865837097168
+          },
+          {
+            "unified_id": 306,
+            "source": "sn",
+            "source_pk": "147255-6e9ffc09-7b83-4b3d-8c04-f640e774865f",
+            "chunk_idx": 0,
+            "title": "II KO 182/24",
+            "link": "https://www.sn.pl/wyszukiwanie/SitePages/orzeczenia.aspx?ItemSID=147255-6e9ffc09-7b83-4b3d-8c04-f640e774865f&ListName=Orzeczenia3",
+            "date_text": "19 lutego 2025 r.",
+            "created_at": "2025-09-03T09:48:34.000Z",
+            "updated_at": "2025-09-03T09:48:34.000Z",
+            "snippet": null,
+            "meta": {
+              "izba": "Izba Karna",
+              "links": {
+                "link_pdf": "https://www.sn.pl/sites/orzecznictwo/Orzeczenia3/II KO 182-24.pdf",
+                "link_html": "https://www.sn.pl/sites/orzecznictwo/OrzeczeniaHTML/ii ko 182-24.docx.html",
+                "page_link": "https://www.sn.pl/wyszukiwanie/SitePages/orzeczenia.aspx?ItemSID=147255-6e9ffc09-7b83-4b3d-8c04-f640e774865f&ListName=Orzeczenia3"
+              },
+              "sedziowie": [
+                {
+                  "id": 30,
+                  "name": "SSN Marek Motuk"
+                }
+              ],
+              "sygnatura": "II KO 182/24",
+              "data_wydania": "19 lutego 2025 r.",
+              "sprawozdawca": "SSN Marek Motuk",
+              "forma_orzeczenia": "postanowienie SN",
+              "autor_uzasadnienia": "SSN Marek Motuk",
+              "typ_skladu_sedziow": "Skład 1-osobowy",
+              "jednostka_obslugujaca": "Izba Karna Wydział II",
+              "przewodniczacy_skladu": "SSN Marek Motuk"
+            },
+            "score": 0.7991917729377747
+          },
+          {
+            "unified_id": 501,
+            "source": "sn",
+            "source_pk": "147501-6e9ffc09-7b83-4b3d-8c04-f640e774865f",
+            "chunk_idx": 0,
+            "title": "V KO 143/24",
+            "link": "https://www.sn.pl/wyszukiwanie/SitePages/orzeczenia.aspx?ItemSID=147501-6e9ffc09-7b83-4b3d-8c04-f640e774865f&ListName=Orzeczenia3",
+            "date_text": "27 lutego 2025 r.",
+            "created_at": "2025-09-03T09:48:34.000Z",
+            "updated_at": "2025-09-03T09:48:34.000Z",
+            "snippet": null,
+            "meta": {
+              "izba": "Izba Karna",
+              "links": {
+                "link_pdf": "https://www.sn.pl/sites/orzecznictwo/Orzeczenia3/V KO 143-24.pdf",
+                "link_html": "https://www.sn.pl/sites/orzecznictwo/OrzeczeniaHTML/v ko 143-24.docx.html",
+                "page_link": "https://www.sn.pl/wyszukiwanie/SitePages/orzeczenia.aspx?ItemSID=147501-6e9ffc09-7b83-4b3d-8c04-f640e774865f&ListName=Orzeczenia3"
+              },
+              "sedziowie": [
+                {
+                  "id": 23,
+                  "name": "SSN Paweł Wiliński"
+                }
+              ],
+              "sygnatura": "V KO 143/24",
+              "data_wydania": "27 lutego 2025 r.",
+              "sprawozdawca": "SSN Paweł Wiliński",
+              "forma_orzeczenia": "zarządzenie",
+              "autor_uzasadnienia": "SSN Paweł Wiliński",
+              "typ_skladu_sedziow": "Skład 1-osobowy",
+              "jednostka_obslugujaca": "Izba Karna Wydział V",
+              "przewodniczacy_skladu": "SSN Paweł Wiliński"
+            },
+            "score": 0.7983996272087097
+          },
+          {
+            "unified_id": 367,
+            "source": "sn",
+            "source_pk": "147352-6e9ffc09-7b83-4b3d-8c04-f640e774865f",
+            "chunk_idx": 0,
+            "title": "IV KO 40/24",
+            "link": "https://www.sn.pl/wyszukiwanie/SitePages/orzeczenia.aspx?ItemSID=147352-6e9ffc09-7b83-4b3d-8c04-f640e774865f&ListName=Orzeczenia3",
+            "date_text": "19 lutego 2025 r.",
+            "created_at": "2025-09-03T09:48:34.000Z",
+            "updated_at": "2025-09-03T09:48:34.000Z",
+            "snippet": null,
+            "meta": {
+              "izba": "Izba Karna",
+              "links": {
+                "link_pdf": "https://www.sn.pl/sites/orzecznictwo/Orzeczenia3/IV KO 40-24-4.pdf",
+                "link_html": "https://www.sn.pl/sites/orzecznictwo/OrzeczeniaHTML/iv ko 40-24-4.docx.html",
+                "page_link": "https://www.sn.pl/wyszukiwanie/SitePages/orzeczenia.aspx?ItemSID=147352-6e9ffc09-7b83-4b3d-8c04-f640e774865f&ListName=Orzeczenia3"
+              },
+              "sedziowie": [
+                {
+                  "id": 9,
+                  "name": "SSN Małgorzata Bednarek"
+                }
+              ],
+              "sygnatura": "IV KO 40/24",
+              "data_wydania": "19 lutego 2025 r.",
+              "sprawozdawca": "SSN Małgorzata Bednarek",
+              "forma_orzeczenia": "zarządzenie",
+              "autor_uzasadnienia": "",
+              "typ_skladu_sedziow": "Skład 1-osobowy",
+              "jednostka_obslugujaca": "Izba Karna Wydział IV",
+              "przewodniczacy_skladu": "SSN Małgorzata Bednarek"
+            },
+            "score": 0.7976158857345581
+          }
+        ]
+      }
+    }
+  ]
+}

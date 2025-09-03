@@ -1,3 +1,4 @@
+// server/search.js
 import { MongoClient } from 'mongodb';
 import { cfg } from './config.js';
 import { embedBatch } from './openai.js';
@@ -24,7 +25,7 @@ export async function vectorSearch(question, topK = 10, numCandidates = 200) {
   const pipeline = [
     {
       $vectorSearch: {
-        index: cfg.mongo.indexName, // np. "unified_vec"
+        index: cfg.mongo.indexName, // np. "legal_chunks_vec"
         path: 'embedding',
         queryVector: emb,
         numCandidates,
@@ -37,12 +38,13 @@ export async function vectorSearch(question, topK = 10, numCandidates = 200) {
         unified_id: 1,
         source: 1,
         source_pk: 1,
+        chunk_idx: 1,                 // <-- ważne: zwracamy numer chunku
         title: 1,
         date_text: 1,
         link: 1,
         created_at: 1,
         updated_at: 1,
-        content_text: 1,   // tylko do zrobienia snippet
+        content_text: 1,             // tylko do zrobienia snippet
         meta: 1,
         score: { $meta: 'vectorSearchScore' }
       }
@@ -55,6 +57,7 @@ export async function vectorSearch(question, topK = 10, numCandidates = 200) {
     unified_id: d.unified_id ?? null,
     source: d.source ?? null,
     source_pk: d.source_pk ?? null,
+    chunk_idx: d.chunk_idx ?? 0,
     title: d.title ?? null,
     link: d.link ?? null,
     date_text: d.date_text ?? null,

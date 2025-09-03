@@ -178,7 +178,6 @@ const scrape = async (config) => {
                     }
 
                     allResultsLength -= 10;
-                    page+=1;
                 } else if (statusCode == 404) {
                     logger.warn(`Page does not exist: ${statusCode}, url: ${url}`);
                 } else {
