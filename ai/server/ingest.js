@@ -3,9 +3,10 @@ import crypto from 'node:crypto';
 import mysql from 'mysql2/promise';
 import { MongoClient } from 'mongodb';
 import { htmlToText } from 'html-to-text';
+import { pipeline } from '@xenova/transformers';
 import { cfg } from './config.js';
-import { embedBatch } from './openai.js';
 
+// ------------------------- utils -------------------------
 const sha = (s) => crypto.createHash('sha256').update(s, 'utf8').digest('hex');
 
 function chunkText(txt, size, overlap) {
@@ -33,6 +34,41 @@ function maybeDate(s) {
   return Number.isFinite(t) ? new Date(t) : null;
 }
 
+// -------------------- local embedder ---------------------
+// Model domyślny: lekki, szybki, bez API. Jeśli chcesz inny, zmień poniższą nazwę.
+// Dla PL warto rozważyć: 'Xenova/multilingual-e5-small' (jeśli dostępny w transformers.js).
+const MODEL_ID = cfg.embed?.localModel || 'Xenova/all-MiniLM-L6-v2';
+let extractor = null;
+
+async function ensureExtractor() {
+  if (!extractor) {
+    extractor = await pipeline('feature-extraction', MODEL_ID, { quantized: true });
+    console.log(`[EMB] Loaded local model: ${MODEL_ID}`);
+  }
+  return extractor;
+}
+
+// Batch embedding z lokalnym modelem
+async function embedBatchLocal(texts, { maxBatch = 64 } = {}) {
+  await ensureExtractor();
+
+  const result = new Array(texts.length);
+  for (let i = 0; i < texts.length; i += maxBatch) {
+    const slice = texts.slice(i, i + maxBatch);
+    // transformers.js wspiera batching przez przekazanie tablicy stringów
+    const output = await extractor(slice, { pooling: 'mean', normalize: true });
+    // output.embedding.shape = [batch, dim] lub output.data dla pojedynczego
+    const embs = Array.isArray(slice)
+      ? output.tolist()
+      : [output.tolist()];
+    for (let j = 0; j < embs.length; j++) {
+      result[i + j] = embs[j];
+    }
+  }
+  return result;
+}
+
+// ------------------------- main --------------------------
 async function main() {
   // --- MySQL unified ---
   const my = await mysql.createConnection({
@@ -40,22 +76,31 @@ async function main() {
     port: cfg.mysql.port,
     user: cfg.mysql.user,
     password: cfg.mysql.password,
-    database: cfg.mysql.database, // np. 'ai_unified'
+    database: cfg.mysql.database,
     charset: 'utf8mb4',
   });
 
   // --- MongoDB ---
-  const mc = new MongoClient(cfg.mongo.uri);
+  const mc = new MongoClient(cfg.mongo.uri, { maxPoolSize: 5 });
   await mc.connect();
-  const col = mc.db(cfg.mongo.db).collection(cfg.mongo.coll);
+  const db = mc.db(cfg.mongo.db);
+  const col = db.collection(cfg.mongo.coll);
 
-  // HARD REFRESH (zostawia index Atlas Search/Vector)
+  // HARD RESET: czyści kolekcję (zwalnia miejsce pod limit Atlas)
   if (cfg.api.RESET_BEFORE_INGEST) {
-    const del = await col.deleteMany({});
-    console.log(`RESET_BEFORE_INGEST=1 → usunięto ${del.deletedCount} dokumentów z ${cfg.mongo.db}.${cfg.mongo.coll}`);
+    try {
+      await col.drop();
+      console.log(`[RESET] Dropped collection ${cfg.mongo.coll}`);
+    } catch (e) {
+      if (e.codeName === 'NamespaceNotFound') {
+        console.log(`[RESET] Collection ${cfg.mongo.coll} not found (ok)`);
+      } else {
+        console.warn(`[RESET] Drop collection warning:`, e?.message || e);
+      }
+    }
   }
 
-  // idempotentne indeksy
+  // Indeksy (idempotentnie)
   await col.createIndex({ text_hash: 1 }, { unique: true }).catch(() => {});
   await col.createIndex({ dt: 1 }).catch(() => {});
   await col.createIndex({ link: 1 }).catch(() => {});
@@ -63,9 +108,10 @@ async function main() {
 
   let offset = 0, processed = 0;
   const batchRows = Number(cfg.ingest.batchRows) || 1000;
-  const size = Number(cfg.chunk.size) || 8000;
-  const overlap = Number(cfg.chunk.overlap) || 1000;
+  const size = Number(cfg.chunk.size) || 6000;     // rozsądny rozmiar pod lokalny model
+  const overlap = Number(cfg.chunk.overlap) || 800;
   const maxRows = Number(cfg.ingest.maxRows ?? -1);
+  const embedBatchSize = Number(cfg.ingest.embedBatch) || 64;
 
   while (true) {
     if (maxRows !== -1 && processed >= maxRows) break;
@@ -98,9 +144,7 @@ async function main() {
     for (const r of rows) {
       const meta = safeParseJSON(r.meta);
       const body =
-        (r.content_text && String(r.content_text).trim()) ||
-        htmlToText(r.content_html || '', { wordwrap: false, selectors: [{ selector: 'a', options: { ignoreHref: true } }] }) ||
-        '';
+        (r.content_text && String(r.content_text).trim()) ||'';
 
       if (!body || body.length < 50) continue;
 
@@ -120,9 +164,12 @@ async function main() {
       });
     }
 
-    if (!envelope.length) { console.log(`offset=${offset}: brak chunków`); continue; }
+    if (!envelope.length) {
+      console.log(`offset=${offset}: brak chunków`);
+      continue;
+    }
 
-    // 2) sprawdź, które już istnieją
+    // 2) sprawdź, które już istnieją (i czy mają embedding)
     const hashes = envelope.map(e => e.hash);
     const existing = await col.find(
       { text_hash: { $in: hashes } },
@@ -135,9 +182,9 @@ async function main() {
 
     for (const e of envelope) {
       const had = existsMap.get(e.hash);
-      if (had === true) continue;           // jest i ma embedding
+      if (had === true) continue;             // istnieje i ma embedding
       if (had === undefined) toInsert.push(e); // nowy dokument
-      toEmbed.push(e);                      // policz embedding
+      toEmbed.push(e);                        // policz embedding (dla nowych i „gołych”)
     }
 
     // 3) insert nowych bez embeddingu (upsert)
@@ -151,11 +198,10 @@ async function main() {
               source_id: e.r.id,          // unified_id
               source: e.r.source,
               source_pk: e.r.source_pk,
-              link: e.r.link,
-              title: e.r.title,
-              date_str: e.r.date_text || null, // oryginalny string
-              dt: maybeDate(e.r.date_text),    // Date lub null
-              status_code: e.r.status_code ?? null,
+              link: e.r.link || null,
+              title: e.r.title || null,
+              date_str: e.r.date_text || null,
+              dt: maybeDate(e.r.date_text),
               created_at: e.r.created_at ?? null,
               updated_at: e.r.updated_at ?? null,
               meta: e.r.meta ?? null,
@@ -169,10 +215,11 @@ async function main() {
       await col.bulkWrite(ops, { ordered: false });
     }
 
-    // 4) policz embeddingi i zapisz
-    for (let i = 0; i < toEmbed.length; i += Number(cfg.ingest.embedBatch) || 128) {
-      const batch = toEmbed.slice(i, i + (Number(cfg.ingest.embedBatch) || 128));
-      const vecs = await embedBatch(batch.map(b => b.ch));
+    // 4) policz embeddingi lokalnie i zapisz
+    for (let i = 0; i < toEmbed.length; i += embedBatchSize) {
+      const batch = toEmbed.slice(i, i + embedBatchSize);
+      const vecs = await embedBatchLocal(batch.map(b => b.ch), { maxBatch: embedBatchSize });
+
       const bulk = [];
       for (let j = 0; j < batch.length; j++) {
         bulk.push({
@@ -190,7 +237,7 @@ async function main() {
 
   await my.end();
   await mc.close();
-  console.log('Ingest zakończony.');
+  console.log('Ingest zakończony (lokalne wektory, bez OpenAI).');
 }
 
 main().catch(e => { console.error(e); process.exit(1); });
