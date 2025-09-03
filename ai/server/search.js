@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb';
 import { cfg } from './config.js';
-import { oai } from './openai.js';
 import { embedBatch } from './openai.js';
+
 const mc = new MongoClient(cfg.mongo.uri);
 let colPromise;
 
@@ -15,25 +15,36 @@ async function getCollection() {
   return colPromise;
 }
 
-export async function vectorSearch(question, topK, numCandidates) {
+export async function vectorSearch(question, topK = 10, numCandidates = 200) {
   const col = await getCollection();
 
+  // OpenAI embedding (1536-d dla text-embedding-3-small/large)
   const [emb] = await embedBatch([question]);
 
   const pipeline = [
     {
       $vectorSearch: {
-        index: cfg.mongo.indexName,
-        path: "embedding",
+        index: cfg.mongo.indexName, // np. "unified_vec"
+        path: 'embedding',
         queryVector: emb,
-        numCandidates: numCandidates,
+        numCandidates,
         limit: topK
       }
     },
     {
       $project: {
-        _id: 0, text: 1, title: 1, link: 1, dt: 1, prawomocne: 1, uzasadnienie: 1,
-        score: { $meta: "vectorSearchScore" }
+        _id: 0,
+        unified_id: 1,
+        source: 1,
+        source_pk: 1,
+        title: 1,
+        date_text: 1,
+        link: 1,
+        created_at: 1,
+        updated_at: 1,
+        content_text: 1,   // tylko do zrobienia snippet
+        meta: 1,
+        score: { $meta: 'vectorSearchScore' }
       }
     }
   ];
@@ -41,11 +52,18 @@ export async function vectorSearch(question, topK, numCandidates) {
   const docs = await col.aggregate(pipeline).toArray();
 
   return docs.map(d => ({
-    link: d.link,
-    title: d.title,
-    dt: d.dt ? new Date(d.dt).toISOString().slice(0,10) : null,
-    prawomocne: d.prawomocne,
-    snippet: d.text.length > 900 ? d.text.slice(0,900) + '…' : d.text,
+    unified_id: d.unified_id ?? null,
+    source: d.source ?? null,
+    source_pk: d.source_pk ?? null,
+    title: d.title ?? null,
+    link: d.link ?? null,
+    date_text: d.date_text ?? null,
+    created_at: d.created_at ? new Date(d.created_at).toISOString() : null,
+    updated_at: d.updated_at ? new Date(d.updated_at).toISOString() : null,
+    snippet: d.content_text
+      ? (d.content_text.length > 900 ? d.content_text.slice(0, 900) + '…' : d.content_text)
+      : null,
+    meta: d.meta ?? null,
     score: d.score
   }));
 }
