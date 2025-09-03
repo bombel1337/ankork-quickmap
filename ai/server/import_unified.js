@@ -53,6 +53,8 @@ async function main() {
 
       content_text LONGTEXT NULL,
       meta         JSON NULL,
+      created_at   TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updated_at   TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
       KEY idx_source (source),
       KEY idx_date_text (date_text)
@@ -60,38 +62,6 @@ async function main() {
     `,
     'Create unified_docs'
   );
-
-  // 1a) Migracje porządkujące (bez błędu jeśli kolumny nie istnieją)
-  try {
-    await conn.query(
-      `ALTER TABLE \`${UNIFIED_DB}\`.unified_docs CHANGE COLUMN \`date\` date_text VARCHAR(500) NULL;`
-    );
-    console.log('✔ Migrate `date` -> `date_text`');
-  } catch {}
-  try {
-    await conn.query(
-      `ALTER TABLE \`${UNIFIED_DB}\`.unified_docs DROP COLUMN IF EXISTS status_code;`
-    );
-    console.log('✔ Drop `status_code` (if existed)');
-  } catch {}
-  try {
-    await conn.query(
-      `ALTER TABLE \`${UNIFIED_DB}\`.unified_docs DROP COLUMN IF EXISTS content_html;`
-    );
-    console.log('✔ Drop `content_html` (if existed)');
-  } catch {}
-  try {
-    await conn.query(
-      `ALTER TABLE \`${UNIFIED_DB}\`.unified_docs DROP COLUMN IF EXISTS created_at;`
-    );
-    console.log('✔ Drop `created_at` (if existed)');
-  } catch {}
-  try {
-    await conn.query(
-      `ALTER TABLE \`${UNIFIED_DB}\`.unified_docs DROP COLUMN IF EXISTS updated_at;`
-    );
-    console.log('✔ Drop `updated_at` (if existed)');
-  } catch {}
 
   // 2) Widok: MS — source_pk z parsed_data, link z parsed_data, obie daty w meta
   await exec(

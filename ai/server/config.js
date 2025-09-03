@@ -19,7 +19,7 @@ export const cfg = {
     key: process.env.OPENAI_API_KEY,
     embedModel: process.env.EMBED_MODEL || 'text-embedding-3-small',
     chatModel: process.env.CHAT_MODEL || 'gpt-4o-mini',
-    sanitize: true,
+    sanitize: (process.env.SANITIZE ?? false) === true,
   },
   chunk: {
     size: +process.env.CHUNK_CHARS || 8000,
@@ -31,7 +31,7 @@ export const cfg = {
     maxRows: +process.env.MAX_ROWS || -1
   },
   api: {
-    RESET_BEFORE_INGEST: true,
+    RESET_BEFORE_INGEST: (process.env.RESET_BEFORE_INGEST ?? false) === true,
     port: +process.env.PORT || 8000,
     topK: +process.env.TOP_K || 6,
     numCandidates: +process.env.NUM_CANDIDATES || 200,
