@@ -50,7 +50,7 @@ async function main() {
   const col = mc.db(cfg.mongo.db).collection(cfg.mongo.coll);
 
   // HARD REFRESH (zostawia index Atlas Search/Vector)
-  if (process.env.RESET_BEFORE_INGEST === '1') {
+  if (cfg.api.RESET_BEFORE_INGEST) {
     const del = await col.deleteMany({});
     console.log(`RESET_BEFORE_INGEST=1 → usunięto ${del.deletedCount} dokumentów z ${cfg.mongo.db}.${cfg.mongo.coll}`);
   }
@@ -106,7 +106,7 @@ async function main() {
 
       const headerParts = [];
       if (r.title) headerParts.push(`Tytuł: ${r.title}`);
-      if (r.date) headerParts.push(`Data: ${r.date}`);
+      if (r.date_text) headerParts.push(`Data: ${r.date_text}`);
       if (r.source) headerParts.push(`Źródło: ${r.source}${r.source_pk ? ` (${r.source_pk})` : ''}`);
       if (r.link) headerParts.push(`Link: ${r.link}`);
       const header = headerParts.join('\n');
@@ -153,8 +153,8 @@ async function main() {
               source_pk: e.r.source_pk,
               link: e.r.link,
               title: e.r.title,
-              date_str: e.r.date || null, // oryginalny string
-              dt: maybeDate(e.r.date),    // Date lub null
+              date_str: e.r.date_text || null, // oryginalny string
+              dt: maybeDate(e.r.date_text),    // Date lub null
               status_code: e.r.status_code ?? null,
               created_at: e.r.created_at ?? null,
               updated_at: e.r.updated_at ?? null,

@@ -3,7 +3,7 @@ import OpenAI from 'openai';
 import { cfg } from './config.js';
 
 export const oai = new OpenAI({ apiKey: cfg.openai.key });
-const SANITIZE = (process.env.SANITIZE ?? '1') !== '0';
+const SANITIZE = cfg.openai.sanitize;
 
 function sanitizeAnswer(s) {
    if (!SANITIZE || !s) return s || '';

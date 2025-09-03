@@ -182,7 +182,7 @@ async function saveDataToDatabase(database, parsed, logger) {
         uzasadnienie_flag,
         link,
         tytul
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       ON DUPLICATE KEY UPDATE
         sygnatura = VALUES(sygnatura),
         data_orzeczenia = VALUES(data_orzeczenia),
@@ -207,7 +207,7 @@ async function saveDataToDatabase(database, parsed, logger) {
             parsed.data_wplywu || null,
             parsed.sad || null,
             parsed.hasla_tematyczne || null,
-            parsed.oskarzony_organ || null,
+            parsed.skarzony_organ || null,
             parsed.tresc_wyniku || null,
             parsed.powolane_przepisy || null,
             parsed.sentencja || null,
