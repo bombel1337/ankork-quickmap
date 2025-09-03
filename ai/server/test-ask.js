@@ -11,7 +11,12 @@ const questions = [
   "Czy błędne oznaczenie adresata decyzji powoduje jej nieważność?",
   "Jakie warunki musi spełnić skarga do WSA, aby nie została odrzucona?",
   "Czy doręczenie przez ePUAP jest skuteczne, gdy pełnomocnictwo nie obejmuje tej formy?",
-  "Kiedy można wznowić postępowanie administracyjne?"
+  "Kiedy można wznowić postępowanie administracyjne?",
+  "Czy można złożyć skargę na bezczynność organu?",
+  "Czy organ ma obowiązek informować o wszczęciu postępowania?",
+  "Czy możliwe jest złożenie skargi na decyzję organu administracji publicznej?",
+  "Jak zgłosić naruszenie prawa ucznia na studiach przeprowadzanych w trybie zdalnym?",
+  "Ile średnio trwa proces cywilno-karny od złożenia pierwszego wniosku do wydania wyroku?"
 ];
 // -----------------------------------------------------------
 
